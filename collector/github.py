@@ -7,8 +7,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from typing import Any
-from typing import Optional
+from typing import Any, Optional
 
 API = "https://api.github.com"
 
@@ -82,6 +81,22 @@ class GitHub:
         except Exception:  # noqa: BLE001
             return None
 
+    def file_exists(self, owner: str, name: str, path: str, ref: Optional[str] = None) -> Optional[bool]:
+        """Return True/False for a repository path, or None when the API failed.
+
+        ``get`` deliberately returns None both for a 404 and for a request
+        failure. A request failure records a warning, which lets this wrapper
+        preserve the tri-state result needed by feature detection.
+        """
+        params = {"ref": ref} if ref else None
+        warning_count = len(self.warnings)
+        data = self.get(f"/repos/{owner}/{name}/contents/{path}", params=params)
+        if data is not None:
+            return True
+        if len(self.warnings) > warning_count:
+            return None
+        return False
+
     def dir_entries(self, owner: str, name: str, path: str, ref: Optional[str] = None) -> list[str]:
         params = {"ref": ref} if ref else None
         data = self.get(f"/repos/{owner}/{name}/contents/{path}", params=params)
@@ -125,9 +140,11 @@ class GitHub:
 
         return {"open_issues": open_issues, "open_prs": open_prs, "oldest_open_issue_age_days": oldest_days}
 
-    def search_code(self, owner: str, name: str, pattern: str) -> Optional[bool]:
+    def search_code(self, owner: str, name: str, pattern: str, language: Optional[str] = None) -> Optional[bool]:
         """True/False if a code pattern appears in the repo, or None on error."""
         q = f'"{pattern}" repo:{owner}/{name}'
+        if language:
+            q += f" language:{language}"
         data = self.get("/search/code", params={"q": q, "per_page": 1})
         if data is None:
             return None

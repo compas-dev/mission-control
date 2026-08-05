@@ -38,15 +38,25 @@ features:
     label: "New Scene API"
     kind: code
     detect:
+      # Any Python import from compas.scene is evidence of the COMPAS 2 scene
+      # API; requiring the exact `Scene` class misses SceneObject/register users.
+      language: Python
       present:
-        - "from compas.scene import Scene"
+        - "from compas.scene"
+        - "import compas.scene"
+        - "from compas import scene"
 
   - id: no-deprecated-artist
     label: "No deprecated Artist"
     kind: code
     detect:
+      # Restrict this to Python so changelogs/docs discussing the old API do
+      # not count as live usage.
+      language: Python
       absent:
-        - "compas.artists"
+        - "from compas.artists"
+        - "import compas.artists"
+        - "from compas import artists"
 
   # Migrated TO MkDocs and AWAY from Sphinx: mkdocs.yml present, no sphinx conf.py.
   - id: mkdocs
@@ -63,6 +73,7 @@ features:
     label: "Uses compas_invocations2"
     kind: code
     detect:
+      language: Python
       present:
         - "compas_invocations2"
 

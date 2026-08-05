@@ -164,14 +164,16 @@ features:
     label: "New Scene API"
     kind: code                     # GitHub code search within the repo
     detect:
+      language: Python             # optional GitHub language qualifier
       # adopted if ANY `present` pattern matches; not-adopted if only `absent` do
-      present: ["from compas.scene import Scene"]
+      present: ["from compas.scene", "import compas.scene", "from compas import scene"]
 
   - id: no-deprecated-artist
     label: "No deprecated Artist"
     kind: code
     detect:
-      absent: ["Artist(", "compas.artists"]   # adopted if pattern is ABSENT
+      language: Python
+      absent: ["from compas.artists", "import compas.artists", "from compas import artists"]
 
   - id: mkdocs
     label: "Docs on mkdocs"
@@ -399,8 +401,9 @@ no live API calls in the browser.
   job, not on every push.
 - **`dynamic` dependencies.** Real deps are usually in `requirements.txt`, not
   pyproject — parse both.
-- **Classifiers lie.** Prefer the CI matrix for Python support; keep classifiers
-  as fallback and surface the source.
+- **Python support signals differ.** Prefer the normative `requires-python`
+  declaration. Use classifiers as a fallback, and the CI matrix last: CI says
+  what is tested, but a minimal matrix is not an exhaustive compatibility list.
 - **Archived repos.** Keep them visible but visually demoted (they carry
   historical migration signal, e.g. `compas_view2` → `compas_viewer`).
 - **Determinism.** Sort everything (repos by category then name, features by

@@ -6,8 +6,6 @@ adoption status of each feature: adopted | not-adopted | n/a | unknown.
 
 from __future__ import annotations
 
-from typing import Optional
-
 from packaging.version import Version
 
 from parse import satisfies
@@ -82,21 +80,31 @@ def detect(feature: dict, repo_cfg: dict, packaging: dict, gh, owner: str, name:
     if kind == "python":
         version = detect_cfg.get("version", "")
         versions = packaging.get("python_versions") or []
-        if not versions:
+        source = packaging.get("python_source", "unknown")
+        if not versions and source == "unknown":
             return _cell(STATUS_UNKNOWN, detail="no python info")
         adopted = version in versions
-        return _cell(STATUS_ADOPTED if adopted else STATUS_NOT, detail=f"support: {', '.join(versions)}")
+        support = ", ".join(versions) or "none of the tracked versions"
+        return _cell(STATUS_ADOPTED if adopted else STATUS_NOT, detail=f"{source}: {support}")
 
     if kind == "file":
         branch = repo_cfg.get("branch")
-        exists = lambda p: gh.file_text(owner, name, p, branch) is not None  # noqa: E731
         any_of = detect_cfg.get("any_of", [])
         none_of = detect_cfg.get("none_of", [])
-        present = [p for p in any_of if exists(p)]
-        forbidden = [p for p in none_of if exists(p)]
+        results = {p: gh.file_exists(owner, name, p, branch) for p in any_of + none_of}
+        present = [p for p in any_of if results[p] is True]
+        forbidden = [p for p in none_of if results[p] is True]
+        unavailable_required = [p for p in any_of if results[p] is None]
+        unavailable_forbidden = [p for p in none_of if results[p] is None]
         # Adopted requires the wanted file(s) present AND the unwanted ones gone.
         # This expresses "migrated TO x and AWAY from y" (e.g. MkDocs, not Sphinx).
         has_required = not any_of or bool(present)
+        if forbidden:
+            return _cell(STATUS_NOT, detail=f"still has {', '.join(forbidden)}")
+        if any_of and not present and unavailable_required:
+            return _cell(STATUS_UNKNOWN, detail=f"file check failed: {', '.join(unavailable_required)}")
+        if has_required and unavailable_forbidden:
+            return _cell(STATUS_UNKNOWN, detail=f"file check failed: {', '.join(unavailable_forbidden)}")
         if has_required and not forbidden:
             bits = []
             if present:
@@ -106,21 +114,20 @@ def detect(feature: dict, repo_cfg: dict, packaging: dict, gh, owner: str, name:
             return _cell(STATUS_ADOPTED, detail="; ".join(bits) or "ok")
         if any_of and not present:
             return _cell(STATUS_NOT, detail=f"missing {' / '.join(any_of)}")
-        if forbidden:
-            return _cell(STATUS_NOT, detail=f"still has {', '.join(forbidden)}")
         return _cell(STATUS_NOT, detail="file absent")
 
     if kind == "code":
         present = detect_cfg.get("present", [])
         absent = detect_cfg.get("absent", [])
+        language = detect_cfg.get("language")
         for pat in present:
-            found = gh.search_code(owner, name, pat)
+            found = gh.search_code(owner, name, pat, language=language)
             if found is None:
                 return _cell(STATUS_UNKNOWN, detail="code search failed")
             if found:
                 return _cell(STATUS_ADOPTED, detail=f"matched {pat!r}")
         for pat in absent:
-            found = gh.search_code(owner, name, pat)
+            found = gh.search_code(owner, name, pat, language=language)
             if found is None:
                 return _cell(STATUS_UNKNOWN, detail="code search failed")
             if found:

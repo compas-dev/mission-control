@@ -159,19 +159,24 @@ def parse_ci_pythons(workflow_texts: list[str]) -> list[str]:
 
 
 def resolve_pythons(ci: list[str], classifiers: list[str], requires_python: Optional[str]) -> dict:
-    """Pick the canonical Python support list, preferring CI > classifiers > requires-python."""
-    if ci:
-        return {"versions": ci, "source": "ci-matrix"}
-    if classifiers:
-        return {"versions": classifiers, "source": "classifiers"}
+    """Resolve declared Python support, then fall back to supporting signals.
+
+    ``requires-python`` is the package's normative compatibility declaration.
+    A CI matrix is only a list of tested interpreters and is commonly minimal,
+    so treating it as an exhaustive support list produces false negatives for
+    newer Python versions.
+    """
     if requires_python:
         try:
             spec = SpecifierSet(requires_python)
             supported = [v for v in KNOWN_PYTHONS if Version(v) in spec]
-            if supported:
-                return {"versions": supported, "source": "requires-python"}
+            return {"versions": supported, "source": "requires-python"}
         except Exception:  # noqa: BLE001
             pass
+    if classifiers:
+        return {"versions": classifiers, "source": "classifiers"}
+    if ci:
+        return {"versions": ci, "source": "ci-matrix"}
     return {"versions": [], "source": "unknown"}
 
 
