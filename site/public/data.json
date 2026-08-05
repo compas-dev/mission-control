@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T05:43:27Z",
+  "generated_at": "2026-08-05T15:40:37Z",
   "features": [
     {
       "id": "compas2",
@@ -79,12 +79,12 @@
       "stars": 377,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-07-12",
+        "last_commit_date": "2026-08-05",
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 100,
         "open_prs": 19,
-        "oldest_open_issue_age_days": 2940
+        "oldest_open_issue_age_days": 2941
       },
       "release": {
         "github_tag": "2.15.1",
@@ -100,9 +100,10 @@
           "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": true,
           "ghpython": true,
@@ -118,37 +119,37 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
-          "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
-        },
-        "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
+        },
+        "new-scene-api": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "code search failed"
         },
         "no-deprecated-artist": {
-          "status": "not-adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "still uses 'compas.artists'"
+          "detail": "code search failed"
         },
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "code search failed"
         },
         "pypi-match": {
           "status": "adopted",
@@ -194,11 +195,13 @@
         "compas_pin": "compas >=2.13",
         "compas_major_floor": 2,
         "python_versions": [
+          "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -214,17 +217,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -232,19 +235,19 @@
           "detail": "no match"
         },
         "no-deprecated-artist": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "clean"
+          "detail": "code search failed"
         },
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "code search failed"
         },
         "pypi-match": {
           "status": "adopted",
@@ -287,7 +290,7 @@
         "ci": "passing",
         "open_issues": 1,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 41
+        "oldest_open_issue_age_days": 42
       },
       "release": {
         "github_tag": "0.4.1",
@@ -301,10 +304,12 @@
         "compas_major_floor": 2,
         "python_versions": [
           "3.9",
+          "3.10",
+          "3.11",
           "3.12",
-          "3.14"
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": true,
@@ -318,19 +323,19 @@
           "detail": "compas <3,>=2"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.12, 3.14"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.12, 3.14"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.12, 3.14"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -401,9 +406,13 @@
         "compas_pin": "compas >=2",
         "compas_major_floor": 2,
         "python_versions": [
-          "3.12"
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -417,19 +426,19 @@
           "detail": "compas >=2"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -485,7 +494,7 @@
         "ci": "passing",
         "open_issues": 1,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 350
+        "oldest_open_issue_age_days": 351
       },
       "release": {
         "github_tag": "2.3.0",
@@ -498,11 +507,13 @@
         "compas_pin": "compas >=1.17.6",
         "compas_major_floor": 1,
         "python_versions": [
+          "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": true,
           "ghpython": true,
@@ -518,17 +529,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -583,7 +594,7 @@
         "ci": "failing",
         "open_issues": 74,
         "open_prs": 10,
-        "oldest_open_issue_age_days": 3170
+        "oldest_open_issue_age_days": 3171
       },
       "release": {
         "github_tag": "2.0.1",
@@ -597,9 +608,12 @@
         "compas_major_floor": 2,
         "python_versions": [
           "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
           "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": true,
           "ghpython": true,
@@ -613,24 +627,24 @@
           "detail": "compas <3,>=2.3"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "code search failed"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -716,17 +730,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -782,7 +796,7 @@
         "ci": "passing",
         "open_issues": 5,
         "open_prs": 2,
-        "oldest_open_issue_age_days": 900
+        "oldest_open_issue_age_days": 901
       },
       "release": {
         "github_tag": "1.0.1",
@@ -798,9 +812,10 @@
           "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -816,22 +831,22 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -881,7 +896,7 @@
         "ci": "none",
         "open_issues": 13,
         "open_prs": 2,
-        "oldest_open_issue_age_days": 2038
+        "oldest_open_issue_age_days": 2039
       },
       "release": {
         "github_tag": "2.0.0",
@@ -914,17 +929,17 @@
         "py311": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "py312": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "py313": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -939,7 +954,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "not-adopted",
@@ -979,7 +994,7 @@
         "ci": "passing",
         "open_issues": 3,
         "open_prs": 3,
-        "oldest_open_issue_age_days": 454
+        "oldest_open_issue_age_days": 455
       },
       "release": {
         "github_tag": "0.8.0",
@@ -998,7 +1013,7 @@
           "3.12",
           "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": true,
           "ghpython": true,
@@ -1014,17 +1029,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -1080,7 +1095,7 @@
         "ci": "passing",
         "open_issues": 3,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 339
+        "oldest_open_issue_age_days": 340
       },
       "release": {
         "github_tag": "0.1.5",
@@ -1095,9 +1110,10 @@
         "python_versions": [
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "classifiers",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -1113,17 +1129,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -1173,12 +1189,12 @@
       "stars": 5,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-08-04",
+        "last_commit_date": "2026-08-05",
         "staleness": "fresh",
         "ci": "passing",
-        "open_issues": 3,
-        "open_prs": 6,
-        "oldest_open_issue_age_days": 13
+        "open_issues": 4,
+        "open_prs": 7,
+        "oldest_open_issue_age_days": 14
       },
       "release": {
         "github_tag": "0.10.1",
@@ -1192,10 +1208,9 @@
         "compas_major_floor": 2,
         "python_versions": [
           "3.12",
-          "3.13",
-          "3.14"
+          "3.13"
         ],
-        "python_source": "classifiers",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -1211,22 +1226,22 @@
         "py311": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.12, 3.13, 3.14"
+          "detail": "requires-python: 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.12, 3.13, 3.14"
+          "detail": "requires-python: 3.12, 3.13"
         },
         "py313": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.12, 3.13, 3.14"
+          "detail": "requires-python: 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1272,12 +1287,12 @@
       "stars": 43,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-08-04",
+        "last_commit_date": "2026-08-05",
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 69,
         "open_prs": 15,
-        "oldest_open_issue_age_days": 931
+        "oldest_open_issue_age_days": 932
       },
       "release": {
         "github_tag": "2.2.0",
@@ -1291,10 +1306,12 @@
         "compas_major_floor": 2,
         "python_versions": [
           "3.9",
+          "3.10",
+          "3.11",
           "3.12",
-          "3.14"
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": true,
           "ghpython": true,
@@ -1308,24 +1325,24 @@
           "detail": "compas <3.0,>=2.15.1"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.12, 3.14"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.12, 3.14"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
-          "source": "auto",
-          "detail": "support: 3.9, 3.12, 3.14"
-        },
-        "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
+        },
+        "new-scene-api": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1464,12 +1481,12 @@
       "stars": 4,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-08-04",
+        "last_commit_date": "2026-08-05",
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 5,
         "open_prs": 6,
-        "oldest_open_issue_age_days": 67
+        "oldest_open_issue_age_days": 68
       },
       "release": {
         "github_tag": "0.3.1",
@@ -1483,10 +1500,12 @@
         "compas_major_floor": null,
         "python_versions": [
           "3.9",
+          "3.10",
+          "3.11",
           "3.12",
-          "3.14"
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": true,
           "ghpython": true,
@@ -1500,24 +1519,24 @@
           "detail": "no compas dependency"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.12, 3.14"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.12, 3.14"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.12, 3.14"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1567,7 +1586,7 @@
         "ci": "passing",
         "open_issues": 2,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 12
+        "oldest_open_issue_age_days": 13
       },
       "release": {
         "github_tag": "0.1.4",
@@ -1602,22 +1621,22 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1667,7 +1686,7 @@
         "ci": "passing",
         "open_issues": 1,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 11
+        "oldest_open_issue_age_days": 12
       },
       "release": {
         "github_tag": "0.10.0",
@@ -1680,9 +1699,13 @@
         "compas_pin": "compas *",
         "compas_major_floor": null,
         "python_versions": [
-          "3.10"
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -1696,19 +1719,19 @@
           "detail": "compas *"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -1777,11 +1800,13 @@
         "compas_pin": "compas *",
         "compas_major_floor": null,
         "python_versions": [
+          "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -1797,17 +1822,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -1862,7 +1887,7 @@
         "ci": "passing",
         "open_issues": 4,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 863
+        "oldest_open_issue_age_days": 864
       },
       "release": {
         "github_tag": "2.1.0",
@@ -1875,10 +1900,13 @@
         "compas_pin": "compas >=2.2",
         "compas_major_floor": 2,
         "python_versions": [
+          "3.9",
           "3.10",
-          "3.11"
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -1894,22 +1922,22 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1919,7 +1947,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -1973,9 +2001,13 @@
         "compas_pin": "compas >=2.0.0",
         "compas_major_floor": 2,
         "python_versions": [
-          "3.10"
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -1989,19 +2021,19 @@
           "detail": "compas >=2.0.0"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -2016,7 +2048,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -2069,9 +2101,13 @@
         "compas_pin": "compas <3,>=2.15",
         "compas_major_floor": 2,
         "python_versions": [
-          "3.10"
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -2085,19 +2121,19 @@
           "detail": "compas <3,>=2.15"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -2152,7 +2188,7 @@
         "ci": "failing",
         "open_issues": 15,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 2171
+        "oldest_open_issue_age_days": 2172
       },
       "release": {
         "github_tag": null,
@@ -2185,17 +2221,17 @@
         "py311": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8"
         },
         "py312": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8"
         },
         "py313": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -2210,7 +2246,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "not-adopted",
@@ -2263,11 +2299,13 @@
         "compas_pin": "compas *",
         "compas_major_floor": null,
         "python_versions": [
+          "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -2283,17 +2321,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -2365,9 +2403,10 @@
           "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "classifiers",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -2383,22 +2422,22 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2461,9 +2500,13 @@
         "compas_pin": "compas >=2",
         "compas_major_floor": 2,
         "python_versions": [
-          "3.10"
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -2477,19 +2520,19 @@
           "detail": "compas >=2"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -2504,7 +2547,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -2557,11 +2600,13 @@
         "compas_pin": "compas >=2",
         "compas_major_floor": 2,
         "python_versions": [
+          "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -2577,17 +2622,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -2602,7 +2647,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -2655,11 +2700,13 @@
         "compas_pin": "compas >=2.4",
         "compas_major_floor": 2,
         "python_versions": [
+          "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -2675,17 +2722,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -2740,7 +2787,7 @@
         "ci": "passing",
         "open_issues": 2,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1176
+        "oldest_open_issue_age_days": 1177
       },
       "release": {
         "github_tag": "0.15.3",
@@ -2753,9 +2800,13 @@
         "compas_pin": "compas >=2.9",
         "compas_major_floor": 2,
         "python_versions": [
-          "3.9"
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -2769,24 +2820,24 @@
           "detail": "compas >=2.9"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2840,7 +2891,7 @@
         "ci": "none",
         "open_issues": 1,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1341
+        "oldest_open_issue_age_days": 1342
       },
       "release": {
         "github_tag": "0.2.1",
@@ -2853,9 +2904,13 @@
         "compas_pin": "compas >=2.5",
         "compas_major_floor": 2,
         "python_versions": [
-          "3.9"
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -2869,24 +2924,24 @@
           "detail": "compas >=2.5"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2955,9 +3010,11 @@
         "python_versions": [
           "3.9",
           "3.10",
-          "3.11"
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -2973,27 +3030,27 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "still uses 'compas.artists'"
+          "detail": "clean"
         },
         "mkdocs": {
           "status": "not-adopted",
@@ -3001,9 +3058,9 @@
           "detail": "missing mkdocs.yml"
         },
         "invocations2": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "code search failed"
         },
         "pypi-match": {
           "status": "n/a",
@@ -3059,9 +3116,13 @@
         "compas_pin": "compas >=2.13",
         "compas_major_floor": 2,
         "python_versions": [
-          "3.9"
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -3075,24 +3136,24 @@
           "detail": "compas >=2.13"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -3150,7 +3211,7 @@
         "ci": "none",
         "open_issues": 2,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1771
+        "oldest_open_issue_age_days": 1772
       },
       "release": {
         "github_tag": "0.6.0",
@@ -3185,17 +3246,17 @@
         "py311": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9, 3.10"
         },
         "py312": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9, 3.10"
         },
         "py313": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9, 3.10"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -3210,7 +3271,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "not-adopted",
@@ -3251,7 +3312,7 @@
         "ci": "none",
         "open_issues": 5,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 1812
+        "oldest_open_issue_age_days": 1813
       },
       "release": {
         "github_tag": "1.3.3",
@@ -3267,9 +3328,10 @@
           "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -3285,32 +3347,32 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
-          "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
-        },
-        "new-scene-api": {
-          "status": "not-adopted",
-          "source": "auto",
-          "detail": "no match"
-        },
-        "no-deprecated-artist": {
           "status": "adopted",
           "source": "auto",
-          "detail": "clean"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
+        },
+        "new-scene-api": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "code search failed"
+        },
+        "no-deprecated-artist": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "code search failed"
         },
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -3350,7 +3412,7 @@
         "ci": "none",
         "open_issues": 4,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 2574
+        "oldest_open_issue_age_days": 2575
       },
       "release": {
         "github_tag": "0.7.1",
@@ -3366,9 +3428,10 @@
           "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -3384,17 +3447,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -3409,7 +3472,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -3464,9 +3527,11 @@
         "python_versions": [
           "3.9",
           "3.10",
-          "3.11"
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -3482,17 +3547,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -3500,19 +3565,19 @@
           "detail": "no match"
         },
         "no-deprecated-artist": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "clean"
+          "detail": "code search failed"
         },
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "code search failed"
         },
         "pypi-match": {
           "status": "adopted",
@@ -3578,17 +3643,17 @@
         "py311": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "ci-matrix: 3.9"
         },
         "py312": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "ci-matrix: 3.9"
         },
         "py313": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "ci-matrix: 3.9"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -3598,12 +3663,12 @@
         "no-deprecated-artist": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas.artists'"
+          "detail": "still uses 'from compas.artists'"
         },
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "not-adopted",
@@ -3656,9 +3721,12 @@
         "compas_pin": "compas >=2.4",
         "compas_major_floor": 2,
         "python_versions": [
-          "3.10"
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -3672,19 +3740,19 @@
           "detail": "compas >=2.4"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10"
+          "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -3699,7 +3767,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -3753,11 +3821,13 @@
         "compas_pin": "compas >=2.4",
         "compas_major_floor": 2,
         "python_versions": [
+          "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -3773,22 +3843,22 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -3798,7 +3868,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -3856,9 +3926,11 @@
         "python_versions": [
           "3.9",
           "3.10",
-          "3.11"
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -3874,17 +3946,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -3899,7 +3971,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -3939,7 +4011,7 @@
         "ci": "none",
         "open_issues": 2,
         "open_prs": 5,
-        "oldest_open_issue_age_days": 896
+        "oldest_open_issue_age_days": 897
       },
       "release": {
         "github_tag": "0.5.4",
@@ -3954,9 +4026,11 @@
         "python_versions": [
           "3.9",
           "3.10",
-          "3.11"
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -3972,17 +4046,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -3997,7 +4071,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -4053,9 +4127,10 @@
           "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "classifiers",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -4071,17 +4146,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -4096,7 +4171,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -4151,11 +4226,13 @@
         "compas_pin": "compas *",
         "compas_major_floor": null,
         "python_versions": [
+          "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -4171,22 +4248,22 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4238,7 +4315,7 @@
         "ci": "none",
         "open_issues": 2,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 2735
+        "oldest_open_issue_age_days": 2736
       },
       "release": {
         "github_tag": "0.1.2rc0",
@@ -4272,17 +4349,17 @@
         "py311": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8, 3.9"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9"
         },
         "py312": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8, 3.9"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9"
         },
         "py313": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8, 3.9"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -4297,7 +4374,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "not-adopted",
@@ -4353,9 +4430,10 @@
           "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -4371,22 +4449,22 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4396,7 +4474,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -4437,7 +4515,7 @@
         "ci": "failing",
         "open_issues": 3,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1170
+        "oldest_open_issue_age_days": 1171
       },
       "release": {
         "github_tag": "0.3.0",
@@ -4453,9 +4531,10 @@
           "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -4471,17 +4550,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -4496,7 +4575,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -4551,9 +4630,10 @@
         "compas_pin": "compas <3.0,>=2.15",
         "compas_major_floor": 2,
         "python_versions": [
-          "3.11"
+          "3.11",
+          "3.12"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -4569,27 +4649,27 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.11"
+          "detail": "requires-python: 3.11, 3.12"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.11"
+          "detail": "requires-python: 3.11, 3.12"
         },
         "py313": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.11"
+          "detail": "requires-python: 3.11, 3.12"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "still uses 'compas.artists'"
+          "detail": "clean"
         },
         "mkdocs": {
           "status": "adopted",
@@ -4597,9 +4677,9 @@
           "detail": "has mkdocs.yml; no docs/conf.py, docs/source/conf.py"
         },
         "invocations2": {
-          "status": "adopted",
+          "status": "not-adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "no match"
         },
         "pypi-match": {
           "status": "adopted",
@@ -4668,17 +4748,17 @@
         "py311": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8, 3.9"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9"
         },
         "py312": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8, 3.9"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9"
         },
         "py313": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.6, 3.7, 3.8, 3.9"
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -4693,7 +4773,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "not-adopted",
@@ -4733,7 +4813,7 @@
         "ci": "none",
         "open_issues": 13,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 2249
+        "oldest_open_issue_age_days": 2250
       },
       "release": {
         "github_tag": "0.2.1",
@@ -4748,9 +4828,11 @@
         "python_versions": [
           "3.9",
           "3.10",
-          "3.11"
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -4766,22 +4848,22 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4791,7 +4873,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -4846,11 +4928,13 @@
         "compas_pin": "compas *",
         "compas_major_floor": null,
         "python_versions": [
+          "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -4866,22 +4950,22 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4945,9 +5029,12 @@
         "compas_major_floor": 2,
         "python_versions": [
           "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
           "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -4961,24 +5048,24 @@
           "detail": "compas <3,>=2.3"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -5043,9 +5130,11 @@
         "python_versions": [
           "3.9",
           "3.10",
-          "3.11"
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "classifiers",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -5061,17 +5150,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -5128,7 +5217,7 @@
         "ci": "none",
         "open_issues": 29,
         "open_prs": 4,
-        "oldest_open_issue_age_days": 2024
+        "oldest_open_issue_age_days": 2025
       },
       "release": {
         "github_tag": "0.11.0",
@@ -5161,17 +5250,17 @@
         "py311": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "py312": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "py313": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -5186,7 +5275,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "not-adopted",
@@ -5224,7 +5313,7 @@
         "ci": "failing",
         "open_issues": 44,
         "open_prs": 10,
-        "oldest_open_issue_age_days": 939
+        "oldest_open_issue_age_days": 940
       },
       "release": {
         "github_tag": "2.0.2",
@@ -5239,9 +5328,11 @@
         "python_versions": [
           "3.9",
           "3.10",
-          "3.11"
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -5257,22 +5348,22 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -5282,7 +5373,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -5338,9 +5429,10 @@
           "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -5356,17 +5448,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -5425,7 +5517,7 @@
         "ci": "passing",
         "open_issues": 12,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 839
+        "oldest_open_issue_age_days": 840
       },
       "release": {
         "github_tag": "0.10.6",
@@ -5456,17 +5548,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.11"
+          "detail": "ci-matrix: 3.11"
         },
         "py312": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.11"
+          "detail": "ci-matrix: 3.11"
         },
         "py313": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.11"
+          "detail": "ci-matrix: 3.11"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -5481,7 +5573,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "not-adopted",
@@ -5556,17 +5648,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -5713,7 +5805,7 @@
         "ci": "passing",
         "open_issues": 1,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 622
+        "oldest_open_issue_age_days": 623
       },
       "release": {
         "github_tag": "1.2.0",
@@ -5727,9 +5819,12 @@
         "compas_major_floor": null,
         "python_versions": [
           "3.9",
-          "3.12"
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -5743,19 +5838,19 @@
           "detail": "no compas dependency"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -5803,18 +5898,18 @@
       "stars": 4,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-07-28",
+        "last_commit_date": "2026-08-05",
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 11,
-        "open_prs": 1,
-        "oldest_open_issue_age_days": 425
+        "open_prs": 3,
+        "oldest_open_issue_age_days": 426
       },
       "release": {
-        "github_tag": "0.5.0",
-        "github_date": "2026-05-08",
-        "pypi_version": "0.5.0",
-        "pypi_date": "2026-05-08",
+        "github_tag": "1.0.0",
+        "github_date": "2026-08-05",
+        "pypi_version": "1.0.0",
+        "pypi_date": "2026-08-05",
         "drift": false
       },
       "packaging": {
@@ -5827,7 +5922,7 @@
           "3.12",
           "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -5843,17 +5938,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -5878,7 +5973,7 @@
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
-          "detail": "PyPI 0.5.0 = GitHub 0.5.0"
+          "detail": "PyPI 1.0.0 = GitHub 1.0.0"
         },
         "conda-forge": {
           "status": "adopted",
@@ -5921,9 +6016,13 @@
         "compas_pin": null,
         "compas_major_floor": null,
         "python_versions": [
-          "3.9"
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -5937,24 +6036,24 @@
           "detail": "no compas dependency"
         },
         "py311": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -5964,7 +6063,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -6018,9 +6117,10 @@
           "3.9",
           "3.10",
           "3.11",
-          "3.12"
+          "3.12",
+          "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -6036,22 +6136,22 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.9, 3.10, 3.11, 3.12"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene import Scene'"
+          "detail": "matched 'from compas.scene'"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -6061,7 +6161,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "adopted",
@@ -6119,7 +6219,7 @@
           "3.12",
           "3.13"
         ],
-        "python_source": "ci-matrix",
+        "python_source": "requires-python",
         "hosts": {
           "rhino": false,
           "ghpython": false,
@@ -6135,17 +6235,17 @@
         "py311": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
           "status": "adopted",
           "source": "auto",
-          "detail": "support: 3.10, 3.11, 3.12, 3.13"
+          "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -6231,17 +6331,17 @@
         "py311": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "py312": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "py313": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "support: 3.8, 3.9, 3.10"
+          "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "new-scene-api": {
           "status": "not-adopted",
@@ -6256,7 +6356,7 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
           "status": "not-adopted",
@@ -6296,7 +6396,7 @@
         "ci": "none",
         "open_issues": 6,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1896
+        "oldest_open_issue_age_days": 1897
       },
       "release": {
         "github_tag": null,
@@ -6372,9 +6472,20 @@
     }
   ],
   "warnings": [
+    "GET https://api.github.com/search/code?q=%22from+compas.scene%22+repo%3Acompas-dev%2Fcompas+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas.artists%22+repo%3Acompas-dev%2Fcompas+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22compas_invocations2%22+repo%3Acompas-dev%2Fcompas+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas.scene%22+repo%3Acompas-dev%2Fcompas_fab+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas+import+artists%22+repo%3Acompas-dev%2Fcompas_framework+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22compas_invocations2%22+repo%3Acompas-dev%2Fcompas_framework+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas.scene%22+repo%3Ablockresearchgroup%2Fcompas_ags+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas.artists%22+repo%3Ablockresearchgroup%2Fcompas_ags+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas+import+artists%22+repo%3Ablockresearchgroup%2Fcompas_bender+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22compas_invocations2%22+repo%3Ablockresearchgroup%2Fcompas_bender+language%3APython&per_page=1 -> HTTP 429",
     "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Apr+is%3Aopen&per_page=1 -> HTTP 422",
     "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&per_page=1 -> HTTP 422",
     "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&sort=created&order=asc&per_page=1 -> HTTP 422",
+    "GET https://api.github.com/search/code?q=%22compas_invocations2%22+repo%3Ablockresearchgroup%2Fcompas-Masonry+language%3APython&per_page=1 -> HTTP 429",
     "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas_timber_pb+is%3Apr+is%3Aopen&per_page=1 -> HTTP 422",
     "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas_timber_pb+is%3Aissue+is%3Aopen&per_page=1 -> HTTP 422",
     "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas_timber_pb+is%3Aissue+is%3Aopen&sort=created&order=asc&per_page=1 -> HTTP 422"
