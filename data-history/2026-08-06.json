@@ -1,5 +1,5 @@
 {
-  "date": "2026-08-05",
+  "date": "2026-08-06",
   "repos": {
     "compas": {
       "staleness": "fresh",
@@ -7,7 +7,7 @@
       "open_issues": 100,
       "open_prs": 19,
       "compas_major_floor": null,
-      "features_adopted": 5
+      "features_adopted": 8
     },
     "compas_framework": {
       "staleness": "dormant",
@@ -15,7 +15,7 @@
       "open_issues": 0,
       "open_prs": 0,
       "compas_major_floor": 2,
-      "features_adopted": 5
+      "features_adopted": 7
     },
     "antikythera": {
       "staleness": "fresh",
@@ -47,7 +47,7 @@
       "open_issues": 74,
       "open_prs": 10,
       "compas_major_floor": 2,
-      "features_adopted": 9
+      "features_adopted": 10
     },
     "compas_nest": {
       "staleness": "aging",
@@ -239,7 +239,7 @@
       "open_issues": 16,
       "open_prs": 1,
       "compas_major_floor": 2,
-      "features_adopted": 6
+      "features_adopted": 7
     },
     "compas-RV": {
       "staleness": "dormant",
@@ -263,7 +263,7 @@
       "open_issues": 5,
       "open_prs": 1,
       "compas_major_floor": null,
-      "features_adopted": 5
+      "features_adopted": 6
     },
     "compas_assembly": {
       "staleness": "dormant",
@@ -279,7 +279,7 @@
       "open_issues": 0,
       "open_prs": 0,
       "compas_major_floor": 2,
-      "features_adopted": 5
+      "features_adopted": 7
     },
     "compas_cem": {
       "staleness": "dormant",
@@ -319,11 +319,11 @@
       "open_issues": 2,
       "open_prs": 5,
       "compas_major_floor": null,
-      "features_adopted": 6
+      "features_adopted": 5
     },
     "compas_lmgc90": {
       "staleness": "fresh",
-      "ci": "passing",
+      "ci": "failing",
       "open_issues": 0,
       "open_prs": 4,
       "compas_major_floor": 2,
@@ -399,7 +399,7 @@
       "open_issues": 0,
       "open_prs": 0,
       "compas_major_floor": 2,
-      "features_adopted": 8
+      "features_adopted": 9
     },
     "compas_threejs": {
       "staleness": "fresh",
@@ -506,7 +506,7 @@
       "features_adopted": 2
     },
     "compas_package_template": {
-      "staleness": "fresh",
+      "staleness": "aging",
       "ci": "none",
       "open_issues": 6,
       "open_prs": 0,
