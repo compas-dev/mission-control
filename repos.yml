@@ -81,6 +81,8 @@ repos:
     pypi: compas_invocations2
   - name: compas_package_template
     category: template
+  - name: compas_nanobind_package_template
+    category: template
   - name: sphinx_compas2_theme
     category: tooling
     pypi: sphinx_compas2_theme
