@@ -173,6 +173,18 @@ repos:
     owner: gramaziokohler
     category: tooling
     pypi: compas_pb
+  - name: compas_pb_ts
+    owner: gramaziokohler
+    category: tooling
+    runtime: node
+    release_tag_prefix: compas-pb-ts-v
+    distributions:
+      - registry: npm
+        name: "@gramaziokohler/compas-pb-ts"
+      - registry: jsr
+        name: "@gramaziokohler/compas-pb-ts"
+    ecosystem_deps:
+      - compas_pb
   - name: compas_brep
     owner: gramaziokohler
     category: geometry

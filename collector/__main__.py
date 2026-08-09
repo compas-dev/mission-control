@@ -1,6 +1,6 @@
 """COMPAS Mission Control — data collector.
 
-Reads repos.yml + features.yml, gathers data from the GitHub and PyPI APIs, and
+Reads repos.yml + features.yml, gathers data from GitHub and package registries, and
 writes site/public/data.json (plus an optional dated snapshot in data-history/).
 
 Usage:
@@ -25,10 +25,10 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import conda  # noqa: E402
+import parse  # noqa: E402
+import registries  # noqa: E402
 from features import detect  # noqa: E402
 from github import GitHub  # noqa: E402
-import parse  # noqa: E402
-import pypi  # noqa: E402
 
 WORKFLOW_CANDIDATES = ["build.yml", "test.yml", "ci.yml", "build_and_test.yml", "main.yml"]
 
@@ -65,6 +65,54 @@ def staleness(last_commit_date: str | None) -> str:
     return "dormant"
 
 
+def configured_distributions(cfg: dict) -> list[dict]:
+    """Return normalized distribution config, including legacy ``pypi``."""
+    configured = [d for d in (cfg.get("distributions") or []) if isinstance(d, dict)]
+    result = []
+    seen = set()
+    if cfg.get("pypi"):
+        result.append({"registry": "pypi", "name": cfg["pypi"]})
+        seen.add(("pypi", cfg["pypi"]))
+    for item in configured:
+        kind, package_name = item.get("registry"), item.get("name")
+        if kind and package_name and (kind, package_name) not in seen:
+            result.append({"registry": kind, "name": package_name})
+            seen.add((kind, package_name))
+    return result
+
+
+def collect_distributions(cfg: dict) -> list[dict]:
+    """Collect current versions for every configured package registry."""
+    result = []
+    for item in configured_distributions(cfg):
+        info = registries.latest(item["registry"], item["name"]) or {}
+        result.append({
+            **item,
+            "version": info.get("version"),
+            "date": info.get("date"),
+            "url": registries.package_url(item["registry"], item["name"]),
+        })
+    return result
+
+
+def resolve_ecosystem_deps(requirements: dict, cfg: dict, tracked: dict, self_ids: set[str]) -> list[str]:
+    """Combine manifest-discovered and explicitly configured dependency edges."""
+    dependencies = set(cfg.get("ecosystem_deps") or [])
+    for dep_name in requirements:
+        canon = parse.canonical_name(dep_name)
+        target = tracked.get(canon)
+        if target and canon not in self_ids and target != cfg["name"]:
+            dependencies.add(target)
+    return sorted(d for d in dependencies if d != cfg["name"])
+
+
+def merge_repos(existing: list[dict], collected: list[dict]) -> list[dict]:
+    """Replace freshly collected repos while preserving uncollected entries."""
+    merged = {repo["name"]: repo for repo in existing}
+    merged.update({repo["name"]: repo for repo in collected})
+    return list(merged.values())
+
+
 def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tracked: dict) -> dict:
     owner = cfg.get("owner", defaults.get("owner", "compas-dev"))
     name = cfg["name"]
@@ -73,6 +121,7 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
 
     meta = gh.repo(owner, name) or {}
     branch = meta.get("default_branch") or branch
+    runtime = cfg.get("runtime", "python")
     archived = meta.get("archived", False)
     status = cfg.get("status") or ("archived" if archived else "active")
 
@@ -88,24 +137,36 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
         "oldest_open_issue_age_days": counts["oldest_open_issue_age_days"],
     }
 
-    # -- release / pypi ---------------------------------------------------
+    # -- release / package registries -------------------------------------
     rel = gh.latest_release(owner, name) or {}
-    gh_tag = (rel.get("tag_name") or "").lstrip("v") or None
+    gh_release_tag = rel.get("tag_name") or None
+    gh_tag = parse.normalize_release_tag(gh_release_tag, cfg.get("release_tag_prefix"))
     gh_date = (rel.get("published_at") or "")[:10] or None
-    pypi_info = pypi.latest(cfg["pypi"]) if cfg.get("pypi") else None
+    distributions = collect_distributions(cfg)
+    primary_distribution = distributions[0] if distributions else {}
+    pypi_distribution = next((d for d in distributions if d["registry"] == "pypi"), {})
+    comparable_versions = [d["version"] for d in distributions if d.get("version")]
     release = {
         "github_tag": gh_tag,
+        "github_release_tag": gh_release_tag,
         "github_date": gh_date,
-        "pypi_version": (pypi_info or {}).get("version"),
-        "pypi_date": (pypi_info or {}).get("date"),
-        "drift": bool(pypi_info and gh_tag and pypi_info.get("version") and gh_tag != pypi_info["version"]),
+        "registry_version": primary_distribution.get("version"),
+        "registry_date": primary_distribution.get("date"),
+        "registry_name": primary_distribution.get("registry"),
+        # Kept for consumers of the original data contract.
+        "pypi_version": pypi_distribution.get("version"),
+        "pypi_date": pypi_distribution.get("date"),
+        "drift": bool(gh_tag and comparable_versions and any(not parse.same_version(gh_tag, version) for version in comparable_versions)),
+        "distributions": distributions,
     }
 
     # -- packaging --------------------------------------------------------
-    pyproject_text = gh.file_text(owner, name, "pyproject.toml", branch)
-    req_text = gh.file_text(owner, name, "requirements.txt", branch)
-    env_text = gh.file_text(owner, name, "environment.yml", branch)
+    pyproject_text = gh.file_text(owner, name, "pyproject.toml", branch) if runtime == "python" else None
+    req_text = gh.file_text(owner, name, "requirements.txt", branch) if runtime == "python" else None
+    env_text = gh.file_text(owner, name, "environment.yml", branch) if runtime == "python" else None
+    package_text = gh.file_text(owner, name, "package.json", branch) if runtime == "node" else None
     pyproject = parse.parse_pyproject(pyproject_text)
+    package_json = parse.parse_package_json(package_text)
     # Merge dependency sources by precedence (later wins): conda environment.yml
     # < pyproject [project.dependencies] < requirements.txt. Covers `dynamic`
     # deps, static pyproject deps, and conda-only repos (e.g. compas_cra).
@@ -113,6 +174,7 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
         **parse.parse_environment_yml(env_text),
         **pyproject.get("dependencies", {}),
         **parse.parse_requirements(req_text),
+        **package_json.get("dependencies", {}),
     }
 
     workflow_names = gh.dir_entries(owner, name, ".github/workflows", branch)
@@ -120,7 +182,7 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
     for wf in workflow_names:
         if wf in WORKFLOW_CANDIDATES or "build" in wf or "test" in wf or "ci" in wf:
             workflow_texts.append(gh.file_text(owner, name, f".github/workflows/{wf}", branch) or "")
-    ci_pythons = parse.parse_ci_pythons(workflow_texts)
+    ci_pythons = parse.parse_ci_pythons(workflow_texts) if runtime == "python" else []
     resolved = parse.resolve_pythons(ci_pythons, pyproject["classifier_pythons"], pyproject["requires_python"])
 
     compas_pin = requirements.get("compas")
@@ -129,7 +191,9 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
         "compas_major_floor": parse.dependency_floor_major(compas_pin) if compas_pin else None,
         "python_versions": resolved["versions"],
         "python_source": resolved["source"],
-        "hosts": parse.detect_hosts(gh, owner, name, branch, workflow_names),
+        "hosts": parse.detect_hosts(gh, owner, name, branch, workflow_names) if runtime == "python" else None,
+        "node_engine": package_json.get("node_engine"),
+        "package_manager": package_json.get("package_manager"),
         "requirements": requirements,  # used by feature engine; stripped before output
     }
 
@@ -142,12 +206,9 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
     self_ids = {parse.canonical_name(name)}
     if cfg.get("pypi"):
         self_ids.add(parse.canonical_name(cfg["pypi"]))
-    eco_deps = set()
-    for dep_name in packaging.get("requirements", {}):
-        canon = parse.canonical_name(dep_name)
-        target = tracked.get(canon)
-        if target and canon not in self_ids and target != name:
-            eco_deps.add(target)
+    for distribution in configured_distributions(cfg):
+        self_ids.add(parse.canonical_name(distribution["name"]))
+    eco_deps = resolve_ecosystem_deps(packaging.get("requirements", {}), cfg, tracked, self_ids)
 
     packaging.pop("requirements", None)  # internal only
     category = cfg.get("category", "other")
@@ -158,7 +219,9 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
         "url": meta.get("html_url", f"https://github.com/{owner}/{name}"),
         "category": category,
         "tier": cfg.get("tier") or TIER_BY_CATEGORY.get(category, "domain"),
+        "runtime": runtime,
         "pypi": cfg.get("pypi"),
+        "distributions": distributions,
         "role": cfg.get("role"),
         "status": status,
         "description": meta.get("description"),
@@ -168,7 +231,7 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
         "release": release,
         "packaging": packaging,
         "features": feat_cells,
-        "ecosystem_deps": sorted(eco_deps),
+        "ecosystem_deps": eco_deps,
     }
 
 
@@ -177,12 +240,25 @@ def main() -> int:
     ap.add_argument("--root", default=".", help="repo root containing repos.yml / features.yml")
     ap.add_argument("--token", default=os.environ.get("GITHUB_TOKEN"), help="GitHub token")
     ap.add_argument("--no-history", action="store_true", help="skip writing a dated snapshot")
+    ap.add_argument(
+        "--repo",
+        dest="repo_names",
+        action="append",
+        help="collect only this repo and merge it into the existing data.json (repeatable)",
+    )
     args = ap.parse_args()
 
     root = Path(args.root).resolve()
     repos_cfg = yaml.safe_load((root / "repos.yml").read_text())
     features = yaml.safe_load((root / "features.yml").read_text())["features"]
     defaults = repos_cfg.get("defaults", {})
+    requested_names = set(args.repo_names or [])
+    known_names = {cfg["name"] for cfg in repos_cfg["repos"]}
+    unknown_names = requested_names - known_names
+    if unknown_names:
+        print(f"ERROR: unknown repo(s): {', '.join(sorted(unknown_names))}", file=sys.stderr)
+        return 2
+    selected_cfgs = [cfg for cfg in repos_cfg["repos"] if not requested_names or cfg["name"] in requested_names]
 
     if not args.token:
         print("WARNING: no GitHub token — unauthenticated rate limits are very low.", file=sys.stderr)
@@ -192,18 +268,27 @@ def main() -> int:
     tracked: dict[str, str] = {}
     for cfg in repos_cfg["repos"]:
         tracked[parse.canonical_name(cfg["name"])] = cfg["name"]
-        if cfg.get("pypi"):
-            tracked[parse.canonical_name(cfg["pypi"])] = cfg["name"]
+        for distribution in configured_distributions(cfg):
+            tracked[parse.canonical_name(distribution["name"])] = cfg["name"]
 
     gh = GitHub(args.token)
-    print(f"Collecting {len(repos_cfg['repos'])} repos…", file=sys.stderr)
+    scope = f"{len(selected_cfgs)} selected" if requested_names else f"all {len(selected_cfgs)}"
+    print(f"Collecting {scope} repos…", file=sys.stderr)
     repos = []
-    for cfg in repos_cfg["repos"]:
+    for cfg in selected_cfgs:
         try:
             repos.append(collect_repo(gh, cfg, defaults, features, tracked))
         except Exception as exc:  # noqa: BLE001 — fail soft per repo
             gh.warnings.append(f"{cfg.get('name')}: {exc}")
             print(f"    ! {cfg.get('name')} failed: {exc}", file=sys.stderr)
+
+    out = root / "site" / "public" / "data.json"
+    if requested_names and out.exists():
+        try:
+            existing_repos = json.loads(out.read_text()).get("repos", [])
+        except (json.JSONDecodeError, OSError):
+            existing_repos = []
+        repos = merge_repos(existing_repos, repos)
 
     # Deterministic ordering for clean diffs.
     category_order = {c: i for i, c in enumerate(
@@ -213,18 +298,19 @@ def main() -> int:
 
     data = {
         "generated_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "features": [{"id": f["id"], "label": f["label"], "kind": f.get("kind")} for f in features],
+        "features": [{"id": f["id"], "label": f["label"], "kind": f.get("kind"), "applies_to": f.get("applies_to")} for f in features],
         "categories": sorted({r["category"] for r in repos}, key=lambda c: category_order.get(c, 99)),
         "repos": repos,
         "warnings": gh.warnings,
+        "collection_scope": "partial" if requested_names else "all",
+        "collected_repos": sorted(requested_names) if requested_names else None,
     }
 
-    out = root / "site" / "public" / "data.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(data, indent=2))
     print(f"Wrote {out} ({len(repos)} repos, {len(gh.warnings)} warnings)", file=sys.stderr)
 
-    if not args.no_history:
+    if not args.no_history and not requested_names:
         hist_dir = root / "data-history"
         hist_dir.mkdir(exist_ok=True)
         snapshot = {
@@ -242,6 +328,8 @@ def main() -> int:
             },
         }
         (hist_dir / f"{snapshot['date']}.json").write_text(json.dumps(snapshot, indent=2))
+    elif requested_names and not args.no_history:
+        print("Skipped history snapshot for partial collection.", file=sys.stderr)
 
     return 0
 

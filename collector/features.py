@@ -6,9 +6,7 @@ adoption status of each feature: adopted | not-adopted | n/a | unknown.
 
 from __future__ import annotations
 
-from packaging.version import Version
-
-from parse import satisfies
+from parse import same_version, satisfies
 
 STATUS_ADOPTED = "adopted"
 STATUS_NOT = "not-adopted"
@@ -18,14 +16,6 @@ STATUS_UNKNOWN = "unknown"
 
 def _cell(status: str, source: str = "auto", detail: str = "") -> dict:
     return {"status": status, "source": source, "detail": detail}
-
-
-def _same_version(a: str, b: str) -> bool:
-    """Compare semantically so PyPI's '1.0.0rc0' matches a GitHub '1.0.0-rc0' tag."""
-    try:
-        return Version(a) == Version(b)
-    except Exception:  # noqa: BLE001 — non-PEP440 tags fall back to string compare
-        return a == b
 
 
 def detect(feature: dict, repo_cfg: dict, packaging: dict, gh, owner: str, name: str,
@@ -40,18 +30,32 @@ def detect(feature: dict, repo_cfg: dict, packaging: dict, gh, owner: str, name:
     if fid in overrides:
         return _cell(overrides[fid], source="manual", detail="manual override")
 
+    runtime = repo_cfg.get("runtime", "python")
+    applies_to = feature.get("applies_to")
+    if isinstance(applies_to, str):
+        applies_to = [applies_to]
+    if applies_to and runtime not in applies_to:
+        return _cell(STATUS_NA, detail=f"not applicable to {runtime} projects")
+
     # -- deployment checks (use already-collected release data / conda-forge) --
-    if kind == "pypi-match":
-        if not repo_cfg.get("pypi"):
-            return _cell(STATUS_NA, detail="not distributed on PyPI")
+    if kind in ("registry-match", "pypi-match"):
+        distributions = (release or {}).get("distributions") or []
+        if kind == "pypi-match":
+            distributions = [d for d in distributions if d.get("registry") == "pypi"]
+        if not distributions:
+            label = "PyPI" if kind == "pypi-match" else "a package registry"
+            return _cell(STATUS_NA, detail=f"not distributed through {label}")
         rel = release or {}
-        pv, gt = rel.get("pypi_version"), rel.get("github_tag")
-        if pv and gt:
-            if _same_version(pv, gt):
-                return _cell(STATUS_ADOPTED, detail=f"PyPI {pv} = GitHub {gt}")
-            return _cell(STATUS_NOT, detail=f"PyPI {pv} ≠ GitHub {gt}")
-        if gt and not pv:
-            return _cell(STATUS_NOT, detail=f"GitHub {gt}, not on PyPI")
+        gt = rel.get("github_tag")
+        published = [d for d in distributions if d.get("version")]
+        if gt and published:
+            details = ", ".join(f"{d['registry']} {d['version']}" for d in published)
+            if all(same_version(gt, d["version"]) for d in published):
+                return _cell(STATUS_ADOPTED, detail=f"{details} = GitHub {gt}")
+            return _cell(STATUS_NOT, detail=f"{details} ≠ GitHub {gt}")
+        if gt and not published:
+            registries = ", ".join(d["registry"] for d in distributions)
+            return _cell(STATUS_NOT, detail=f"GitHub {gt}, not found on {registries}")
         return _cell(STATUS_UNKNOWN, detail="no comparable release")
 
     if kind == "conda":
@@ -78,6 +82,8 @@ def detect(feature: dict, repo_cfg: dict, packaging: dict, gh, owner: str, name:
         return _cell(STATUS_ADOPTED if ok else STATUS_NOT, detail=f"{pkg} {spec}")
 
     if kind == "python":
+        if runtime != "python":
+            return _cell(STATUS_NA, detail=f"not applicable to {runtime} projects")
         version = detect_cfg.get("version", "")
         versions = packaging.get("python_versions") or []
         source = packaging.get("python_source", "unknown")

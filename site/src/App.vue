@@ -142,9 +142,30 @@ function pinInfo(r) {
   if (floor != null && floor < 2) return { text: spec, cls: "pin-old" };
   return { text: spec === "*" || spec === "" ? "unpinned" : spec, cls: "" };
 }
+const runtime = (r) => r.runtime || "python";
+const isPython = (r) => runtime(r) === "python";
+const isNode = (r) => runtime(r) === "node";
+function runtimeInfo(r) {
+  if (isNode(r)) return { label: "Node", value: r.packaging?.node_engine || "unspecified" };
+  return { label: r.language || runtime(r), value: "" };
+}
+function packageManagerInfo(r) {
+  const raw = r.packaging?.package_manager;
+  return raw ? raw.replace(/@(?=[^@]+$)/, " ") : "unspecified";
+}
+function repoDistributions(r) {
+  if (r.distributions?.length) return r.distributions;
+  return r.pypi ? [{ registry: "pypi", name: r.pypi, version: r.release?.pypi_version, url: `https://pypi.org/project/${r.pypi}/` }] : [];
+}
+const distributionNames = (r) => repoDistributions(r).map((d) => d.registry.toUpperCase()).join(" · ");
 const staleClass = (s) => "s-" + (s || "unknown");
 const catLabel = (c) => CAT_LABEL[c] || c;
-const relTag = (r) => r.release?.github_tag || r.release?.pypi_version || null;
+const relTag = (r) => r.release?.github_tag || r.release?.registry_version || r.release?.pypi_version || null;
+const relDate = (r) => r.release?.github_date || r.release?.registry_date || r.release?.pypi_date;
+function releaseDriftTip(r) {
+  const published = repoDistributions(r).filter((d) => d.version).map((d) => `${d.registry} ${d.version}`).join(", ");
+  return `GitHub ${r.release?.github_tag || "—"} ≠ ${published || "package registry"}`;
+}
 const pyOn = (r, v) => (r.packaging?.python_versions || []).includes(v);
 const featStatus = (r, id) => r.features?.[id]?.status || "unknown";
 function featClass(st) {
@@ -152,6 +173,7 @@ function featClass(st) {
   if (st === "not-adopted") return "not";
   return "";
 }
+const applicableFeatures = (r) => features.value.filter((f) => featStatus(r, f.id) !== "n/a");
 
 // ---- derived data ----------------------------------------------------
 const repos = computed(() => data.value?.repos ?? []);
@@ -327,7 +349,6 @@ function closeDetail() {
 }
 const detailDeps = computed(() => selectedRepo.value?.ecosystem_deps || []);
 const detailDependents = computed(() => (selectedRepo.value ? dependentsMap.value[selectedRepo.value.name] || [] : []));
-function pypiUrl(r) { return r?.pypi ? `https://pypi.org/project/${r.pypi}/` : null; }
 function condaUrl(r) {
   return r?.pypi && r.features?.["conda-forge"]?.status === "adopted"
     ? `https://anaconda.org/conda-forge/${r.pypi}` : null;
@@ -366,7 +387,7 @@ async function copyBadge(r, b) {
       </div>
       <div class="mast-right">
         <div class="collected">
-          <div class="collected-label">Collected</div>
+          <div class="collected-label">{{ data.collection_scope === "partial" ? "Partial refresh" : "Collected" }}</div>
           <div class="collected-time mono">{{ fmtDate(data.generated_at) }}</div>
         </div>
         <button class="theme-btn" @click="toggleTheme" title="Toggle theme">{{ theme === "dark" ? "☀" : "☾" }}</button>
@@ -384,6 +405,7 @@ async function copyBadge(r, b) {
             <div class="detail-meta">
               <span class="detail-cat"><span class="lane-dot" :style="{ background: `var(--cat-${selectedRepo.category})` }"></span>{{ catLabel(selectedRepo.category) }}</span>
               <span v-if="selectedRepo.role" class="muted">· {{ selectedRepo.role }}</span>
+              <span class="mono muted">· {{ selectedRepo.language || runtime(selectedRepo) }}</span>
               <span class="mono muted">· ★ {{ selectedRepo.stars ?? 0 }}</span>
             </div>
           </header>
@@ -396,20 +418,26 @@ async function copyBadge(r, b) {
               <div class="dsig-val"><span v-if="selectedRepo.health?.ci === 'passing'" class="ci-pass">● pass</span><span v-else-if="selectedRepo.health?.ci === 'failing'" class="ci-fail">▲ fail</span><span v-else class="ci-none">—</span></div></div>
             <div class="dsig"><div class="dsig-label">Backlog</div>
               <div class="dsig-val mono">{{ selectedRepo.health?.open_issues ?? "—" }} issues · {{ selectedRepo.health?.open_prs ?? "—" }} PRs</div></div>
-            <div class="dsig"><div class="dsig-label">COMPAS pin</div>
+            <div v-if="isPython(selectedRepo)" class="dsig"><div class="dsig-label">COMPAS pin</div>
               <div class="dsig-val"><span class="pin" :class="pinInfo(selectedRepo).cls">{{ pinInfo(selectedRepo).text }}</span></div></div>
+            <div v-else class="dsig"><div class="dsig-label">Runtime</div>
+              <div class="dsig-val mono">{{ runtimeInfo(selectedRepo).label }} {{ runtimeInfo(selectedRepo).value }}</div></div>
             <div class="dsig"><div class="dsig-label">Latest release</div>
-              <div class="dsig-val mono"><template v-if="relTag(selectedRepo)">{{ relTag(selectedRepo) }} · {{ relTime(selectedRepo.release?.github_date || selectedRepo.release?.pypi_date) }} <span v-if="selectedRepo.release?.drift" class="drift">⚠ drift</span></template><span v-else class="muted">none</span></div></div>
-            <div class="dsig"><div class="dsig-label">Python</div>
+              <div class="dsig-val mono"><template v-if="relTag(selectedRepo)">{{ relTag(selectedRepo) }} · {{ relTime(relDate(selectedRepo)) }} <span v-if="selectedRepo.release?.drift" class="drift">⚠ drift</span></template><span v-else class="muted">none</span></div></div>
+            <div v-if="isPython(selectedRepo)" class="dsig"><div class="dsig-label">Python</div>
               <div class="dsig-val"><span class="py-dots"><span v-for="v in PY" :key="v" class="py-dot" :class="{ on: pyOn(selectedRepo, v) }" @mouseenter="tipShow($event, `Python ${v} — ${pyOn(selectedRepo, v) ? 'supported' : 'not supported'}`)" @mouseleave="tipHide"></span></span></div></div>
-            <div class="dsig"><div class="dsig-label">Hosts</div>
+            <div v-else-if="isNode(selectedRepo)" class="dsig"><div class="dsig-label">Package manager</div>
+              <div class="dsig-val mono">{{ packageManagerInfo(selectedRepo) }}</div></div>
+            <div v-if="isPython(selectedRepo)" class="dsig"><div class="dsig-label">Hosts</div>
               <div class="dsig-val hosts"><span class="host" :class="{ on: selectedRepo.packaging?.hosts?.rhino }">R</span><span class="host" :class="{ on: selectedRepo.packaging?.hosts?.ghpython }">GH</span><span class="host" :class="{ on: selectedRepo.packaging?.hosts?.blender }">B</span></div></div>
+            <div v-else class="dsig"><div class="dsig-label">Registries</div>
+              <div class="dsig-val mono">{{ distributionNames(selectedRepo) || "—" }}</div></div>
           </div>
 
           <div class="detail-block">
             <div class="detail-block-label">Adoption</div>
             <ul class="adopt-list">
-              <li v-for="f in features" :key="f.id" class="adopt-item">
+              <li v-for="f in applicableFeatures(selectedRepo)" :key="f.id" class="adopt-item">
                 <span class="adot" :class="featClass(featStatus(selectedRepo, f.id))"></span>
                 <span class="adopt-name">{{ f.label }}</span>
                 <span class="adopt-status" :class="featClass(featStatus(selectedRepo, f.id))">{{ featStatus(selectedRepo, f.id) }}</span>
@@ -437,7 +465,7 @@ async function copyBadge(r, b) {
 
           <div class="detail-links">
             <a class="dlink" :href="selectedRepo.url" target="_blank" rel="noopener">GitHub ↗</a>
-            <a v-if="pypiUrl(selectedRepo)" class="dlink" :href="pypiUrl(selectedRepo)" target="_blank" rel="noopener">PyPI ↗</a>
+            <a v-for="d in repoDistributions(selectedRepo)" :key="`${d.registry}:${d.name}`" class="dlink" :href="d.url" target="_blank" rel="noopener">{{ d.registry.toUpperCase() }} ↗</a>
             <a v-if="condaUrl(selectedRepo)" class="dlink" :href="condaUrl(selectedRepo)" target="_blank" rel="noopener">conda-forge ↗</a>
           </div>
 
@@ -616,11 +644,12 @@ async function copyBadge(r, b) {
 
               <div class="ver-block">
                 <div class="ver-row">
-                  <span class="pin" :class="pinInfo(r).cls" @mouseenter="tipShow($event, 'COMPAS-core pin')" @mouseleave="tipHide">{{ pinInfo(r).text }}</span>
-                  <span v-if="relTag(r)" class="release">{{ relTag(r) }} · {{ relTime(r.release?.github_date || r.release?.pypi_date) }}</span>
-                  <span v-if="r.release?.drift" class="drift" @mouseenter="tipShow($event, `GitHub ${r.release.github_tag} ≠ PyPI ${r.release.pypi_version}`)" @mouseleave="tipHide">⚠ drift</span>
+                  <span v-if="isPython(r)" class="pin" :class="pinInfo(r).cls" @mouseenter="tipShow($event, 'COMPAS-core pin')" @mouseleave="tipHide">{{ pinInfo(r).text }}</span>
+                  <span v-else class="pin" @mouseenter="tipShow($event, `${runtimeInfo(r).label} runtime`)" @mouseleave="tipHide">{{ runtimeInfo(r).label }} {{ runtimeInfo(r).value }}</span>
+                  <span v-if="relTag(r)" class="release">{{ relTag(r) }} · {{ relTime(relDate(r)) }}</span>
+                  <span v-if="r.release?.drift" class="drift" @mouseenter="tipShow($event, releaseDriftTip(r))" @mouseleave="tipHide">⚠ drift</span>
                 </div>
-                <div class="support-row">
+                <div v-if="isPython(r)" class="support-row">
                   <span class="py-dots">
                     <span v-for="v in PY" :key="v" class="py-dot" :class="{ on: pyOn(r, v) }"
                           @mouseenter="tipShow($event, `Python ${v} — ${pyOn(r, v) ? 'supported' : 'not supported'}`)" @mouseleave="tipHide"></span>
@@ -631,13 +660,19 @@ async function copyBadge(r, b) {
                     <span class="host" :class="{ on: r.packaging?.hosts?.blender }" @mouseenter="tipShow($event, `Blender — ${r.packaging?.hosts?.blender ? 'yes' : 'no'}`)" @mouseleave="tipHide">B</span>
                   </span>
                 </div>
+                <div v-else class="support-row runtime-row">
+                  <span class="runtime-support mono">{{ r.packaging?.package_manager ? packageManagerInfo(r) : (r.language || runtime(r)) }}</span>
+                  <span class="registry-badges">
+                    <span v-for="d in repoDistributions(r)" :key="`${d.registry}:${d.name}`" class="registry-chip">{{ d.registry }}</span>
+                  </span>
+                </div>
               </div>
 
               <div class="adoption">
                 <div class="adopt-label">Adoption</div>
                 <div class="adopt-dots">
                   <span
-                    v-for="f in features" :key="f.id"
+                    v-for="f in applicableFeatures(r)" :key="f.id"
                     class="adot" :class="featClass(featStatus(r, f.id))"
                     :aria-label="adoptTip(r, f)"
                     @mouseenter="tipShow($event, adoptTip(r, f))" @mouseleave="tipHide"
@@ -651,7 +686,7 @@ async function copyBadge(r, b) {
     </template>
     </template>
 
-    <footer class="pagefoot">COMPAS Mission Control · collected nightly from the GitHub &amp; PyPI APIs</footer>
+    <footer class="pagefoot">COMPAS Mission Control · collected nightly from GitHub &amp; package registries</footer>
 
     <div v-if="tip.show" class="tooltip mono" :style="{ left: tip.x + 'px', top: tip.y + 'px' }">{{ tip.text }}</div>
   </template>

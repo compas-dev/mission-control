@@ -129,7 +129,10 @@ repos:
 Fields: `name` (required), `owner` (default `compas-dev`), `branch`
 (default `main`), `category`, `role`, `pypi` (PyPI project name; omit if not
 published), `status` (`active`|`archived`|`wip`, default derived from the API's
-`isArchived`), optional `notes`.
+`isArchived`), `runtime` (`python`|`node`, default `python`), optional
+`distributions` (`pypi`|`npm`|`jsr`), `release_tag_prefix`, explicit
+`ecosystem_deps`, and optional `notes`. The legacy `pypi` field remains a
+shorthand for a PyPI distribution.
 
 Seed it from the real org listing (see Appendix A).
 
@@ -138,6 +141,9 @@ Seed it from the real org listing (see Appendix A).
 Each feature is a column in the adoption matrix. A feature has a **detection
 method** that the collector runs against each repo to produce a cell status of
 `adopted` | `not-adopted` | `n/a` | `unknown`.
+
+Runtime-specific features declare `applies_to: [python]` or `[node]`.
+Inapplicable cells are emitted as `n/a` without running their detector.
 
 ```yaml
 features:
@@ -187,7 +193,7 @@ features:
 ```
 
 `kind` values the collector must implement: `pin`, `python`, `code`, `file`,
-`manual`. Manual overrides live per-repo:
+`registry-match`, `conda`, and `manual`. Manual overrides live per-repo:
 
 ```yaml
 # in repos.yml, optional per repo:
@@ -258,6 +264,15 @@ If `pypi` is set: `GET https://pypi.org/pypi/{name}/json` → latest published
 version, release date, supported classifiers. Flag **version drift**: latest
 GitHub release tag vs latest PyPI version (helps spot unreleased packages).
 
+### 5.3.1 Node packages and registries
+
+For `runtime: node`, parse `package.json` for `engines.node`,
+`packageManager`, and runtime/peer/optional dependencies. Configured npm and JSR
+distributions are queried through their public metadata APIs and participate in
+the same GitHub-release drift check as PyPI. GitHub tags may be normalized with
+`release_tag_prefix`. Manifest dependencies and explicit `ecosystem_deps` are
+combined in the ecosystem graph.
+
 ### 5.4 Feature detection engine (`features.py`)
 
 For each `(repo, feature)` pair, compute a cell status:
@@ -272,6 +287,8 @@ For each `(repo, feature)` pair, compute a cell status:
   search is rate-limited (30 req/min authenticated) and only indexes default
   branch — throttle, cache, and treat errors as `unknown`.
 - `kind: manual` → read from `feature_overrides`; else `unknown`.
+- `kind: registry-match` → compare the normalized GitHub release version with
+  every configured PyPI, npm, or JSR distribution.
 - **Any** `feature_overrides` entry always wins over auto-detection.
 
 Output per cell: `{status, source: "auto"|"manual", detail}` where `detail` is a
@@ -293,6 +310,7 @@ short human string ("compas >= 2.3, < 3", "CI: 3.9–3.13", "matched Artist(").
       "owner": "compas-dev",
       "url": "https://github.com/compas-dev/compas_fab",
       "category": "fabrication",
+      "runtime": "python",
       "status": "active",
       "description": "Robotic fabrication package for the COMPAS Framework",
       "stars": 134,
@@ -312,6 +330,9 @@ short human string ("compas >= 2.3, < 3", "CI: 3.9–3.13", "matched Artist(").
         "pypi_date": "2026-05-01",
         "drift": false
       },
+      "distributions": [
+        { "registry": "pypi", "name": "compas_fab", "version": "1.0.2", "date": "2026-05-01" }
+      ],
       "packaging": {
         "compas_pin": "compas >= 2.3, < 3",
         "compas_major_floor": 2,

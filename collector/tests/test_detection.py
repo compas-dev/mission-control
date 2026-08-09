@@ -9,6 +9,8 @@ sys.path.insert(0, str(COLLECTOR_DIR))
 
 import features  # noqa: E402
 import parse  # noqa: E402
+import registries  # noqa: E402
+from collector.__main__ import merge_repos  # noqa: E402
 from github import GitHub  # noqa: E402
 
 
@@ -51,6 +53,94 @@ class PythonSupportTests(unittest.TestCase):
         self.assertEqual(py312["status"], "adopted")
         self.assertEqual(py313["status"], "not-adopted")
         self.assertEqual(py312["detail"], "requires-python: 3.11, 3.12")
+
+
+class NodeMetadataTests(unittest.TestCase):
+    def test_package_json_metadata_and_runtime_dependencies(self):
+        package = parse.parse_package_json(
+            """{
+              "name": "@example/pkg",
+              "version": "2.0.0",
+              "engines": {"node": ">=20"},
+              "packageManager": "pnpm@9.15.9",
+              "dependencies": {"runtime-dep": "^1.0.0"},
+              "peerDependencies": {"peer-dep": ">=2"},
+              "devDependencies": {"dev-only": "^3"}
+            }"""
+        )
+
+        self.assertEqual(package["node_engine"], ">=20")
+        self.assertEqual(package["package_manager"], "pnpm@9.15.9")
+        self.assertEqual(package["dependencies"], {"runtime-dep": "^1.0.0", "peer-dep": ">=2"})
+
+    def test_prefixed_release_tag_is_comparable(self):
+        self.assertEqual(parse.normalize_release_tag("compas-pb-ts-v2.0.0", "compas-pb-ts-v"), "2.0.0")
+        self.assertEqual(parse.normalize_release_tag("v2.0.0"), "2.0.0")
+
+    def test_registry_parsers(self):
+        original = registries._json
+        try:
+            registries._json = lambda url: {
+                "dist-tags": {"latest": "2.0.0"},
+                "time": {"2.0.0": "2026-08-08T13:37:14.933Z"},
+            }
+            self.assertEqual(registries.latest("npm", "@example/pkg"), {"version": "2.0.0", "date": "2026-08-08"})
+
+            registries._json = lambda url: {
+                "latest": "2.0.0",
+                "versions": {"2.0.0": {"createdAt": "2026-08-08T13:37:21Z"}},
+            }
+            self.assertEqual(registries.latest("jsr", "@example/pkg"), {"version": "2.0.0", "date": "2026-08-08"})
+        finally:
+            registries._json = original
+
+
+class ApplicabilityTests(unittest.TestCase):
+    def test_python_feature_is_na_for_node_project(self):
+        class NoGitHubCalls:
+            def search_code(self, *args, **kwargs):
+                raise AssertionError("an inapplicable feature must not call GitHub")
+
+        feature = {
+            "id": "new-scene-api",
+            "kind": "code",
+            "applies_to": ["python"],
+            "detect": {"present": ["from compas.scene"]},
+        }
+        cell = features.detect(feature, {"runtime": "node"}, {}, NoGitHubCalls(), "owner", "repo")
+
+        self.assertEqual(cell["status"], "n/a")
+
+    def test_registry_match_compares_all_distributions(self):
+        release = {
+            "github_tag": "2.0.0",
+            "distributions": [
+                {"registry": "npm", "version": "2.0.0"},
+                {"registry": "jsr", "version": "2.0.0"},
+            ],
+        }
+        cell = features.detect(
+            {"id": "release-match", "kind": "registry-match"},
+            {"runtime": "node"},
+            {},
+            None,
+            "owner",
+            "repo",
+            release=release,
+        )
+
+        self.assertEqual(cell["status"], "adopted")
+        self.assertIn("npm 2.0.0", cell["detail"])
+
+
+class PartialCollectionTests(unittest.TestCase):
+    def test_fresh_repo_replaces_only_matching_existing_entry(self):
+        existing = [{"name": "compas", "stars": 1}, {"name": "compas_pb_ts", "stars": 2}]
+        collected = [{"name": "compas_pb_ts", "stars": 3}]
+
+        merged = merge_repos(existing, collected)
+
+        self.assertEqual({repo["name"]: repo["stars"] for repo in merged}, {"compas": 1, "compas_pb_ts": 3})
 
 
 class CodeSearchTests(unittest.TestCase):

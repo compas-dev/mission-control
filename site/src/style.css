@@ -644,6 +644,31 @@ button {
   align-items: center;
   gap: 10px;
 }
+.runtime-row {
+  min-height: 19px;
+}
+.runtime-support {
+  color: var(--ink-2);
+  font-size: 10.5px;
+}
+.registry-badges {
+  display: inline-flex;
+  gap: 4px;
+  margin-left: auto;
+}
+.registry-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 19px;
+  padding: 0 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  color: var(--accent);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 .py-dots {
   display: inline-flex;
   gap: 3px;

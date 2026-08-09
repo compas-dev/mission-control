@@ -16,9 +16,9 @@ A **static site built by a scheduled GitHub Action** — no server, no runtime c
 ```
 collector (Python)                     frontend (Vite + Vue 3)
   reads  repos.yml + features.yml        fetches site/public/data.json
-  calls  GitHub REST + PyPI APIs         renders 4 views:
-  parses pyproject / requirements /        Health · Migration · Features · Ecosystem
-         environment.yml / CI workflows
+  calls  GitHub + package-registry APIs  renders adaptive views:
+  parses Python and Node manifests /       Health · Migration · Features · Ecosystem
+         CI workflows
   writes site/public/data.json    ─────►  (a dumb renderer — no live API calls)
          + data-history/*.json
 ```
@@ -29,7 +29,7 @@ The collector is the heart of the project; the frontend renders `data.json` and 
 
 | Path | What |
 |---|---|
-| [`repos.yml`](repos.yml) | Curated list of tracked repositories (owner, category, tier, PyPI name). |
+| [`repos.yml`](repos.yml) | Curated list of tracked repositories (owner, category, tier, runtime, distributions). |
 | [`features.yml`](features.yml) | Adoption-matrix columns and their detection rules. |
 | [`collector/`](collector/) | Python data collector (`python -m collector`). Stdlib `urllib` + `PyYAML` + `packaging`. |
 | [`site/`](site/) | Vite + Vue 3 frontend. `site/public/data.json` is the committed sample. |
@@ -47,6 +47,12 @@ python -m collector --root . --token "$(gh auth token)"
 ```
 
 This writes `site/public/data.json` and a dated snapshot in `data-history/`.
+To refresh selected repositories without producing a partial history snapshot,
+repeat `--repo` as needed:
+
+```bash
+python -m collector --root . --repo compas_pb_ts --no-history
+```
 
 **Frontend** (renders the committed `data.json`, no collection needed):
 
@@ -60,8 +66,26 @@ Views are deep-linkable: `#health`, `#migration`, `#features`, `#ecosystem`, and
 
 ## Configuration
 
-- **Track a repo** — add an entry to [`repos.yml`](repos.yml) (deliberately curated, not auto-discovered). `owner` defaults to `compas-dev`; override per entry. `tier` (`core` / `foundation` / `domain` / `apps` / `tooling`) defaults from `category` and drives the Ecosystem diagram.
-- **Add an adoption check** — add a column to [`features.yml`](features.yml). Detection kinds: `pin`, `python`, `file` (`any_of` / `none_of`), `code` (GitHub code search), `pypi-match` (PyPI release matches the GitHub release), `conda` (published on conda-forge), `manual`.
+- **Track a repo** — add an entry to [`repos.yml`](repos.yml) (deliberately curated, not auto-discovered). `owner` defaults to `compas-dev`; override per entry. `runtime` defaults to `python` and also accepts `node`. `tier` (`core` / `foundation` / `domain` / `apps` / `tooling`) defaults from `category` and drives the Ecosystem diagram.
+- **Configure distributions** — existing Python projects can keep using `pypi: <name>`. Mixed-language projects use `distributions`, whose supported registries are `pypi`, `npm`, and `jsr`. Use `release_tag_prefix` when GitHub tags include a package-specific prefix.
+- **Add an adoption check** — add a column to [`features.yml`](features.yml). `applies_to: [python]` or `[node]` keeps runtime-specific checks out of unrelated projects. Detection kinds: `pin`, `python`, `file` (`any_of` / `none_of`), `code` (GitHub code search), `registry-match`, `conda` (published on conda-forge), `manual`.
+- **Add a non-manifest dependency** — use `ecosystem_deps` in `repos.yml`. These explicit edges are combined with dependencies discovered from Python manifests or `package.json`.
+
+For example, the TypeScript protobuf wrapper is configured as:
+
+```yaml
+- name: compas_pb_ts
+  owner: gramaziokohler
+  category: tooling
+  runtime: node
+  release_tag_prefix: compas-pb-ts-v
+  distributions:
+    - registry: npm
+      name: "@gramaziokohler/compas-pb-ts"
+    - registry: jsr
+      name: "@gramaziokohler/compas-pb-ts"
+  ecosystem_deps: [compas_pb]
+```
 
 ## Deployment
 

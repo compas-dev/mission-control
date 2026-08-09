@@ -5,6 +5,7 @@ All functions are fail-soft: bad input yields empty/None rather than raising.
 
 from __future__ import annotations
 
+import json
 import re
 import tomllib
 from typing import Optional
@@ -16,6 +17,55 @@ from packaging.version import Version
 
 # Python versions we care to display as matrix columns.
 KNOWN_PYTHONS = ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+
+
+def parse_package_json(text: Optional[str]) -> dict:
+    """Extract Node package metadata and runtime dependencies."""
+    out = {
+        "name": None,
+        "version": None,
+        "node_engine": None,
+        "package_manager": None,
+        "dependencies": {},
+    }
+    if not text:
+        return out
+    try:
+        data = json.loads(text)
+    except (json.JSONDecodeError, TypeError):
+        return out
+    if not isinstance(data, dict):
+        return out
+    out["name"] = data.get("name")
+    out["version"] = data.get("version")
+    out["node_engine"] = (data.get("engines") or {}).get("node")
+    out["package_manager"] = data.get("packageManager")
+    deps = {}
+    for group in ("dependencies", "peerDependencies", "optionalDependencies"):
+        for name, spec in (data.get(group) or {}).items():
+            deps[name] = str(spec)
+    out["dependencies"] = deps
+    return out
+
+
+def normalize_release_tag(tag: Optional[str], prefix: Optional[str] = None) -> Optional[str]:
+    """Normalize a GitHub release tag into a comparable package version."""
+    if not tag:
+        return None
+    value = tag.strip()
+    if prefix and value.startswith(prefix):
+        return value[len(prefix):] or None
+    return value[1:] if value.startswith("v") else value
+
+
+def same_version(a: Optional[str], b: Optional[str]) -> bool:
+    """Compare package versions semantically, falling back to exact text."""
+    if not a or not b:
+        return False
+    try:
+        return Version(a) == Version(b)
+    except Exception:  # noqa: BLE001 — registries may use non-PEP440 versions
+        return a == b
 
 
 def parse_requirements(text: Optional[str]) -> dict[str, str]:
@@ -183,7 +233,6 @@ def resolve_pythons(ci: list[str], classifiers: list[str], requires_python: Opti
 def detect_hosts(gh, owner: str, name: str, branch: str, workflow_names: list[str]) -> dict:
     """Heuristic host-app support from package dirs and publish workflows."""
     src = gh.dir_entries(owner, name, "src", branch)
-    joined = " ".join(src).lower()
     wf = " ".join(workflow_names).lower()
     return {
         "rhino": any("_rhino" in s for s in src) or "yak" in wf,

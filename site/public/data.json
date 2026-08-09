@@ -1,55 +1,83 @@
 {
-  "generated_at": "2026-08-05T05:43:27Z",
+  "generated_at": "2026-08-09T17:20:51Z",
   "features": [
     {
       "id": "compas2",
       "label": "On COMPAS 2.x",
-      "kind": "pin"
+      "kind": "pin",
+      "applies_to": [
+        "python"
+      ]
     },
     {
       "id": "py311",
       "label": "Python 3.11",
-      "kind": "python"
+      "kind": "python",
+      "applies_to": [
+        "python"
+      ]
     },
     {
       "id": "py312",
       "label": "Python 3.12",
-      "kind": "python"
+      "kind": "python",
+      "applies_to": [
+        "python"
+      ]
     },
     {
       "id": "py313",
       "label": "Python 3.13",
-      "kind": "python"
+      "kind": "python",
+      "applies_to": [
+        "python"
+      ]
     },
     {
       "id": "new-scene-api",
       "label": "New Scene API",
-      "kind": "code"
+      "kind": "code",
+      "applies_to": [
+        "python"
+      ]
     },
     {
       "id": "no-deprecated-artist",
       "label": "No deprecated Artist",
-      "kind": "code"
+      "kind": "code",
+      "applies_to": [
+        "python"
+      ]
     },
     {
       "id": "mkdocs",
       "label": "MkDocs (not Sphinx)",
-      "kind": "file"
+      "kind": "file",
+      "applies_to": [
+        "python"
+      ]
     },
     {
       "id": "invocations2",
       "label": "Uses compas_invocations2",
-      "kind": "code"
+      "kind": "code",
+      "applies_to": [
+        "python"
+      ]
     },
     {
       "id": "pypi-match",
-      "label": "PyPI = GitHub release",
-      "kind": "pypi-match"
+      "label": "Registry = GitHub release",
+      "kind": "registry-match",
+      "applies_to": null
     },
     {
       "id": "conda-forge",
       "label": "On conda-forge",
-      "kind": "conda"
+      "kind": "conda",
+      "applies_to": [
+        "python"
+      ]
     }
   ],
   "categories": [
@@ -5891,6 +5919,135 @@
       ]
     },
     {
+      "name": "compas_pb_ts",
+      "owner": "gramaziokohler",
+      "url": "https://github.com/gramaziokohler/compas_pb_ts",
+      "category": "tooling",
+      "tier": "tooling",
+      "runtime": "node",
+      "pypi": null,
+      "distributions": [
+        {
+          "registry": "npm",
+          "name": "@gramaziokohler/compas-pb-ts",
+          "version": "2.0.0",
+          "date": "2026-08-08",
+          "url": "https://www.npmjs.com/package/@gramaziokohler/compas-pb-ts"
+        },
+        {
+          "registry": "jsr",
+          "name": "@gramaziokohler/compas-pb-ts",
+          "version": "2.0.0",
+          "date": "2026-08-08",
+          "url": "https://jsr.io/@gramaziokohler/compas-pb-ts"
+        }
+      ],
+      "role": null,
+      "status": "active",
+      "description": "COMPAS Protobuf wrapper for TypeScript",
+      "stars": 0,
+      "language": "TypeScript",
+      "health": {
+        "last_commit_date": "2026-08-08",
+        "staleness": "fresh",
+        "ci": "passing",
+        "open_issues": 0,
+        "open_prs": 0,
+        "oldest_open_issue_age_days": null
+      },
+      "release": {
+        "github_tag": "2.0.0",
+        "github_release_tag": "compas-pb-ts-v2.0.0",
+        "github_date": "2026-08-08",
+        "registry_version": "2.0.0",
+        "registry_date": "2026-08-08",
+        "registry_name": "npm",
+        "pypi_version": null,
+        "pypi_date": null,
+        "drift": false,
+        "distributions": [
+          {
+            "registry": "npm",
+            "name": "@gramaziokohler/compas-pb-ts",
+            "version": "2.0.0",
+            "date": "2026-08-08",
+            "url": "https://www.npmjs.com/package/@gramaziokohler/compas-pb-ts"
+          },
+          {
+            "registry": "jsr",
+            "name": "@gramaziokohler/compas-pb-ts",
+            "version": "2.0.0",
+            "date": "2026-08-08",
+            "url": "https://jsr.io/@gramaziokohler/compas-pb-ts"
+          }
+        ]
+      },
+      "packaging": {
+        "compas_pin": null,
+        "compas_major_floor": null,
+        "python_versions": [],
+        "python_source": "unknown",
+        "hosts": null,
+        "node_engine": ">=20",
+        "package_manager": "pnpm@9.15.9"
+      },
+      "features": {
+        "compas2": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not applicable to node projects"
+        },
+        "py311": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not applicable to node projects"
+        },
+        "py312": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not applicable to node projects"
+        },
+        "py313": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not applicable to node projects"
+        },
+        "new-scene-api": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not applicable to node projects"
+        },
+        "no-deprecated-artist": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not applicable to node projects"
+        },
+        "mkdocs": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not applicable to node projects"
+        },
+        "invocations2": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not applicable to node projects"
+        },
+        "pypi-match": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "npm 2.0.0, jsr 2.0.0 = GitHub 2.0.0"
+        },
+        "conda-forge": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not applicable to node projects"
+        }
+      },
+      "ecosystem_deps": [
+        "compas_pb"
+      ]
+    },
+    {
       "name": "compas_rui",
       "owner": "blockresearchgroup",
       "url": "https://github.com/BlockResearchGroup/compas_rui",
@@ -6371,12 +6528,9 @@
       "ecosystem_deps": []
     }
   ],
-  "warnings": [
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Apr+is%3Aopen&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&sort=created&order=asc&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas_timber_pb+is%3Apr+is%3Aopen&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas_timber_pb+is%3Aissue+is%3Aopen&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas_timber_pb+is%3Aissue+is%3Aopen&sort=created&order=asc&per_page=1 -> HTTP 422"
+  "warnings": [],
+  "collection_scope": "partial",
+  "collected_repos": [
+    "compas_pb_ts"
   ]
 }

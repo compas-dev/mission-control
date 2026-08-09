@@ -12,6 +12,7 @@ features:
   - id: compas2
     label: "On COMPAS 2.x"
     kind: pin
+    applies_to: [python]
     detect:
       package: compas
       satisfied_by: ">=2,<3"
@@ -19,24 +20,28 @@ features:
   - id: py311
     label: "Python 3.11"
     kind: python
+    applies_to: [python]
     detect:
       version: "3.11"
 
   - id: py312
     label: "Python 3.12"
     kind: python
+    applies_to: [python]
     detect:
       version: "3.12"
 
   - id: py313
     label: "Python 3.13"
     kind: python
+    applies_to: [python]
     detect:
       version: "3.13"
 
   - id: new-scene-api
     label: "New Scene API"
     kind: code
+    applies_to: [python]
     detect:
       # Any Python import from compas.scene is evidence of the COMPAS 2 scene
       # API; requiring the exact `Scene` class misses SceneObject/register users.
@@ -49,6 +54,7 @@ features:
   - id: no-deprecated-artist
     label: "No deprecated Artist"
     kind: code
+    applies_to: [python]
     detect:
       # Restrict this to Python so changelogs/docs discussing the old API do
       # not count as live usage.
@@ -62,6 +68,7 @@ features:
   - id: mkdocs
     label: "MkDocs (not Sphinx)"
     kind: file
+    applies_to: [python]
     detect:
       any_of:
         - "mkdocs.yml"
@@ -72,6 +79,7 @@ features:
   - id: invocations2
     label: "Uses compas_invocations2"
     kind: code
+    applies_to: [python]
     detect:
       language: Python
       present:
@@ -79,9 +87,10 @@ features:
 
   # -- deployment / release checks --------------------------------------
   - id: pypi-match
-    label: "PyPI = GitHub release"
-    kind: pypi-match
+    label: "Registry = GitHub release"
+    kind: registry-match
 
   - id: conda-forge
     label: "On conda-forge"
     kind: conda
+    applies_to: [python]
