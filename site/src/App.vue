@@ -3,6 +3,7 @@ import { computed, ref, onMounted, onBeforeUnmount, watch, nextTick } from "vue"
 
 const data = ref(null);
 const error = ref(null);
+const roadmap = ref(null);
 
 // ---- view state ------------------------------------------------------
 const theme = ref("dark"); // dark | light
@@ -41,7 +42,7 @@ const ECO_TIERS = [
   { id: "core", name: "Core", sub: "the COMPAS framework" },
   { id: "tooling", name: "Tooling", sub: "shared dev infrastructure" },
 ];
-const VALID_MODES = ["fleet", "ecosystem"];
+const VALID_MODES = ["fleet", "ecosystem", "roadmap"];
 
 // ---- lifecycle -------------------------------------------------------
 onMounted(async () => {
@@ -55,9 +56,13 @@ onMounted(async () => {
   applyTheme();
 
   try {
-    const res = await fetch(`${import.meta.env.BASE_URL}data.json`, { cache: "no-cache" });
-    if (!res.ok) throw new Error(`data.json ${res.status}`);
-    data.value = await res.json();
+    const [dataRes, roadmapRes] = await Promise.all([
+      fetch(`${import.meta.env.BASE_URL}data.json`, { cache: "no-cache" }),
+      fetch(`${import.meta.env.BASE_URL}roadmap.json`, { cache: "no-cache" }),
+    ]);
+    if (!dataRes.ok) throw new Error(`data.json ${dataRes.status}`);
+    data.value = await dataRes.json();
+    if (roadmapRes.ok) roadmap.value = await roadmapRes.json();
   } catch (e) {
     error.value = String(e);
   }
@@ -235,6 +240,51 @@ const lanes = computed(() => {
     .filter(Boolean);
 });
 const matchCount = computed(() => filtered.value.length);
+
+// ---- release roadmap -------------------------------------------------
+const roadmapStart = computed(() => new Date(`${roadmap.value?.range?.start || "2023-01-01"}T00:00:00Z`));
+const roadmapEnd = computed(() => new Date(`${roadmap.value?.range?.end || "2032-01-01"}T00:00:00Z`));
+const roadmapAsOf = computed(() => new Date(`${(data.value?.generated_at || new Date().toISOString()).slice(0, 10)}T00:00:00Z`));
+const roadmapSpan = computed(() => Math.max(1, roadmapEnd.value - roadmapStart.value));
+const roadmapYears = computed(() => {
+  const years = [];
+  const first = roadmapStart.value.getUTCFullYear();
+  const last = roadmapEnd.value.getUTCFullYear();
+  for (let year = first; year <= last; year += 1) {
+    years.push({ year, left: roadmapPct(`${year}-01-01`) });
+  }
+  return years;
+});
+const roadmapTodayLeft = computed(() => roadmapPct(roadmapAsOf.value));
+
+function roadmapPct(value) {
+  const date = value instanceof Date ? value : new Date(`${value}T00:00:00Z`);
+  return Math.max(0, Math.min(100, ((date - roadmapStart.value) / roadmapSpan.value) * 100));
+}
+function segmentStyle(segment) {
+  const left = roadmapPct(segment.start);
+  return { left: `${left}%`, width: `${Math.max(0.35, roadmapPct(segment.end) - left)}%` };
+}
+function versionSegments(version) {
+  if (!version.start_date || version.status === "unreleased") return [];
+  if (version.status === "eol") {
+    return [{ type: "eol", start: version.start_date, end: version.lifecycle?.eol?.start || version.timeline_end || version.latest_date }];
+  }
+  const segments = [];
+  const feature = version.lifecycle?.feature_development;
+  if (feature?.start) segments.push({ type: "feature-development", start: feature.start, end: feature.end || roadmapAsOf.value });
+  const lts = version.lifecycle?.lts;
+  if (lts?.start) segments.push({ type: "lts", start: lts.start, end: lts.end || lts.max_end || roadmapAsOf.value });
+  return segments;
+}
+function roadmapStatusLabel(status) {
+  return roadmap.value?.legend?.find((item) => item.type === status)?.label || status;
+}
+function fmtRoadmapDate(iso) {
+  if (!iso) return "—";
+  const date = iso instanceof Date ? iso : new Date(`${iso}T00:00:00Z`);
+  return date.toLocaleDateString(undefined, { year: "numeric", month: "short", timeZone: "UTC" });
+}
 
 // ---- ecosystem -------------------------------------------------------
 const nameToRepo = computed(() => Object.fromEntries(repos.value.map((r) => [r.name, r])));
@@ -527,12 +577,13 @@ async function copyBadge(r, b) {
       <div class="segmented">
         <button class="seg-btn" :class="{ active: mode === 'fleet' }" @click="setMode('fleet')">Fleet</button>
         <button class="seg-btn" :class="{ active: mode === 'ecosystem' }" @click="setMode('ecosystem')">Ecosystem</button>
+        <button class="seg-btn" :class="{ active: mode === 'roadmap' }" @click="setMode('roadmap')">Roadmap</button>
       </div>
-      <input class="search-input" type="search" v-model="search" placeholder="Filter repositories…" />
-      <div class="chips">
+      <input v-if="mode !== 'roadmap'" class="search-input" type="search" v-model="search" placeholder="Filter repositories…" />
+      <div v-if="mode !== 'roadmap'" class="chips">
         <button v-for="c in categories" :key="c" class="chip" :class="{ active: activeCats.has(c) }" @click="toggleCat(c)">{{ catLabel(c) }}</button>
       </div>
-      <div class="toolbar-right">
+      <div v-if="mode !== 'roadmap'" class="toolbar-right">
         <template v-if="mode === 'fleet'">
           <div class="control">
             <span class="control-label">Group</span>
@@ -556,8 +607,9 @@ async function copyBadge(r, b) {
 
     <div class="hint-row">
       <span v-if="mode === 'fleet'">each tile = one package · all four signals at a glance</span>
-      <span v-else>dependency stack — core at the base, applications on top. Hover a package to trace its links.</span>
-      <span class="matchcount">{{ matchCount }} / {{ summary.tracked }} shown</span>
+      <span v-else-if="mode === 'ecosystem'">dependency stack — core at the base, applications on top. Hover a package to trace its links.</span>
+      <span v-else>major-version lifecycle · release history, support status, and maintenance windows</span>
+      <span v-if="mode !== 'roadmap'" class="matchcount">{{ matchCount }} / {{ summary.tracked }} shown</span>
     </div>
 
     <!-- ===== ECOSYSTEM ===== -->
@@ -594,6 +646,80 @@ async function copyBadge(r, b) {
           </div>
         </div>
       </div>
+    </template>
+
+    <!-- ===== RELEASE ROADMAP ===== -->
+    <template v-else-if="mode === 'roadmap'">
+      <section v-if="roadmap" class="roadmap-view">
+        <header class="roadmap-head">
+          <div>
+            <div class="eyebrow">Release lifecycle</div>
+            <h2 class="roadmap-title">{{ roadmap.title }}</h2>
+            <p class="roadmap-intro">{{ roadmap.description }}</p>
+          </div>
+        </header>
+
+        <div class="roadmap-legend" aria-label="Product line status legend">
+          <span v-for="item in roadmap.legend" :key="item.type"><i :class="`phase-${item.type}`"></i>{{ item.label }}</span>
+        </div>
+
+        <div class="roadmap-scroll">
+          <div class="roadmap-chart">
+            <div v-for="version in roadmap.versions" :key="version.version" class="roadmap-row">
+              <div class="roadmap-version">
+                <span>{{ version.label }}</span>
+                <small class="mono">{{ version.latest || "not released" }}</small>
+              </div>
+              <div class="roadmap-track">
+                <i v-for="tick in roadmapYears" :key="tick.year" class="roadmap-gridline" :style="{ left: tick.left + '%' }"></i>
+                <i class="roadmap-today" :style="{ left: roadmapTodayLeft + '%' }"></i>
+                <div
+                  v-for="(segment, index) in versionSegments(version)" :key="`${version.version}-${segment.type}-${index}`"
+                  class="roadmap-phase" :class="`phase-${segment.type}`" :style="segmentStyle(segment)"
+                  :title="`${roadmapStatusLabel(segment.type)} · ${fmtRoadmapDate(segment.start)} – ${fmtRoadmapDate(segment.end)}`"
+                ></div>
+                <i
+                  v-if="version.lifecycle?.lts?.start" class="roadmap-lts-separator"
+                  :style="{ left: roadmapPct(version.lifecycle.lts.start) + '%' }"
+                  :title="`LTS started ${fmtRoadmapDate(version.lifecycle.lts.start)}`"
+                ></i>
+                <div v-if="version.status === 'unreleased'" class="roadmap-unreleased" :style="{ left: roadmapTodayLeft + '%' }"><span>unreleased</span></div>
+              </div>
+            </div>
+            <div class="roadmap-axis">
+              <div class="roadmap-axis-label"></div>
+              <div class="roadmap-axis-track">
+                <span v-for="tick in roadmapYears" :key="tick.year" :style="{ left: tick.left + '%' }">’{{ String(tick.year).slice(2) }}</span>
+                <span class="roadmap-today-label" :style="{ left: roadmapTodayLeft + '%' }">today</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-table-wrap">
+          <table class="roadmap-table">
+            <thead><tr><th>Product line</th><th>Lifecycle</th><th>Line started</th><th>Latest release</th><th>Release date</th></tr></thead>
+            <tbody>
+              <tr v-for="version in roadmap.versions" :key="`${version.version}-details`">
+                <td><strong>{{ version.label }}</strong></td>
+                <td><span class="status-pill" :class="`phase-${version.status}`">{{ roadmapStatusLabel(version.status) }}</span></td>
+                <td class="mono">{{ fmtRoadmapDate(version.start_date) }}</td>
+                <td class="mono">{{ version.latest || "—" }}</td>
+                <td class="mono">{{ fmtRoadmapDate(version.latest_date) }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="roadmap-notice">
+          <span class="roadmap-notice-tag">Release policy</span>
+          <span>{{ roadmap.note }}</span>
+          <span class="roadmap-source-links">
+            <a v-for="source in roadmap.sources" :key="source.url" :href="source.url" target="_blank" rel="noopener">{{ source.label }} ↗</a>
+          </span>
+        </div>
+      </section>
+      <div v-else class="empty">Roadmap data is not available.</div>
     </template>
 
     <!-- ===== FLEET CARDS ===== -->

@@ -1,0 +1,117 @@
+{
+  "title": "Status of COMPAS versions",
+  "description": "Overview of the main COMPAS version lines, grouped by major release.",
+  "note": "COMPAS major versions receive up to 18 months of long-term support before reaching end of life. History begins with the initial commit of the core repository, published release dates come from PyPI.",
+  "sources": [
+    {
+      "label": "Initial commit",
+      "url": "https://github.com/compas-dev/compas/commit/a2b69d628b4f67e3c7394eec53ebd6fa2e05798e"
+    },
+    {
+      "label": "PyPI release history",
+      "url": "https://pypi.org/project/compas/#history"
+    }
+  ],
+  "range": {
+    "start": "2017-01-01",
+    "end": "2028-01-01"
+  },
+  "policy": {
+    "lts_max_months": 18,
+    "description": "A major version line remains in long-term support for at most 18 months before reaching end of life."
+  },
+  "legend": [
+    {
+      "type": "eol",
+      "label": "End of life"
+    },
+    {
+      "type": "lts",
+      "label": "Long-term support · max. 18 months"
+    },
+    {
+      "type": "feature-development",
+      "label": "Feature development"
+    },
+    {
+      "type": "unreleased",
+      "label": "Unreleased"
+    }
+  ],
+  "versions": [
+    {
+      "version": "0",
+      "label": "COMPAS 0.x",
+      "status": "eol",
+      "start_date": "2017-09-26",
+      "latest": "0.19.3",
+      "latest_date": "2020-12-17",
+      "timeline_end": "2021-01-18",
+      "lifecycle": {
+        "feature_development": {
+          "start": "2017-09-26",
+          "end": "2021-01-18"
+        },
+        "eol": {
+          "start": "2021-01-18"
+        }
+      }
+    },
+    {
+      "version": "1",
+      "label": "COMPAS 1.x",
+      "status": "eol",
+      "start_date": "2021-01-18",
+      "latest": "1.17.5",
+      "latest_date": "2023-02-16",
+      "timeline_end": "2024-01-31",
+      "lifecycle": {
+        "feature_development": {
+          "start": "2021-01-18",
+          "end": "2023-03-25"
+        },
+        "lts": {
+          "start": "2023-03-25",
+          "end": "2024-01-31",
+          "max_end": "2024-09-25"
+        },
+        "eol": {
+          "start": "2024-01-31"
+        }
+      }
+    },
+    {
+      "version": "2",
+      "label": "COMPAS 2.x",
+      "status": "lts",
+      "start_date": "2024-01-31",
+      "latest": "2.15.1",
+      "latest_date": "2026-03-19",
+      "lifecycle": {
+        "feature_development": {
+          "start": "2024-01-31",
+          "end": "2025-11-12"
+        },
+        "lts": {
+          "start": "2025-11-12",
+          "end": null,
+          "max_end": "2027-05-12"
+        }
+      }
+    },
+    {
+      "version": "3",
+      "label": "COMPAS 3.x",
+      "status": "unreleased",
+      "start_date": null,
+      "latest": null,
+      "latest_date": null,
+      "lifecycle": {
+        "unreleased": {
+          "start": null,
+          "end": null
+        }
+      }
+    }
+  ]
+}

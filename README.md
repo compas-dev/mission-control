@@ -32,7 +32,7 @@ The collector is the heart of the project; the frontend renders `data.json` and 
 | [`repos.yml`](repos.yml) | Curated list of tracked repositories (owner, category, tier, runtime, distributions). |
 | [`features.yml`](features.yml) | Adoption-matrix columns and their detection rules. |
 | [`collector/`](collector/) | Python data collector (`python -m collector`). Stdlib `urllib` + `PyYAML` + `packaging`. |
-| [`site/`](site/) | Vite + Vue 3 frontend. `site/public/data.json` is the committed sample. |
+| [`site/`](site/) | Vite + Vue 3 frontend. `site/public/data.json` is the committed sample and `site/public/roadmap.json` holds the editable release-roadmap. |
 | [`data-history/`](data-history/) | Compact daily snapshots for trend sparklines. |
 | `.github/workflows/build-and-deploy.yml` | Nightly collect → build → deploy to Pages. |
 
@@ -62,7 +62,7 @@ npm install
 npm run dev      # http://localhost:5173
 ```
 
-Views are deep-linkable: `#health`, `#migration`, `#features`, `#ecosystem`, and `?focus=<package>` opens a package's dependency trace.
+Views are deep-linkable: `#fleet`, `#ecosystem`, `#roadmap`, and `#<package>` opens a package detail page.
 
 ## Configuration
 
