@@ -172,7 +172,6 @@ repos:
     category: timber
     pypi: compas_cadwork
   - name: compas_pb
-    owner: gramaziokohler
     category: tooling
     pypi: compas_pb
   - name: compas_pb_ts
@@ -192,8 +191,18 @@ repos:
     category: geometry
     pypi: compas_brep
   - name: compas_threejs
-    owner: gramaziokohler
     category: viz
+  - name: compas_threejs_ts
+    category: viz
+    runtime: node
+    release_tag_prefix: compas-threejs-ts-v
+    distributions:
+      - registry: npm
+        name: "@compas-dev/compas-threejs-ts"
+      - registry: jsr
+        name: "@compas-dev/compas-threejs-ts"
+    ecosystem_deps:
+      - compas_threejs
   - name: compas-make2d
     owner: gramaziokohler
     category: tooling
