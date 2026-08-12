@@ -23,7 +23,7 @@
       "open_issues": 1,
       "open_prs": 1,
       "compas_major_floor": 2,
-      "features_adopted": 7
+      "features_adopted": 6
     },
     "compas_cnc": {
       "staleness": "fresh",
@@ -119,7 +119,7 @@
       "open_issues": 5,
       "open_prs": 6,
       "compas_major_floor": null,
-      "features_adopted": 8
+      "features_adopted": 7
     },
     "compas_brep": {
       "staleness": "fresh",
@@ -159,7 +159,7 @@
       "open_issues": 1,
       "open_prs": 2,
       "compas_major_floor": 2,
-      "features_adopted": 7
+      "features_adopted": 8
     },
     "compas_manifold": {
       "staleness": "aging",
@@ -367,7 +367,7 @@
       "open_issues": 0,
       "open_prs": 0,
       "compas_major_floor": 2,
-      "features_adopted": 8
+      "features_adopted": 7
     },
     "compas_fea": {
       "staleness": "dormant",
@@ -383,7 +383,7 @@
       "open_issues": 13,
       "open_prs": 0,
       "compas_major_floor": 2,
-      "features_adopted": 8
+      "features_adopted": 5
     },
     "compas_notebook": {
       "staleness": "stale",
@@ -423,7 +423,7 @@
       "open_issues": 44,
       "open_prs": 10,
       "compas_major_floor": 2,
-      "features_adopted": 9
+      "features_adopted": 7
     },
     "compas_xr": {
       "staleness": "fresh",
@@ -455,7 +455,7 @@
       "open_issues": 0,
       "open_prs": 0,
       "compas_major_floor": null,
-      "features_adopted": 1
+      "features_adopted": 0
     },
     "compas_invocations2": {
       "staleness": "fresh",
@@ -503,7 +503,7 @@
       "open_issues": 0,
       "open_prs": 0,
       "compas_major_floor": null,
-      "features_adopted": 5
+      "features_adopted": 4
     },
     "sphinx_compas2_theme": {
       "staleness": "dormant",
