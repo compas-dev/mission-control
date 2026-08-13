@@ -81,6 +81,21 @@ class GitHub:
         except Exception:  # noqa: BLE001
             return None
 
+    def readme_text(self, owner: str, name: str, ref: Optional[str] = None) -> str | bool | None:
+        """Return README text, False when absent, or None when the API failed."""
+        import base64
+
+        params = {"ref": ref} if ref else None
+        warning_count = len(self.warnings)
+        data = self.get(f"/repos/{owner}/{name}/readme", params=params)
+        if data is None:
+            return None if len(self.warnings) > warning_count else False
+        try:
+            return base64.b64decode(data["content"]).decode("utf-8")
+        except (KeyError, ValueError, UnicodeDecodeError):
+            self.warnings.append(f"README decode failed for {owner}/{name}")
+            return None
+
     def file_exists(self, owner: str, name: str, path: str, ref: Optional[str] = None) -> Optional[bool]:
         """Return True/False for a repository path, or None when the API failed.
 

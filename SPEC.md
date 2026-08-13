@@ -189,6 +189,12 @@ features:
     detect:
       any_of: ["mkdocs.yml"]
 
+  - id: mission-control-badge
+    label: "Mission Control badge"
+    kind: readme                   # substring match in the repository README
+    detect:
+      present: ["[![Made with COMPAS](https://compas.dev/badge.svg)](https://compas.dev/mission-control/#{name})"]
+
   - id: some-manual-thing
     label: "Manual review item"
     kind: manual                   # status comes from repos.yml overrides

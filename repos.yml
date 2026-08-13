@@ -58,6 +58,8 @@ repos:
   - name: compas_ifc
     category: geometry
     pypi: compas_ifc
+  - name: compas_usd
+    category: geometry
 
   # ---- fea --------------------------------------------------------------
   - name: compas_fea2
@@ -143,6 +145,10 @@ repos:
     owner: blockresearchgroup
     category: structures
     pypi: compas_model
+  - name: compas_lca
+    owner: blockresearchgroup
+    category: structures
+    pypi: compas_lca
   - name: compas_bender
     owner: blockresearchgroup
     category: structures
@@ -194,6 +200,9 @@ repos:
     owner: gramaziokohler
     category: geometry
     pypi: compas_brep
+  - name: compas_soundscape
+    owner: gramaziokohler
+    category: acoustics
   - name: compas_threejs
     category: viz
   - name: compas_threejs_ts
@@ -237,6 +246,22 @@ repos:
     owner: blockresearchgroup
     category: structures
     tier: apps
+
+  # =======================================================================
+  # AHA — project applications built on COMPAS RRC
+  # =======================================================================
+  - name: sandskript_compas_rrc
+    owner: AHA-ArchitectureAndHumanAugmentation
+    category: fabrication
+    tier: apps
+    ecosystem_deps:
+      - compas_rrc
+  - name: SANDSKRIPT_depth-cam-to-robot
+    owner: AHA-ArchitectureAndHumanAugmentation
+    category: fabrication
+    tier: apps
+    ecosystem_deps:
+      - compas_rrc
 
   # =======================================================================
   # rafael pastrana

@@ -5,6 +5,7 @@
 #   pin     - inspect a dependency version specifier (from requirements.txt)
 #   python  - is a Python version in the resolved support list?
 #   file    - does any of the given paths exist in the repo?
+#   readme  - does the repository README contain any required snippet?
 #   code    - GitHub code search for present/absent patterns
 #   manual  - status comes from repos.yml `feature_overrides`
 
@@ -106,6 +107,16 @@ features:
         - "compas-dev/compas-actions/"
       absent:
         - "compas-dev/compas-actions."
+
+  - id: mission-control-badge
+    label: "Mission Control badge"
+    kind: readme
+    detect:
+      # Accept either badge style, but require the badge itself to link to the
+      # tracked repository's detail page in Mission Control.
+      present:
+        - "[![Made with COMPAS](https://compas.dev/badge.svg)](https://compas.dev/mission-control/#{name})"
+        - "[![Made with COMPAS](https://compas.dev/badge-flat.svg)](https://compas.dev/mission-control/#{name})"
 
   # -- deployment / release checks --------------------------------------
   - id: pypi-match

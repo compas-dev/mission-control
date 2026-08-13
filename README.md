@@ -68,7 +68,7 @@ Views are deep-linkable: `#fleet`, `#ecosystem`, `#roadmap`, and `#<package>` op
 
 - **Track a repo** — add an entry to [`repos.yml`](repos.yml) (deliberately curated, not auto-discovered). `owner` defaults to `compas-dev`; override per entry. `runtime` defaults to `python` and also accepts `node`. `tier` (`core` / `foundation` / `domain` / `apps` / `tooling`) defaults from `category` and drives the Ecosystem diagram.
 - **Configure distributions** — existing Python projects can keep using `pypi: <name>`. Mixed-language projects use `distributions`, whose supported registries are `pypi`, `npm`, and `jsr`. Use `release_tag_prefix` when GitHub tags include a package-specific prefix.
-- **Add an adoption check** — add a column to [`features.yml`](features.yml). `applies_to: [python]` or `[node]` keeps runtime-specific checks out of unrelated projects. Detection kinds: `pin`, `python`, `file` (`any_of` / `none_of`), `code` (GitHub code search), `registry-match`, `conda` (published on conda-forge), `manual`.
+- **Add an adoption check** — add a column to [`features.yml`](features.yml). `applies_to: [python]` or `[node]` keeps runtime-specific checks out of unrelated projects. Detection kinds: `pin`, `python`, `file` (`any_of` / `none_of`), `readme` (snippet match in the repository README), `code` (GitHub code search), `registry-match`, `conda` (published on conda-forge), `manual`.
 - **Add a non-manifest dependency** — use `ecosystem_deps` in `repos.yml`. These explicit edges are combined with dependencies discovered from Python manifests or `package.json`.
 
 For example, the TypeScript protobuf wrapper is configured as:

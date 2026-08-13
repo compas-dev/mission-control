@@ -319,5 +319,87 @@ class FileDetectionTests(unittest.TestCase):
         self.assertEqual(cell["detail"], "file check failed: mkdocs.yml")
 
 
+class ReadmeDetectionTests(unittest.TestCase):
+    FEATURE = {
+        "id": "mission-control-badge",
+        "kind": "readme",
+        "detect": {
+            "present": [
+                "[![Made with COMPAS](https://compas.dev/badge.svg)]"
+                "(https://compas.dev/mission-control/#{name})",
+                "[![Made with COMPAS](https://compas.dev/badge-flat.svg)]"
+                "(https://compas.dev/mission-control/#{name})",
+            ],
+        },
+    }
+
+    def test_badge_must_link_to_the_repo_detail_page(self):
+        class FakeGitHub:
+            def __init__(self, readme):
+                self.readme = readme
+
+            def readme_text(self, owner, name, ref=None):
+                return self.readme
+
+        cases = [
+            (
+                "[![Made with COMPAS](https://compas.dev/badge.svg)]"
+                "(https://compas.dev/mission-control/#compas_fab)",
+                "adopted",
+            ),
+            ("[![Made with COMPAS](https://compas.dev/badge.svg)](https://compas.dev)", "not-adopted"),
+            ("See https://compas.dev/mission-control/#compas_fab", "not-adopted"),
+        ]
+
+        for readme, expected in cases:
+            with self.subTest(expected=expected):
+                cell = features.detect(self.FEATURE, {}, {}, FakeGitHub(readme), "compas-dev", "compas_fab")
+                self.assertEqual(cell["status"], expected)
+
+    def test_missing_and_unavailable_readmes_are_distinct(self):
+        class FakeGitHub:
+            def __init__(self, result):
+                self.result = result
+
+            def readme_text(self, owner, name, ref=None):
+                return self.result
+
+        missing = features.detect(self.FEATURE, {}, {}, FakeGitHub(False), "owner", "repo")
+        unavailable = features.detect(self.FEATURE, {}, {}, FakeGitHub(None), "owner", "repo")
+
+        self.assertEqual(missing["status"], "not-adopted")
+        self.assertEqual(unavailable["status"], "unknown")
+
+
+class GitHubReadmeTests(unittest.TestCase):
+    def test_readme_endpoint_decodes_content_and_passes_ref(self):
+        gh = GitHub()
+        request = {}
+
+        def fake_get(path, params=None, retries=3):
+            request.update(path=path, params=params)
+            return {"content": "IyBIZWxsbyE="}  # # Hello!
+
+        gh.get = fake_get
+
+        self.assertEqual(gh.readme_text("owner", "repo", "develop"), "# Hello!")
+        self.assertEqual(request, {"path": "/repos/owner/repo/readme", "params": {"ref": "develop"}})
+
+    def test_readme_endpoint_distinguishes_404_from_api_failure(self):
+        missing = GitHub()
+        missing.get = lambda *args, **kwargs: None
+
+        failed = GitHub()
+
+        def failed_get(*args, **kwargs):
+            failed.warnings.append("request failed")
+            return None
+
+        failed.get = failed_get
+
+        self.assertIs(missing.readme_text("owner", "repo"), False)
+        self.assertIsNone(failed.readme_text("owner", "repo"))
+
+
 if __name__ == "__main__":
     unittest.main()

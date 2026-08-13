@@ -122,6 +122,18 @@ def detect(feature: dict, repo_cfg: dict, packaging: dict, gh, owner: str, name:
             return _cell(STATUS_NOT, detail=f"missing {' / '.join(any_of)}")
         return _cell(STATUS_NOT, detail="file absent")
 
+    if kind == "readme":
+        content = gh.readme_text(owner, name, repo_cfg.get("branch"))
+        if content is None:
+            return _cell(STATUS_UNKNOWN, detail="README check failed")
+        if content is False:
+            return _cell(STATUS_NOT, detail="README not found")
+        patterns = [pattern.format(owner=owner, name=name) for pattern in detect_cfg.get("present", [])]
+        for pattern in patterns:
+            if pattern in content:
+                return _cell(STATUS_ADOPTED, detail="badge links to Mission Control")
+        return _cell(STATUS_NOT, detail="linked COMPAS badge not found in README")
+
     if kind == "code":
         present = detect_cfg.get("present", [])
         absent = detect_cfg.get("absent", [])
