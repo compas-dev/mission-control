@@ -171,8 +171,10 @@ features:
     kind: code                     # GitHub code search within the repo
     detect:
       language: Python             # optional GitHub language qualifier
-      # adopted if ANY `present` pattern matches; not-adopted if only `absent` do
+      # adopted if ANY `present` pattern matches and NO `absent` pattern matches
       present: ["from compas.scene", "import compas.scene", "from compas import scene"]
+      absent: ["from compas.artists", "import compas.artists", "from compas import artists"]
+      no_match: n/a                # optional status when neither set matches
 
   - id: no-deprecated-artist
     label: "No deprecated Artist"

@@ -204,21 +204,96 @@ class CodeSearchTests(unittest.TestCase):
             ],
         )
 
-    def test_scene_module_import_counts_as_new_scene_api(self):
+    def test_scene_api_classifies_new_old_and_non_ui_repos(self):
         class FakeGitHub:
+            def __init__(self, matches):
+                self.matches = matches
+
             def search_code(self, owner, name, pattern, language=None):
-                return pattern == "from compas.scene"
+                return pattern in self.matches
 
         feature = {
             "id": "new-scene-api",
             "kind": "code",
             "detect": {
                 "language": "Python",
-                "present": ["from compas.scene", "import compas.scene"],
+                "present": ["from compas.scene", "import compas.scene", "compas.scene."],
+                "absent": ["from compas.artists", "import compas.artists", "compas.artists."],
+                "no_match": "n/a",
             },
         }
 
-        cell = features.detect(feature, {}, {}, FakeGitHub(), "arpastrana", "jax_fdm")
+        cases = [
+            ({"from compas.scene"}, "adopted", "uses the Scene API"),
+            ({"from compas.artists"}, "not-adopted", "still uses Artist"),
+            ({"from compas.scene", "from compas.artists"}, "not-adopted", "migration is incomplete"),
+            (set(), "n/a", "does not use either UI API"),
+        ]
+
+        for matches, expected, reason in cases:
+            with self.subTest(reason=reason):
+                cell = features.detect(feature, {}, {}, FakeGitHub(matches), "owner", "repo")
+                self.assertEqual(cell["status"], expected)
+
+    def test_fully_qualified_scene_reference_counts_as_usage(self):
+        class FakeGitHub:
+            def search_code(self, owner, name, pattern, language=None):
+                return pattern == "compas.scene."
+
+        feature = {
+            "id": "new-scene-api",
+            "kind": "code",
+            "detect": {
+                "language": "Python",
+                "present": ["from compas.scene", "compas.scene."],
+                "absent": ["from compas.artists", "compas.artists."],
+                "no_match": "n/a",
+            },
+        }
+
+        cell = features.detect(feature, {}, {}, FakeGitHub(), "owner", "repo")
+
+        self.assertEqual(cell["status"], "adopted")
+
+    def test_present_code_must_also_exclude_absent_patterns(self):
+        class FakeGitHub:
+            def search_code(self, owner, name, pattern, language=None):
+                return pattern in {
+                    "compas-dev/compas-actions/",
+                    "compas-dev/compas-actions.",
+                }
+
+        feature = {
+            "id": "compas-actions",
+            "kind": "code",
+            "detect": {
+                "language": "YAML",
+                "present": ["compas-dev/compas-actions/"],
+                "absent": ["compas-dev/compas-actions."],
+            },
+        }
+
+        cell = features.detect(feature, {}, {}, FakeGitHub(), "owner", "repo")
+
+        self.assertEqual(cell["status"], "not-adopted")
+        self.assertEqual(cell["detail"], "still uses 'compas-dev/compas-actions.'")
+
+    def test_present_code_is_adopted_when_absent_patterns_are_clean(self):
+        class FakeGitHub:
+            def search_code(self, owner, name, pattern, language=None):
+                return pattern == "compas-dev/compas-actions/"
+
+        feature = {
+            "id": "compas-actions",
+            "kind": "code",
+            "detect": {
+                "language": "YAML",
+                "present": ["compas-dev/compas-actions/"],
+                "absent": ["compas-dev/compas-actions."],
+            },
+        }
+
+        cell = features.detect(feature, {}, {}, FakeGitHub(), "owner", "repo")
 
         self.assertEqual(cell["status"], "adopted")
 

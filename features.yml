@@ -43,13 +43,21 @@ features:
     kind: code
     applies_to: [python]
     detect:
-      # Any Python import from compas.scene is evidence of the COMPAS 2 scene
-      # API; requiring the exact `Scene` class misses SceneObject/register users.
+      # Deprecated Artist usage means the migration is incomplete, even if
+      # compas.scene is also present. Repos using neither API are likely non-UI
+      # extensions, so exclude them from this feature's adoption percentage.
       language: Python
       present:
         - "from compas.scene"
         - "import compas.scene"
         - "from compas import scene"
+        - "compas.scene."
+      absent:
+        - "from compas.artists"
+        - "import compas.artists"
+        - "from compas import artists"
+        - "compas.artists."
+      no_match: n/a
 
   - id: no-deprecated-artist
     label: "No deprecated Artist"
@@ -84,6 +92,20 @@ features:
       language: Python
       present:
         - "compas_invocations2"
+
+  - id: compas-actions
+    label: "Uses compas-actions"
+    kind: code
+    applies_to: [python]
+    detect:
+      # The unified action repository exposes individual actions as subpaths.
+      # Legacy repositories used names such as compas-actions.build and
+      # compas-actions.publish.
+      language: YAML
+      present:
+        - "compas-dev/compas-actions/"
+      absent:
+        - "compas-dev/compas-actions."
 
   # -- deployment / release checks --------------------------------------
   - id: pypi-match

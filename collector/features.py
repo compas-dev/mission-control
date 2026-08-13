@@ -126,12 +126,14 @@ def detect(feature: dict, repo_cfg: dict, packaging: dict, gh, owner: str, name:
         present = detect_cfg.get("present", [])
         absent = detect_cfg.get("absent", [])
         language = detect_cfg.get("language")
+        matched_present = None
         for pat in present:
             found = gh.search_code(owner, name, pat, language=language)
             if found is None:
                 return _cell(STATUS_UNKNOWN, detail="code search failed")
             if found:
-                return _cell(STATUS_ADOPTED, detail=f"matched {pat!r}")
+                matched_present = pat
+                break
         for pat in absent:
             found = gh.search_code(owner, name, pat, language=language)
             if found is None:
@@ -139,6 +141,11 @@ def detect(feature: dict, repo_cfg: dict, packaging: dict, gh, owner: str, name:
             if found:
                 return _cell(STATUS_NOT, detail=f"still uses {pat!r}")
         if present:
+            if matched_present:
+                return _cell(STATUS_ADOPTED, detail=f"matched {matched_present!r}")
+            no_match = detect_cfg.get("no_match", STATUS_NOT)
+            if no_match == STATUS_NA:
+                return _cell(STATUS_NA, detail="no matching API usage")
             return _cell(STATUS_NOT, detail="no match")
         if absent:
             return _cell(STATUS_ADOPTED, detail="clean")

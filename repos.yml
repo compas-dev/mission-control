@@ -76,6 +76,10 @@ repos:
     pypi: compas_notebook
 
   # ---- tooling / templates ---------------------------------------------
+  - name: compas-actions
+    category: tooling
+  - name: ghpython_componentizer
+    category: tooling
   - name: compas_invocations2
     category: tooling
     pypi: compas_invocations2
