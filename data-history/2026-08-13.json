@@ -17,6 +17,14 @@
       "compas_major_floor": 2,
       "features_adopted": 7
     },
+    "SANDSKRIPT_depth-cam-to-robot": {
+      "staleness": "fresh",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 1
+    },
     "antikythera": {
       "staleness": "fresh",
       "ci": "passing",
@@ -39,7 +47,7 @@
       "open_issues": 0,
       "open_prs": 2,
       "compas_major_floor": 2,
-      "features_adopted": 9
+      "features_adopted": 10
     },
     "compas_fab": {
       "staleness": "fresh",
@@ -47,7 +55,7 @@
       "open_issues": 73,
       "open_prs": 9,
       "compas_major_floor": 2,
-      "features_adopted": 10
+      "features_adopted": 11
     },
     "compas_nest": {
       "staleness": "aging",
@@ -89,13 +97,21 @@
       "compas_major_floor": null,
       "features_adopted": 6
     },
+    "sandskript_compas_rrc": {
+      "staleness": "fresh",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 1
+    },
     "compas_cadwork": {
       "staleness": "fresh",
       "ci": "passing",
       "open_issues": 7,
       "open_prs": 5,
       "compas_major_floor": 2,
-      "features_adopted": 8
+      "features_adopted": 9
     },
     "compas_timber": {
       "staleness": "fresh",
@@ -106,12 +122,12 @@
       "features_adopted": 9
     },
     "compas_timber_pb": {
-      "staleness": "unknown",
-      "ci": "none",
+      "staleness": "stale",
+      "ci": "passing",
       "open_issues": 0,
       "open_prs": 0,
       "compas_major_floor": null,
-      "features_adopted": 1
+      "features_adopted": 6
     },
     "timber_design": {
       "staleness": "fresh",
@@ -217,6 +233,14 @@
       "compas_major_floor": 2,
       "features_adopted": 7
     },
+    "compas_usd": {
+      "staleness": "stale",
+      "ci": "none",
+      "open_issues": 3,
+      "open_prs": 1,
+      "compas_major_floor": 2,
+      "features_adopted": 3
+    },
     "compas-FoFin": {
       "staleness": "dormant",
       "ci": "passing",
@@ -287,7 +311,7 @@
       "open_issues": 2,
       "open_prs": 0,
       "compas_major_floor": 2,
-      "features_adopted": 9
+      "features_adopted": 10
     },
     "compas_cra": {
       "staleness": "aging",
@@ -320,6 +344,14 @@
       "open_prs": 5,
       "compas_major_floor": null,
       "features_adopted": 6
+    },
+    "compas_lca": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 1,
+      "compas_major_floor": 2,
+      "features_adopted": 7
     },
     "compas_lmgc90": {
       "staleness": "fresh",
@@ -367,7 +399,7 @@
       "open_issues": 0,
       "open_prs": 0,
       "compas_major_floor": 2,
-      "features_adopted": 8
+      "features_adopted": 9
     },
     "compas_fea": {
       "staleness": "dormant",
@@ -407,7 +439,7 @@
       "open_issues": 0,
       "open_prs": 2,
       "compas_major_floor": null,
-      "features_adopted": 6
+      "features_adopted": 7
     },
     "compas_threejs_ts": {
       "staleness": "fresh",
@@ -449,6 +481,14 @@
       "compas_major_floor": 2,
       "features_adopted": 5
     },
+    "compas-actions": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 2
+    },
     "compas-make2d": {
       "staleness": "stale",
       "ci": "none",
@@ -479,7 +519,7 @@
       "open_issues": 10,
       "open_prs": 1,
       "compas_major_floor": 2,
-      "features_adopted": 9
+      "features_adopted": 10
     },
     "compas_pb_ts": {
       "staleness": "fresh",
@@ -504,6 +544,14 @@
       "open_prs": 0,
       "compas_major_floor": null,
       "features_adopted": 7
+    },
+    "ghpython_componentizer": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 5
     },
     "lamcp": {
       "staleness": "aging",
@@ -536,6 +584,14 @@
       "open_prs": 0,
       "compas_major_floor": null,
       "features_adopted": 2
+    },
+    "compas_soundscape": {
+      "staleness": "fresh",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 4
     }
   }
 }

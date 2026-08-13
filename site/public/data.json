@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T16:46:22Z",
+  "generated_at": "2026-08-13T18:39:19Z",
   "features": [
     {
       "id": "compas2",
@@ -66,6 +66,20 @@
       ]
     },
     {
+      "id": "compas-actions",
+      "label": "Uses compas-actions",
+      "kind": "code",
+      "applies_to": [
+        "python"
+      ]
+    },
+    {
+      "id": "mission-control-badge",
+      "label": "Mission Control badge",
+      "kind": "readme",
+      "applies_to": null
+    },
+    {
       "id": "pypi-match",
       "label": "Registry = GitHub release",
       "kind": "registry-match",
@@ -91,7 +105,8 @@
     "xr",
     "ai",
     "tooling",
-    "template"
+    "template",
+    "acoustics"
   ],
   "repos": [
     {
@@ -204,6 +219,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -308,9 +333,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -326,6 +351,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -348,6 +383,119 @@
         "compas_session",
         "compas_shapeop",
         "compas_viewer"
+      ]
+    },
+    {
+      "name": "SANDSKRIPT_depth-cam-to-robot",
+      "owner": "AHA-ArchitectureAndHumanAugmentation",
+      "url": "https://github.com/AHA-ArchitectureAndHumanAugmentation/SANDSKRIPT_depth-cam-to-robot",
+      "category": "fabrication",
+      "tier": "apps",
+      "runtime": "python",
+      "pypi": null,
+      "distributions": [],
+      "role": null,
+      "status": "active",
+      "description": "Sandskript: depth-camera-to-robot pipeline for the Sybil installation (Ars Electronica 2026).",
+      "stars": 0,
+      "language": "Python",
+      "health": {
+        "last_commit_date": "2026-08-13",
+        "staleness": "fresh",
+        "ci": "none",
+        "open_issues": 0,
+        "open_prs": 0,
+        "oldest_open_issue_age_days": null
+      },
+      "release": {
+        "github_tag": null,
+        "github_release_tag": null,
+        "github_date": null,
+        "registry_version": null,
+        "registry_date": null,
+        "registry_name": null,
+        "pypi_version": null,
+        "pypi_date": null,
+        "drift": false,
+        "distributions": []
+      },
+      "packaging": {
+        "compas_pin": null,
+        "compas_major_floor": null,
+        "python_versions": [],
+        "python_source": "unknown",
+        "hosts": {
+          "rhino": null,
+          "ghpython": null,
+          "blender": null
+        },
+        "node_engine": null,
+        "package_manager": null
+      },
+      "features": {
+        "compas2": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "no compas dependency"
+        },
+        "py311": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "no python info"
+        },
+        "py312": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "no python info"
+        },
+        "py313": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "no python info"
+        },
+        "new-scene-api": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "no matching API usage"
+        },
+        "no-deprecated-artist": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "clean"
+        },
+        "mkdocs": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "missing mkdocs.yml"
+        },
+        "invocations2": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
+        "pypi-match": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed through a package registry"
+        },
+        "conda-forge": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed on PyPI/conda"
+        }
+      },
+      "ecosystem_deps": [
+        "compas_rrc"
       ]
     },
     {
@@ -441,9 +589,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -459,6 +607,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -569,9 +727,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -587,6 +745,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -695,9 +863,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -713,6 +881,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "badge links to Mission Control"
         },
         "pypi-match": {
           "status": "adopted",
@@ -839,6 +1017,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "badge links to Mission Control"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -946,9 +1134,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -964,6 +1152,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "unknown",
@@ -1091,6 +1289,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -1195,9 +1403,9 @@
           "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1213,6 +1421,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -1320,9 +1538,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1338,6 +1556,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "not-adopted",
@@ -1445,9 +1673,9 @@
           "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1464,6 +1692,16 @@
           "source": "auto",
           "detail": "no match"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -1477,6 +1715,119 @@
       },
       "ecosystem_deps": [
         "compas"
+      ]
+    },
+    {
+      "name": "sandskript_compas_rrc",
+      "owner": "AHA-ArchitectureAndHumanAugmentation",
+      "url": "https://github.com/AHA-ArchitectureAndHumanAugmentation/sandskript_compas_rrc",
+      "category": "fabrication",
+      "tier": "apps",
+      "runtime": "python",
+      "pypi": null,
+      "distributions": [],
+      "role": null,
+      "status": "active",
+      "description": "This repository contains the COMPAS RRC workflow developed for the Sandskript project, part of Sybil at Ars Electronica 2026. It sends toolpaths stored as JSON files to an ABB GoFa robot through a Docker-based ROS communication setup.",
+      "stars": 0,
+      "language": "Python",
+      "health": {
+        "last_commit_date": "2026-08-04",
+        "staleness": "fresh",
+        "ci": "none",
+        "open_issues": 0,
+        "open_prs": 0,
+        "oldest_open_issue_age_days": null
+      },
+      "release": {
+        "github_tag": null,
+        "github_release_tag": null,
+        "github_date": null,
+        "registry_version": null,
+        "registry_date": null,
+        "registry_name": null,
+        "pypi_version": null,
+        "pypi_date": null,
+        "drift": false,
+        "distributions": []
+      },
+      "packaging": {
+        "compas_pin": null,
+        "compas_major_floor": null,
+        "python_versions": [],
+        "python_source": "unknown",
+        "hosts": {
+          "rhino": null,
+          "ghpython": null,
+          "blender": null
+        },
+        "node_engine": null,
+        "package_manager": null
+      },
+      "features": {
+        "compas2": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "no compas dependency"
+        },
+        "py311": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "no python info"
+        },
+        "py312": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "no python info"
+        },
+        "py313": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "no python info"
+        },
+        "new-scene-api": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "no matching API usage"
+        },
+        "no-deprecated-artist": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "clean"
+        },
+        "mkdocs": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "missing mkdocs.yml"
+        },
+        "invocations2": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
+        "pypi-match": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed through a package registry"
+        },
+        "conda-forge": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed on PyPI/conda"
+        }
+      },
+      "ecosystem_deps": [
+        "compas_rrc"
       ]
     },
     {
@@ -1586,6 +1937,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "badge links to Mission Control"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -1693,9 +2054,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1711,6 +2072,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -1748,21 +2119,21 @@
       ],
       "role": null,
       "status": "active",
-      "description": null,
+      "description": "COMPAS Timber plugin for COMPAS Protobuf",
       "stars": 0,
-      "language": null,
+      "language": "Python",
       "health": {
-        "last_commit_date": null,
-        "staleness": "unknown",
-        "ci": "none",
+        "last_commit_date": "2025-09-15",
+        "staleness": "stale",
+        "ci": "passing",
         "open_issues": 0,
         "open_prs": 0,
         "oldest_open_issue_age_days": null
       },
       "release": {
-        "github_tag": null,
-        "github_release_tag": null,
-        "github_date": null,
+        "github_tag": "0.2.0",
+        "github_release_tag": "v0.2.0",
+        "github_date": "2025-09-15",
         "registry_version": "0.2.0",
         "registry_date": "2025-09-15",
         "registry_name": "pypi",
@@ -1782,12 +2153,18 @@
       "packaging": {
         "compas_pin": null,
         "compas_major_floor": null,
-        "python_versions": [],
-        "python_source": "unknown",
+        "python_versions": [
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
+        ],
+        "python_source": "requires-python",
         "hosts": {
-          "rhino": null,
-          "ghpython": null,
-          "blender": null
+          "rhino": false,
+          "ghpython": false,
+          "blender": false
         },
         "node_engine": null,
         "package_manager": null
@@ -1799,24 +2176,24 @@
           "detail": "no compas dependency"
         },
         "py311": {
-          "status": "unknown",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no python info"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py312": {
-          "status": "unknown",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no python info"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "py313": {
-          "status": "unknown",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no python info"
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1826,17 +2203,27 @@
         "mkdocs": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "missing mkdocs.yml"
+          "detail": "still has docs/conf.py"
         },
         "invocations2": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
-          "status": "unknown",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no comparable release"
+          "detail": "pypi 0.2.0 = GitHub 0.2.0"
         },
         "conda-forge": {
           "status": "not-adopted",
@@ -1844,7 +2231,10 @@
           "detail": "no conda-forge package"
         }
       },
-      "ecosystem_deps": []
+      "ecosystem_deps": [
+        "compas_pb",
+        "compas_timber"
+      ]
     },
     {
       "name": "timber_design",
@@ -1955,6 +2345,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -2081,6 +2481,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -2187,9 +2597,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2205,6 +2615,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -2313,9 +2733,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2331,6 +2751,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -2457,6 +2887,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -2564,9 +3004,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2582,6 +3022,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -2689,9 +3139,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2707,6 +3157,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "unknown",
@@ -2812,9 +3272,9 @@
           "detail": "ci-matrix: 3.6, 3.7, 3.8"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2830,6 +3290,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "unknown",
@@ -2937,9 +3407,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2955,6 +3425,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "not-adopted",
@@ -3082,6 +3562,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -3188,9 +3678,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -3206,6 +3696,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -3313,9 +3813,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -3331,6 +3831,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -3438,9 +3948,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -3457,6 +3967,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -3466,6 +3986,124 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no conda-forge package"
+        }
+      },
+      "ecosystem_deps": [
+        "compas"
+      ]
+    },
+    {
+      "name": "compas_usd",
+      "owner": "compas-dev",
+      "url": "https://github.com/compas-dev/compas_usd",
+      "category": "geometry",
+      "tier": "foundation",
+      "runtime": "python",
+      "pypi": null,
+      "distributions": [],
+      "role": null,
+      "status": "active",
+      "description": "COMPAS wrapper for USD (Universal Scene Description)",
+      "stars": 0,
+      "language": "Python",
+      "health": {
+        "last_commit_date": "2025-12-09",
+        "staleness": "stale",
+        "ci": "none",
+        "open_issues": 3,
+        "open_prs": 1,
+        "oldest_open_issue_age_days": 1627
+      },
+      "release": {
+        "github_tag": null,
+        "github_release_tag": null,
+        "github_date": null,
+        "registry_version": null,
+        "registry_date": null,
+        "registry_name": null,
+        "pypi_version": null,
+        "pypi_date": null,
+        "drift": false,
+        "distributions": []
+      },
+      "packaging": {
+        "compas_pin": "compas >=2.0",
+        "compas_major_floor": 2,
+        "python_versions": [
+          "3.6",
+          "3.7",
+          "3.8",
+          "3.9"
+        ],
+        "python_source": "ci-matrix",
+        "hosts": {
+          "rhino": false,
+          "ghpython": false,
+          "blender": false
+        },
+        "node_engine": null,
+        "package_manager": null
+      },
+      "features": {
+        "compas2": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "compas >=2.0"
+        },
+        "py311": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9"
+        },
+        "py312": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9"
+        },
+        "py313": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9"
+        },
+        "new-scene-api": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "matched 'from compas.scene'"
+        },
+        "no-deprecated-artist": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "clean"
+        },
+        "mkdocs": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still has docs/conf.py"
+        },
+        "invocations2": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
+        "pypi-match": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed through a package registry"
+        },
+        "conda-forge": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed on PyPI/conda"
         }
       },
       "ecosystem_deps": [
@@ -3565,6 +4203,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "n/a",
@@ -3679,6 +4327,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "n/a",
           "source": "auto",
@@ -3791,6 +4449,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "n/a",
@@ -3909,6 +4577,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "n/a",
           "source": "auto",
@@ -4023,9 +4701,9 @@
           "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9, 3.10"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4041,6 +4719,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -4149,9 +4837,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4167,6 +4855,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -4274,9 +4972,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4292,6 +4990,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -4399,9 +5107,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4417,6 +5125,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -4542,6 +5260,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "badge links to Mission Control"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -4649,9 +5377,9 @@
           "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4667,6 +5395,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "not-adopted",
@@ -4794,6 +5532,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -4903,9 +5651,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4921,6 +5669,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -5028,9 +5786,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -5047,6 +5805,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -5060,6 +5828,141 @@
       },
       "ecosystem_deps": [
         "compas"
+      ]
+    },
+    {
+      "name": "compas_lca",
+      "owner": "blockresearchgroup",
+      "url": "https://github.com/BlockResearchGroup/compas_lca",
+      "category": "structures",
+      "tier": "domain",
+      "runtime": "python",
+      "pypi": "compas_lca",
+      "distributions": [
+        {
+          "registry": "pypi",
+          "name": "compas_lca",
+          "version": "1.0.2",
+          "date": "2026-07-21",
+          "url": "https://pypi.org/project/compas_lca/"
+        }
+      ],
+      "role": null,
+      "status": "active",
+      "description": null,
+      "stars": 0,
+      "language": "Python",
+      "health": {
+        "last_commit_date": "2026-08-13",
+        "staleness": "fresh",
+        "ci": "passing",
+        "open_issues": 0,
+        "open_prs": 1,
+        "oldest_open_issue_age_days": null
+      },
+      "release": {
+        "github_tag": "1.0.2",
+        "github_release_tag": "v1.0.2",
+        "github_date": "2026-07-21",
+        "registry_version": "1.0.2",
+        "registry_date": "2026-07-21",
+        "registry_name": "pypi",
+        "pypi_version": "1.0.2",
+        "pypi_date": "2026-07-21",
+        "drift": false,
+        "distributions": [
+          {
+            "registry": "pypi",
+            "name": "compas_lca",
+            "version": "1.0.2",
+            "date": "2026-07-21",
+            "url": "https://pypi.org/project/compas_lca/"
+          }
+        ]
+      },
+      "packaging": {
+        "compas_pin": "compas >=2",
+        "compas_major_floor": 2,
+        "python_versions": [
+          "3.11",
+          "3.12",
+          "3.13"
+        ],
+        "python_source": "requires-python",
+        "hosts": {
+          "rhino": false,
+          "ghpython": false,
+          "blender": false
+        },
+        "node_engine": null,
+        "package_manager": null
+      },
+      "features": {
+        "compas2": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "compas >=2"
+        },
+        "py311": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "requires-python: 3.11, 3.12, 3.13"
+        },
+        "py312": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "requires-python: 3.11, 3.12, 3.13"
+        },
+        "py313": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "requires-python: 3.11, 3.12, 3.13"
+        },
+        "new-scene-api": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "no matching API usage"
+        },
+        "no-deprecated-artist": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "clean"
+        },
+        "mkdocs": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still has docs/conf.py"
+        },
+        "invocations2": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
+        "pypi-match": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "pypi 1.0.2 = GitHub 1.0.2"
+        },
+        "conda-forge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no conda-forge package"
+        }
+      },
+      "ecosystem_deps": [
+        "compas",
+        "compas_ifc",
+        "compas_model"
       ]
     },
     {
@@ -5153,9 +6056,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -5171,6 +6074,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -5299,6 +6212,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -5406,9 +6329,9 @@
           "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -5424,6 +6347,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -5550,6 +6483,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -5657,9 +6600,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -5675,6 +6618,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -5801,6 +6754,16 @@
           "source": "auto",
           "detail": "no match"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "badge links to Mission Control"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -5844,7 +6807,7 @@
         "ci": "none",
         "open_issues": 46,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 3177
+        "oldest_open_issue_age_days": 3178
       },
       "release": {
         "github_tag": "0.3.3",
@@ -5906,9 +6869,9 @@
           "detail": "ci-matrix: 3.6, 3.7, 3.8, 3.9"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -5924,6 +6887,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -6049,6 +7022,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -6177,6 +7160,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -6302,6 +7295,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -6392,9 +7395,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -6410,6 +7413,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "matched 'compas-dev/compas-actions/'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "n/a",
@@ -6542,6 +7555,16 @@
           "source": "auto",
           "detail": "not applicable to node projects"
         },
+        "compas-actions": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not applicable to node projects"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -6646,9 +7669,9 @@
           "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -6664,6 +7687,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -6788,6 +7821,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -6894,9 +7937,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -6912,6 +7955,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -7019,9 +8072,9 @@
           "detail": "ci-matrix: 3.11"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -7038,6 +8091,16 @@
           "source": "auto",
           "detail": "no match"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -7052,6 +8115,117 @@
       "ecosystem_deps": [
         "compas"
       ]
+    },
+    {
+      "name": "compas-actions",
+      "owner": "compas-dev",
+      "url": "https://github.com/compas-dev/compas-actions",
+      "category": "tooling",
+      "tier": "tooling",
+      "runtime": "python",
+      "pypi": null,
+      "distributions": [],
+      "role": null,
+      "status": "active",
+      "description": null,
+      "stars": 0,
+      "language": "Python",
+      "health": {
+        "last_commit_date": "2026-08-13",
+        "staleness": "fresh",
+        "ci": "passing",
+        "open_issues": 0,
+        "open_prs": 0,
+        "oldest_open_issue_age_days": null
+      },
+      "release": {
+        "github_tag": null,
+        "github_release_tag": null,
+        "github_date": null,
+        "registry_version": null,
+        "registry_date": null,
+        "registry_name": null,
+        "pypi_version": null,
+        "pypi_date": null,
+        "drift": false,
+        "distributions": []
+      },
+      "packaging": {
+        "compas_pin": null,
+        "compas_major_floor": null,
+        "python_versions": [],
+        "python_source": "unknown",
+        "hosts": {
+          "rhino": false,
+          "ghpython": false,
+          "blender": false
+        },
+        "node_engine": null,
+        "package_manager": null
+      },
+      "features": {
+        "compas2": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "no compas dependency"
+        },
+        "py311": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "no python info"
+        },
+        "py312": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "no python info"
+        },
+        "py313": {
+          "status": "unknown",
+          "source": "auto",
+          "detail": "no python info"
+        },
+        "new-scene-api": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "no matching API usage"
+        },
+        "no-deprecated-artist": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "clean"
+        },
+        "mkdocs": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "missing mkdocs.yml"
+        },
+        "invocations2": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "matched 'compas-dev/compas-actions/'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
+        "pypi-match": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed through a package registry"
+        },
+        "conda-forge": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed on PyPI/conda"
+        }
+      },
+      "ecosystem_deps": []
     },
     {
       "name": "compas-make2d",
@@ -7128,9 +8302,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -7146,6 +8320,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "n/a",
@@ -7231,9 +8415,9 @@
           "detail": "no python info"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -7249,6 +8433,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "README not found"
         },
         "pypi-match": {
           "status": "n/a",
@@ -7354,9 +8548,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -7372,6 +8566,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -7477,9 +8681,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -7495,6 +8699,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "matched 'compas-dev/compas-actions/'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -7625,6 +8839,16 @@
           "source": "auto",
           "detail": "not applicable to node projects"
         },
+        "compas-actions": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not applicable to node projects"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -7750,6 +8974,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -7873,6 +9107,16 @@
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
         },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
@@ -7887,6 +9131,123 @@
       "ecosystem_deps": [
         "compas"
       ]
+    },
+    {
+      "name": "ghpython_componentizer",
+      "owner": "compas-dev",
+      "url": "https://github.com/compas-dev/ghpython_componentizer",
+      "category": "tooling",
+      "tier": "tooling",
+      "runtime": "python",
+      "pypi": null,
+      "distributions": [],
+      "role": null,
+      "status": "active",
+      "description": "Build Grasshopper .ghuser components out of plain Python source bundles",
+      "stars": 0,
+      "language": "Python",
+      "health": {
+        "last_commit_date": "2026-08-13",
+        "staleness": "fresh",
+        "ci": "passing",
+        "open_issues": 0,
+        "open_prs": 0,
+        "oldest_open_issue_age_days": null
+      },
+      "release": {
+        "github_tag": "0.1.1",
+        "github_release_tag": "v0.1.1",
+        "github_date": "2026-08-13",
+        "registry_version": null,
+        "registry_date": null,
+        "registry_name": null,
+        "pypi_version": null,
+        "pypi_date": null,
+        "drift": false,
+        "distributions": []
+      },
+      "packaging": {
+        "compas_pin": null,
+        "compas_major_floor": null,
+        "python_versions": [
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
+        ],
+        "python_source": "requires-python",
+        "hosts": {
+          "rhino": false,
+          "ghpython": false,
+          "blender": false
+        },
+        "node_engine": null,
+        "package_manager": null
+      },
+      "features": {
+        "compas2": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "no compas dependency"
+        },
+        "py311": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
+        },
+        "py312": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
+        },
+        "py313": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
+        },
+        "new-scene-api": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "no matching API usage"
+        },
+        "no-deprecated-artist": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "clean"
+        },
+        "mkdocs": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "missing mkdocs.yml"
+        },
+        "invocations2": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "matched 'compas-dev/compas-actions/'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
+        "pypi-match": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed through a package registry"
+        },
+        "conda-forge": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed on PyPI/conda"
+        }
+      },
+      "ecosystem_deps": []
     },
     {
       "name": "lamcp",
@@ -7978,9 +9339,9 @@
           "detail": "requires-python: 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -7996,6 +9357,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -8099,9 +9470,9 @@
           "detail": "ci-matrix: 3.8, 3.9, 3.10"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -8117,6 +9488,16 @@
           "status": "not-adopted",
           "source": "auto",
           "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "adopted",
@@ -8202,9 +9583,9 @@
           "detail": "no python info"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -8220,6 +9601,16 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "n/a",
@@ -8303,9 +9694,9 @@
           "detail": "no python info"
         },
         "new-scene-api": {
-          "status": "not-adopted",
+          "status": "n/a",
           "source": "auto",
-          "detail": "no match"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -8321,6 +9712,133 @@
           "status": "adopted",
           "source": "auto",
           "detail": "matched 'compas_invocations2'"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
+        },
+        "pypi-match": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed through a package registry"
+        },
+        "conda-forge": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "not distributed on PyPI/conda"
+        }
+      },
+      "ecosystem_deps": []
+    },
+    {
+      "name": "compas_soundscape",
+      "owner": "gramaziokohler",
+      "url": "https://github.com/gramaziokohler/compas_soundscape",
+      "category": "acoustics",
+      "tier": "domain",
+      "runtime": "python",
+      "pypi": null,
+      "distributions": [],
+      "role": null,
+      "status": "active",
+      "description": "A Compas package for generating soundscapes",
+      "stars": 0,
+      "language": "TypeScript",
+      "health": {
+        "last_commit_date": "2026-08-07",
+        "staleness": "fresh",
+        "ci": "none",
+        "open_issues": 0,
+        "open_prs": 0,
+        "oldest_open_issue_age_days": null
+      },
+      "release": {
+        "github_tag": null,
+        "github_release_tag": null,
+        "github_date": null,
+        "registry_version": null,
+        "registry_date": null,
+        "registry_name": null,
+        "pypi_version": null,
+        "pypi_date": null,
+        "drift": false,
+        "distributions": []
+      },
+      "packaging": {
+        "compas_pin": null,
+        "compas_major_floor": null,
+        "python_versions": [
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
+        ],
+        "python_source": "requires-python",
+        "hosts": {
+          "rhino": false,
+          "ghpython": true,
+          "blender": false
+        },
+        "node_engine": null,
+        "package_manager": null
+      },
+      "features": {
+        "compas2": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "no compas dependency"
+        },
+        "py311": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
+        },
+        "py312": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
+        },
+        "py313": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
+        },
+        "new-scene-api": {
+          "status": "n/a",
+          "source": "auto",
+          "detail": "no matching API usage"
+        },
+        "no-deprecated-artist": {
+          "status": "adopted",
+          "source": "auto",
+          "detail": "clean"
+        },
+        "mkdocs": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "missing mkdocs.yml"
+        },
+        "invocations2": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "no match"
+        },
+        "compas-actions": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "still uses 'compas-dev/compas-actions.'"
+        },
+        "mission-control-badge": {
+          "status": "not-adopted",
+          "source": "auto",
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "n/a",
@@ -8339,10 +9857,7 @@
   "warnings": [
     "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Apr+is%3Aopen&per_page=1 -> HTTP 422",
     "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&sort=created&order=asc&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas_timber_pb+is%3Apr+is%3Aopen&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas_timber_pb+is%3Aissue+is%3Aopen&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas_timber_pb+is%3Aissue+is%3Aopen&sort=created&order=asc&per_page=1 -> HTTP 422"
+    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&sort=created&order=asc&per_page=1 -> HTTP 422"
   ],
   "collection_scope": "all",
   "collected_repos": null
