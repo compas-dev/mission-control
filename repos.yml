@@ -216,6 +216,11 @@ repos:
         name: "@compas-dev/compas-threejs-ts"
     ecosystem_deps:
       - compas_threejs
+  - name: vscode-compas-threejs
+    category: tooling
+    runtime: node
+    ecosystem_deps:
+      - compas_threejs_ts
   - name: compas-make2d
     owner: gramaziokohler
     category: tooling
