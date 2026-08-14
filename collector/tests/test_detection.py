@@ -415,7 +415,19 @@ class ReadmeDetectionTests(unittest.TestCase):
                 "(https://compas.dev/mission-control/#compas_fab)",
                 "adopted",
             ),
+            (
+                '<p align="center">\n'
+                '  <a href="https://compas.dev/mission-control/#compas_fab">'
+                '<img src="https://compas.dev/badge.svg" alt="Made with COMPAS"></a>\n'
+                "</p>",
+                "adopted",
+            ),
             ("[![Made with COMPAS](https://compas.dev/badge.svg)](https://compas.dev)", "not-adopted"),
+            (
+                '<a href="https://compas.dev"><img src="https://compas.dev/badge.svg" '
+                'alt="Made with COMPAS"></a>',
+                "not-adopted",
+            ),
             ("See https://compas.dev/mission-control/#compas_fab", "not-adopted"),
         ]
 

@@ -220,7 +220,7 @@ features:
 
   - id: mission-control-badge
     label: "Mission Control badge"
-    kind: readme                   # substring match in the repository README
+    kind: readme                   # substring match; linked-image Markdown also matches equivalent HTML
     detect:
       present: ["[![Made with COMPAS](https://compas.dev/badge.svg)](https://compas.dev/mission-control/#{name})"]
 

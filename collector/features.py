@@ -6,12 +6,57 @@ adoption status of each feature: adopted | not-adopted | n/a | unknown.
 
 from __future__ import annotations
 
+import re
+from html.parser import HTMLParser
+
 from parse import same_version, satisfies
 
 STATUS_ADOPTED = "adopted"
 STATUS_NOT = "not-adopted"
 STATUS_NA = "n/a"
 STATUS_UNKNOWN = "unknown"
+
+
+_MARKDOWN_LINKED_IMAGE = re.compile(
+    r"\[!\[(?P<alt>[^\]]*)\]\((?P<src>[^)]+)\)\]\((?P<href>[^)]+)\)"
+)
+
+
+class _LinkedImageHTMLParser(HTMLParser):
+    """Collect images nested inside links, independent of HTML formatting."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._link_targets: list[str | None] = []
+        self.linked_images: set[tuple[str, str, str]] = set()
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = dict(attrs)
+        if tag == "a":
+            self._link_targets.append(attributes.get("href"))
+        elif tag == "img" and self._link_targets and self._link_targets[-1]:
+            src = attributes.get("src")
+            if src:
+                self.linked_images.add(
+                    (attributes.get("alt") or "", src, self._link_targets[-1] or "")
+                )
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "a" and self._link_targets:
+            self._link_targets.pop()
+
+
+def _html_linked_images(content: str) -> set[tuple[str, str, str]]:
+    parser = _LinkedImageHTMLParser()
+    parser.feed(content)
+    return parser.linked_images
+
+
+def _markdown_linked_image(pattern: str) -> tuple[str, str, str] | None:
+    match = _MARKDOWN_LINKED_IMAGE.fullmatch(pattern)
+    if not match:
+        return None
+    return match.group("alt"), match.group("src"), match.group("href")
 
 
 def _cell(status: str, source: str = "auto", detail: str = "") -> dict:
@@ -129,9 +174,16 @@ def detect(feature: dict, repo_cfg: dict, packaging: dict, gh, owner: str, name:
         if content is False:
             return _cell(STATUS_NOT, detail="README not found")
         patterns = [pattern.format(owner=owner, name=name) for pattern in detect_cfg.get("present", [])]
+        html_linked_images = None
         for pattern in patterns:
             if pattern in content:
                 return _cell(STATUS_ADOPTED, detail="badge links to Mission Control")
+            linked_image = _markdown_linked_image(pattern)
+            if linked_image:
+                if html_linked_images is None:
+                    html_linked_images = _html_linked_images(content)
+                if linked_image in html_linked_images:
+                    return _cell(STATUS_ADOPTED, detail="badge links to Mission Control")
         return _cell(STATUS_NOT, detail="linked COMPAS badge not found in README")
 
     if kind == "code":
