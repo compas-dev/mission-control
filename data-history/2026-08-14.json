@@ -196,7 +196,7 @@
         "py311": "adopted",
         "py312": "adopted",
         "py313": "adopted",
-        "new-scene-api": "n/a",
+        "new-scene-api": "unknown",
         "no-deprecated-artist": "adopted",
         "mkdocs": "adopted",
         "invocations2": "adopted",
@@ -310,7 +310,7 @@
         "no-deprecated-artist": "adopted",
         "mkdocs": "adopted",
         "invocations2": "adopted",
-        "compas-actions": "not-adopted",
+        "compas-actions": "unknown",
         "mission-control-badge": "not-adopted",
         "pypi-match": "not-adopted",
         "conda-forge": "adopted"
@@ -828,16 +828,16 @@
       "open_issues": 2,
       "open_prs": 0,
       "compas_major_floor": null,
-      "features_adopted": 2,
+      "features_adopted": 1,
       "features": {
         "compas2": "unknown",
         "py311": "not-adopted",
         "py312": "not-adopted",
         "py313": "not-adopted",
         "new-scene-api": "n/a",
-        "no-deprecated-artist": "adopted",
+        "no-deprecated-artist": "unknown",
         "mkdocs": "not-adopted",
-        "invocations2": "not-adopted",
+        "invocations2": "unknown",
         "compas-actions": "not-adopted",
         "mission-control-badge": "not-adopted",
         "pypi-match": "adopted",
@@ -878,7 +878,7 @@
         "py311": "adopted",
         "py312": "adopted",
         "py313": "adopted",
-        "new-scene-api": "n/a",
+        "new-scene-api": "unknown",
         "no-deprecated-artist": "adopted",
         "mkdocs": "not-adopted",
         "invocations2": "adopted",
@@ -1268,7 +1268,7 @@
       "open_issues": 0,
       "open_prs": 2,
       "compas_major_floor": null,
-      "features_adopted": 7,
+      "features_adopted": 8,
       "features": {
         "compas2": "unknown",
         "py311": "adopted",
@@ -1279,7 +1279,7 @@
         "mkdocs": "adopted",
         "invocations2": "adopted",
         "compas-actions": "adopted",
-        "mission-control-badge": "not-adopted",
+        "mission-control-badge": "adopted",
         "pypi-match": "n/a",
         "conda-forge": "n/a"
       }
@@ -1287,8 +1287,8 @@
     "compas_threejs_ts": {
       "staleness": "fresh",
       "ci": "passing",
-      "open_issues": 0,
-      "open_prs": 1,
+      "open_issues": 1,
+      "open_prs": 3,
       "compas_major_floor": null,
       "features_adopted": 1,
       "features": {
@@ -1488,7 +1488,7 @@
       "open_issues": 10,
       "open_prs": 1,
       "compas_major_floor": 2,
-      "features_adopted": 10,
+      "features_adopted": 11,
       "features": {
         "compas2": "adopted",
         "py311": "adopted",
@@ -1499,7 +1499,7 @@
         "mkdocs": "adopted",
         "invocations2": "adopted",
         "compas-actions": "adopted",
-        "mission-control-badge": "not-adopted",
+        "mission-control-badge": "adopted",
         "pypi-match": "adopted",
         "conda-forge": "adopted"
       }
@@ -1598,16 +1598,16 @@
       "open_issues": 0,
       "open_prs": 0,
       "compas_major_floor": null,
-      "features_adopted": 5,
+      "features_adopted": 4,
       "features": {
         "compas2": "n/a",
         "py311": "adopted",
         "py312": "adopted",
         "py313": "adopted",
         "new-scene-api": "n/a",
-        "no-deprecated-artist": "adopted",
+        "no-deprecated-artist": "unknown",
         "mkdocs": "not-adopted",
-        "invocations2": "not-adopted",
+        "invocations2": "unknown",
         "compas-actions": "not-adopted",
         "mission-control-badge": "not-adopted",
         "pypi-match": "adopted",
@@ -1634,6 +1634,28 @@
         "mission-control-badge": "not-adopted",
         "pypi-match": "adopted",
         "conda-forge": "not-adopted"
+      }
+    },
+    "vscode-compas-threejs": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 0,
+      "features": {
+        "compas2": "n/a",
+        "py311": "n/a",
+        "py312": "n/a",
+        "py313": "n/a",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "n/a",
+        "mkdocs": "n/a",
+        "invocations2": "n/a",
+        "compas-actions": "n/a",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
       }
     },
     "compas_nanobind_package_template": {
