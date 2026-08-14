@@ -2,6 +2,7 @@
 
 Reads repos.yml + features.yml, gathers data from GitHub and package registries, and
 writes site/public/data.json (plus an optional dated snapshot in data-history/).
+With ``--materials``, performs a lightweight metadata-only pass over materials.yml.
 
 Usage:
     python -m collector --root .. --token $GITHUB_TOKEN
@@ -49,6 +50,8 @@ TIER_BY_CATEGORY = {
     "tooling": "tooling",
     "template": "tooling",
 }
+
+HISTORY_SCHEMA_VERSION = 2
 
 
 def staleness(last_commit_date: str | None) -> str:
@@ -111,6 +114,58 @@ def merge_repos(existing: list[dict], collected: list[dict]) -> list[dict]:
     merged = {repo["name"]: repo for repo in existing}
     merged.update({repo["name"]: repo for repo in collected})
     return list(merged.values())
+
+
+def build_history_snapshot(data: dict) -> dict:
+    """Build a compact, versioned daily snapshot from fully collected data."""
+    return {
+        "schema_version": HISTORY_SCHEMA_VERSION,
+        "date": data["generated_at"][:10],
+        # Preserve the definition active on this date so later readers can
+        # distinguish a newly introduced feature from non-adoption.
+        "features": data.get("features", []),
+        "repos": {
+            repo["name"]: {
+                "staleness": repo["health"]["staleness"],
+                "ci": repo["health"]["ci"],
+                "open_issues": repo["health"]["open_issues"],
+                "open_prs": repo["health"]["open_prs"],
+                "compas_major_floor": repo["packaging"]["compas_major_floor"],
+                "features_adopted": sum(1 for cell in repo["features"].values() if cell["status"] == "adopted"),
+                "features": {feature_id: cell["status"] for feature_id, cell in repo["features"].items()},
+            }
+            for repo in data["repos"]
+        },
+    }
+
+
+def collect_material(gh: GitHub, cfg: dict, defaults: dict) -> dict:
+    """Collect one lightweight workshop/project/reference record."""
+    owner = cfg.get("owner", defaults.get("owner", "compas-dev"))
+    name = cfg["name"]
+    print(f"  · {owner}/{name}", file=sys.stderr)
+    meta = gh.repo(owner, name)
+    if not meta:
+        gh.warnings.append(f"{owner}/{name}: repository metadata unavailable")
+        meta = {}
+    archived = meta.get("archived", False)
+    status = cfg.get("status") or ("unknown" if not meta else "archived" if archived else "active")
+    return {
+        "name": name,
+        "owner": owner,
+        "url": meta.get("html_url", f"https://github.com/{owner}/{name}"),
+        "kind": cfg.get("kind", "project"),
+        "category": cfg.get("category", "other"),
+        "status": status,
+        "description": meta.get("description"),
+        "language": meta.get("language") or None,
+        "stars": meta.get("stargazers_count", 0),
+        "last_activity_date": (meta.get("pushed_at") or "")[:10] or None,
+        "homepage": meta.get("homepage") or None,
+        "topics": meta.get("topics") or [],
+        "ecosystem_deps": sorted(set(cfg.get("ecosystem_deps") or [])),
+        "notes": cfg.get("notes"),
+    }
 
 
 def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tracked: dict) -> dict:
@@ -241,6 +296,11 @@ def main() -> int:
     ap.add_argument("--token", default=os.environ.get("GITHUB_TOKEN"), help="GitHub token")
     ap.add_argument("--no-history", action="store_true", help="skip writing a dated snapshot")
     ap.add_argument(
+        "--materials",
+        action="store_true",
+        help="collect lightweight materials.yml metadata into site/public/materials.json",
+    )
+    ap.add_argument(
         "--repo",
         dest="repo_names",
         action="append",
@@ -249,6 +309,29 @@ def main() -> int:
     args = ap.parse_args()
 
     root = Path(args.root).resolve()
+    if args.materials:
+        if args.repo_names:
+            print("ERROR: --repo cannot be combined with --materials", file=sys.stderr)
+            return 2
+        materials_cfg = yaml.safe_load((root / "materials.yml").read_text())
+        defaults = materials_cfg.get("defaults", {})
+        gh = GitHub(args.token)
+        configs = materials_cfg.get("materials", [])
+        print(f"Collecting all {len(configs)} materials…", file=sys.stderr)
+        materials = [collect_material(gh, cfg, defaults) for cfg in configs]
+        materials.sort(key=lambda item: (item["owner"].lower(), item["name"].lower()))
+        materials.sort(key=lambda item: item["last_activity_date"] or "", reverse=True)
+        data = {
+            "generated_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "materials": materials,
+            "warnings": gh.warnings,
+        }
+        out = root / "site" / "public" / "materials.json"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(json.dumps(data, indent=2))
+        print(f"Wrote {out} ({len(materials)} materials, {len(gh.warnings)} warnings)", file=sys.stderr)
+        return 0
+
     repos_cfg = yaml.safe_load((root / "repos.yml").read_text())
     features = yaml.safe_load((root / "features.yml").read_text())["features"]
     defaults = repos_cfg.get("defaults", {})
@@ -313,20 +396,7 @@ def main() -> int:
     if not args.no_history and not requested_names:
         hist_dir = root / "data-history"
         hist_dir.mkdir(exist_ok=True)
-        snapshot = {
-            "date": data["generated_at"][:10],
-            "repos": {
-                r["name"]: {
-                    "staleness": r["health"]["staleness"],
-                    "ci": r["health"]["ci"],
-                    "open_issues": r["health"]["open_issues"],
-                    "open_prs": r["health"]["open_prs"],
-                    "compas_major_floor": r["packaging"]["compas_major_floor"],
-                    "features_adopted": sum(1 for c in r["features"].values() if c["status"] == "adopted"),
-                }
-                for r in repos
-            },
-        }
+        snapshot = build_history_snapshot(data)
         (hist_dir / f"{snapshot['date']}.json").write_text(json.dumps(snapshot, indent=2))
     elif requested_names and not args.no_history:
         print("Skipped history snapshot for partial collection.", file=sys.stderr)

@@ -1,5 +1,5 @@
 # Features / APIs tracked for adoption across the ecosystem.
-# Each entry is a column in the adoption matrix. See SPEC.md §4.2 and §5.4.
+# Each entry is a column in the adoption matrix. See SPEC.md §4.3 and §5.4.
 #
 # detection kinds:
 #   pin     - inspect a dependency version specifier (from requirements.txt)

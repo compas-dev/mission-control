@@ -10,7 +10,7 @@ sys.path.insert(0, str(COLLECTOR_DIR))
 import features  # noqa: E402
 import parse  # noqa: E402
 import registries  # noqa: E402
-from collector.__main__ import merge_repos  # noqa: E402
+from collector.__main__ import build_history_snapshot, collect_material, merge_repos  # noqa: E402
 from github import GitHub  # noqa: E402
 
 
@@ -141,6 +141,74 @@ class PartialCollectionTests(unittest.TestCase):
         merged = merge_repos(existing, collected)
 
         self.assertEqual({repo["name"]: repo["stars"] for repo in merged}, {"compas": 1, "compas_pb_ts": 3})
+
+
+class HistorySnapshotTests(unittest.TestCase):
+    def test_snapshot_preserves_feature_definitions_and_per_repo_statuses(self):
+        data = {
+            "generated_at": "2026-08-14T12:34:56Z",
+            "features": [
+                {"id": "compas2", "label": "On COMPAS 2.x", "kind": "pin", "applies_to": ["python"]},
+                {"id": "scene", "label": "New Scene API", "kind": "code", "applies_to": ["python"]},
+            ],
+            "repos": [
+                {
+                    "name": "example",
+                    "health": {"staleness": "fresh", "ci": "passing", "open_issues": 2, "open_prs": 1},
+                    "packaging": {"compas_major_floor": 2},
+                    "features": {
+                        "compas2": {"status": "adopted", "source": "auto", "detail": "compas >=2"},
+                        "scene": {"status": "n/a", "source": "auto", "detail": "no matching API usage"},
+                    },
+                }
+            ],
+        }
+
+        snapshot = build_history_snapshot(data)
+
+        self.assertEqual(snapshot["schema_version"], 2)
+        self.assertEqual(snapshot["date"], "2026-08-14")
+        self.assertEqual(snapshot["features"], data["features"])
+        self.assertEqual(snapshot["repos"]["example"]["features_adopted"], 1)
+        self.assertEqual(snapshot["repos"]["example"]["features"], {"compas2": "adopted", "scene": "n/a"})
+
+
+class MaterialCollectionTests(unittest.TestCase):
+    def test_material_collection_uses_only_repository_metadata(self):
+        class FakeGitHub:
+            warnings = []
+
+            def repo(self, owner, name):
+                return {
+                    "html_url": f"https://github.com/{owner}/{name}",
+                    "archived": True,
+                    "description": "Workshop material",
+                    "language": "Python",
+                    "stargazers_count": 4,
+                    "pushed_at": "2025-03-12T11:58:14Z",
+                    "homepage": "https://example.com",
+                    "topics": ["compas", "workshop"],
+                }
+
+        material = collect_material(
+            FakeGitHub(),
+            {
+                "name": "example-workshop",
+                "owner": "example-org",
+                "kind": "workshop",
+                "category": "fabrication",
+                "ecosystem_deps": ["compas_fab", "compas"],
+            },
+            {},
+        )
+
+        self.assertEqual(material["status"], "archived")
+        self.assertEqual(material["kind"], "workshop")
+        self.assertEqual(material["category"], "fabrication")
+        self.assertEqual(material["last_activity_date"], "2025-03-12")
+        self.assertEqual(material["ecosystem_deps"], ["compas", "compas_fab"])
+        self.assertNotIn("health", material)
+        self.assertNotIn("features", material)
 
 
 class CodeSearchTests(unittest.TestCase):

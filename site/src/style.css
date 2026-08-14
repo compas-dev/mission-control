@@ -34,6 +34,7 @@
   --cat-viz: #f0a6d8;
   --cat-xr: #fbbf24;
   --cat-ai: #e879f9;
+  --cat-acoustics: #c084fc;
   --cat-apps: #60a5fa;
   --cat-tooling: #94a3b8;
   --cat-template: #94a3b8;
@@ -396,6 +397,29 @@ button {
   font-size: 12px;
   cursor: pointer;
   white-space: nowrap;
+}
+.material-filters {
+  gap: 8px;
+}
+.select-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.select-control select {
+  max-width: 220px;
+  padding: 7px 26px 7px 9px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font: 12px "Space Grotesk", system-ui, sans-serif;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 /* ---- hint row ---- */
@@ -883,6 +907,209 @@ button {
   .adopt-detail { display: none; }
 }
 
+/* ---- materials library ---- */
+.materials-view {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.materials-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 10px 2px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.materials-title {
+  margin: 3px 0 5px;
+  font-size: 23px;
+  letter-spacing: -0.02em;
+}
+.materials-intro {
+  max-width: 760px;
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+.materials-summary {
+  display: flex;
+  gap: 17px;
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 10.5px;
+  white-space: nowrap;
+}
+.materials-summary strong {
+  color: var(--ink);
+  font-size: 13px;
+}
+.material-category-chips {
+  flex: 1 1 300px;
+}
+.material-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.material-year {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 20px;
+}
+.material-year-head {
+  position: sticky;
+  top: 78px;
+  align-self: start;
+  padding-top: 3px;
+}
+.material-year-head h3 {
+  margin: 0;
+  font: 600 25px "JetBrains Mono", monospace;
+  letter-spacing: -0.04em;
+}
+.material-year-head span {
+  color: var(--muted);
+  font-size: 9.5px;
+}
+.material-list {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.material-row {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) minmax(130px, 180px);
+  gap: 16px;
+  padding: 15px 16px;
+  border-left: 3px solid var(--material-cat);
+  border-bottom: 1px solid var(--border);
+}
+.material-row:last-child {
+  border-bottom: 0;
+}
+.material-row:hover {
+  background: color-mix(in srgb, var(--material-cat) 4%, var(--surface));
+}
+.material-row.archived {
+  opacity: 0.62;
+}
+.material-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: start;
+  padding: 4px 0;
+  border-right: 1px solid var(--grid);
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.material-date strong {
+  color: var(--ink-2);
+  font-size: 17px;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+.material-main {
+  min-width: 0;
+}
+.material-row-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.material-row-head a {
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.material-owner {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 10.5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.material-main > p {
+  max-width: 76ch;
+  margin: 8px 0 0;
+  color: var(--ink-2);
+  font-size: 12.5px;
+}
+.material-archived {
+  flex: 0 0 auto;
+  padding: 2px 5px;
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  font-size: 8.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.material-facets {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding-left: 14px;
+  border-left: 1px solid var(--grid);
+  color: var(--muted);
+  font-size: 10px;
+}
+.material-facets > span,
+.material-facets > a {
+  line-height: 1.35;
+}
+.material-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-2);
+  font-weight: 600;
+}
+.material-category i {
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--material-cat);
+}
+.material-deps {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 11px;
+}
+.material-deps-label {
+  margin-right: 2px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.material-dep {
+  display: inline-flex;
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font: 9.5px "JetBrains Mono", monospace;
+}
+button.material-dep {
+  cursor: pointer;
+}
+button.material-dep:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ---- ecosystem diagram ---- */
 .edge-key {
   font-weight: 600;
@@ -1304,6 +1531,30 @@ button {
   .roadmap-head { align-items: flex-start; flex-direction: column; }
   .roadmap-notice { align-items: flex-start; flex-direction: column; gap: 4px; }
   .roadmap-source-links { margin-left: 0; flex-wrap: wrap; white-space: normal; }
+  .material-filters { width: 100%; margin-left: 0; flex-wrap: wrap; }
+  .select-control { flex: 1 1 220px; }
+  .select-control select { flex: 1; max-width: none; min-width: 0; }
+  .materials-head { align-items: flex-start; flex-direction: column; }
+  .materials-summary { flex-wrap: wrap; white-space: normal; }
+  .material-year { grid-template-columns: 1fr; gap: 9px; }
+  .material-year-head { position: static; display: flex; align-items: baseline; gap: 9px; }
+  .material-row {
+    grid-template-columns: 42px minmax(0, 1fr);
+    grid-template-areas: "date main" "date facets";
+    gap: 8px 12px;
+    padding: 13px 12px;
+  }
+  .material-date { grid-area: date; }
+  .material-main { grid-area: main; }
+  .material-facets {
+    grid-area: facets;
+    flex-direction: row;
+    gap: 5px 12px;
+    flex-wrap: wrap;
+    padding: 9px 0 0;
+    border-top: 1px solid var(--grid);
+    border-left: 0;
+  }
 }
 
 /* ---- misc ---- */

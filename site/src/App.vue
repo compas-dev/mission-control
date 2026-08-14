@@ -4,6 +4,8 @@ import { computed, ref, onMounted, onBeforeUnmount, watch, nextTick } from "vue"
 const data = ref(null);
 const error = ref(null);
 const roadmap = ref(null);
+const materialCatalog = ref(null);
+const materialsError = ref(null);
 
 // ---- view state ------------------------------------------------------
 const theme = ref("dark"); // dark | light
@@ -15,11 +17,16 @@ const collapsed = ref(new Set());
 const quick = ref(null); // null | "failing" | "dormant"
 const groupBy = ref("category"); // category | tier
 const sortKey = ref("stars"); // stars | activity | name
+const materialSearch = ref("");
+const materialOwner = ref("all");
+const materialStatus = ref("all");
+const materialKind = ref("all");
+const materialCategory = ref("all");
 
 const CAT_LABEL = {
   core: "Core", fabrication: "Fabrication", timber: "Timber", geometry: "Geometry",
   structures: "Structures", fea: "FEA", viz: "Visualization", xr: "XR",
-  ai: "AI", apps: "Apps", tooling: "Tooling", template: "Templates", other: "Other",
+  ai: "AI", apps: "Apps", tooling: "Tooling", template: "Templates", acoustics: "Acoustics", other: "Other",
 };
 const PY = ["3.9", "3.10", "3.11", "3.12", "3.13"];
 const STALE_ORDER = { fresh: 0, aging: 1, stale: 2, dormant: 3, unknown: 4 };
@@ -42,7 +49,14 @@ const ECO_TIERS = [
   { id: "core", name: "Core", sub: "the COMPAS framework" },
   { id: "tooling", name: "Tooling", sub: "shared dev infrastructure" },
 ];
-const VALID_MODES = ["fleet", "ecosystem", "roadmap"];
+const MATERIAL_KINDS = [
+  { id: "workshop", label: "Workshop" },
+  { id: "course", label: "Course" },
+  { id: "tutorial", label: "Tutorial" },
+  { id: "project", label: "Project" },
+  { id: "reference", label: "Reference" },
+];
+const VALID_MODES = ["fleet", "ecosystem", "roadmap", "materials"];
 
 // ---- lifecycle -------------------------------------------------------
 onMounted(async () => {
@@ -56,13 +70,16 @@ onMounted(async () => {
   applyTheme();
 
   try {
-    const [dataRes, roadmapRes] = await Promise.all([
+    const [dataRes, roadmapRes, materialsRes] = await Promise.all([
       fetch(`${import.meta.env.BASE_URL}data.json`, { cache: "no-cache" }),
       fetch(`${import.meta.env.BASE_URL}roadmap.json`, { cache: "no-cache" }),
+      fetch(`${import.meta.env.BASE_URL}materials.json`, { cache: "no-cache" }).catch(() => null),
     ]);
     if (!dataRes.ok) throw new Error(`data.json ${dataRes.status}`);
     data.value = await dataRes.json();
     if (roadmapRes.ok) roadmap.value = await roadmapRes.json();
+    if (materialsRes?.ok) materialCatalog.value = await materialsRes.json();
+    else materialsError.value = materialsRes ? `materials.json ${materialsRes.status}` : "materials.json could not be loaded";
   } catch (e) {
     error.value = String(e);
   }
@@ -184,6 +201,46 @@ const applicableFeatures = (r) => features.value.filter((f) => featStatus(r, f.i
 const repos = computed(() => data.value?.repos ?? []);
 const features = computed(() => data.value?.features ?? []);
 const categories = computed(() => data.value?.categories ?? []);
+
+// Materials are intentionally sourced and filtered separately from fleet data.
+const materials = computed(() => materialCatalog.value?.materials ?? []);
+const materialOwners = computed(() => [...new Set(materials.value.map((m) => m.owner))].sort((a, b) => a.localeCompare(b)));
+const materialCategories = computed(() => [...new Set(materials.value.map((m) => m.category || "other"))]
+  .sort((a, b) => (CAT_RANK[a] ?? 99) - (CAT_RANK[b] ?? 99) || a.localeCompare(b)));
+const filteredMaterials = computed(() => {
+  const q = materialSearch.value.trim().toLowerCase();
+  return materials.value.filter((m) => {
+    if (materialOwner.value !== "all" && m.owner !== materialOwner.value) return false;
+    if (materialStatus.value !== "all" && m.status !== materialStatus.value) return false;
+    if (materialKind.value !== "all" && m.kind !== materialKind.value) return false;
+    if (materialCategory.value !== "all" && (m.category || "other") !== materialCategory.value) return false;
+    if (q) {
+      const haystack = [m.name, m.owner, m.kind, m.description, m.notes, ...(m.topics || []), ...(m.ecosystem_deps || [])]
+        .filter(Boolean).join(" ").toLowerCase();
+      if (!haystack.includes(q)) return false;
+    }
+    return true;
+  }).sort((a, b) => (b.last_activity_date || "").localeCompare(a.last_activity_date || "") || a.name.localeCompare(b.name));
+});
+const materialYearGroups = computed(() => {
+  const groups = new Map();
+  for (const item of filteredMaterials.value) {
+    const year = item.last_activity_date?.slice(0, 4) || "Unknown";
+    if (!groups.has(year)) groups.set(year, []);
+    groups.get(year).push(item);
+  }
+  return [...groups].map(([year, items]) => ({ year, items }));
+});
+const materialArchived = computed(() => materials.value.filter((m) => m.status === "archived").length);
+const materialKindLabel = (kind) => MATERIAL_KINDS.find((item) => item.id === kind)?.label || kind;
+function materialDateParts(value) {
+  if (!value) return { month: "—", day: "" };
+  const date = new Date(`${value}T00:00:00Z`);
+  return {
+    month: date.toLocaleDateString(undefined, { month: "short", timeZone: "UTC" }),
+    day: date.toLocaleDateString(undefined, { day: "2-digit", timeZone: "UTC" }),
+  };
+}
 
 const active = computed(() => repos.value.filter((r) => r.status !== "archived"));
 const summary = computed(() => {
@@ -432,13 +489,14 @@ async function copyBadge(r, b) {
         <div class="logo"><div class="logo-dot"></div></div>
         <div>
           <h1 class="brand-title">Mission Control</h1>
-          <div class="brand-sub">Signal board · <span class="mono">{{ summary.tracked }}</span> COMPAS repositories</div>
+          <div v-if="mode === 'materials'" class="brand-sub">Material library · <span class="mono">{{ materials.length }}</span> workshops, courses &amp; projects</div>
+          <div v-else class="brand-sub">Signal board · <span class="mono">{{ summary.tracked }}</span> COMPAS repositories</div>
         </div>
       </div>
       <div class="mast-right">
         <div class="collected">
-          <div class="collected-label">{{ data.collection_scope === "partial" ? "Partial refresh" : "Collected" }}</div>
-          <div class="collected-time mono">{{ fmtDate(data.generated_at) }}</div>
+          <div class="collected-label">{{ mode === "materials" ? "Materials refreshed" : (data.collection_scope === "partial" ? "Partial refresh" : "Collected") }}</div>
+          <div class="collected-time mono">{{ fmtDate(mode === "materials" ? materialCatalog?.generated_at : data.generated_at) }}</div>
         </div>
         <button class="theme-btn" @click="toggleTheme" title="Toggle theme">{{ theme === "dark" ? "☀" : "☾" }}</button>
       </div>
@@ -534,7 +592,7 @@ async function copyBadge(r, b) {
     <!-- ===== DASHBOARD ===== -->
     <template v-else>
     <!-- KPI ribbon -->
-    <div class="ribbon">
+    <div v-if="mode !== 'materials'" class="ribbon">
       <div class="kpi">
         <div><span class="kpi-value">{{ summary.tracked }}</span></div>
         <div class="kpi-label">Repositories</div>
@@ -578,12 +636,18 @@ async function copyBadge(r, b) {
         <button class="seg-btn" :class="{ active: mode === 'fleet' }" @click="setMode('fleet')">Fleet</button>
         <button class="seg-btn" :class="{ active: mode === 'ecosystem' }" @click="setMode('ecosystem')">Ecosystem</button>
         <button class="seg-btn" :class="{ active: mode === 'roadmap' }" @click="setMode('roadmap')">Roadmap</button>
+        <button class="seg-btn" :class="{ active: mode === 'materials' }" @click="setMode('materials')">Materials</button>
       </div>
-      <input v-if="mode !== 'roadmap'" class="search-input" type="search" v-model="search" placeholder="Filter repositories…" />
-      <div v-if="mode !== 'roadmap'" class="chips">
+      <input v-if="mode === 'fleet' || mode === 'ecosystem'" class="search-input" type="search" v-model="search" placeholder="Filter repositories…" />
+      <input v-else-if="mode === 'materials'" class="search-input" type="search" v-model="materialSearch" placeholder="Find materials…" aria-label="Find materials" />
+      <div v-if="mode === 'fleet' || mode === 'ecosystem'" class="chips">
         <button v-for="c in categories" :key="c" class="chip" :class="{ active: activeCats.has(c) }" @click="toggleCat(c)">{{ catLabel(c) }}</button>
       </div>
-      <div v-if="mode !== 'roadmap'" class="toolbar-right">
+      <div v-else-if="mode === 'materials'" class="chips material-category-chips" aria-label="Material category filter">
+        <button class="chip" :class="{ active: materialCategory === 'all' }" @click="materialCategory = 'all'">All fields</button>
+        <button v-for="c in materialCategories" :key="c" class="chip" :class="{ active: materialCategory === c }" @click="materialCategory = c">{{ catLabel(c) }}</button>
+      </div>
+      <div v-if="mode === 'fleet' || mode === 'ecosystem'" class="toolbar-right">
         <template v-if="mode === 'fleet'">
           <div class="control">
             <span class="control-label">Group</span>
@@ -603,13 +667,39 @@ async function copyBadge(r, b) {
         </template>
         <label class="toggle"><input type="checkbox" v-model="showArchived" /> Archived</label>
       </div>
+      <div v-else-if="mode === 'materials'" class="toolbar-right material-filters">
+        <label class="select-control">
+          <span>Type</span>
+          <select v-model="materialKind">
+            <option value="all">All material</option>
+            <option v-for="kind in MATERIAL_KINDS" :key="kind.id" :value="kind.id">{{ kind.label }}</option>
+          </select>
+        </label>
+        <label class="select-control">
+          <span>Owner</span>
+          <select v-model="materialOwner">
+            <option value="all">All organizations</option>
+            <option v-for="owner in materialOwners" :key="owner" :value="owner">{{ owner }}</option>
+          </select>
+        </label>
+        <label class="select-control">
+          <span>Status</span>
+          <select v-model="materialStatus">
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="archived">Archived</option>
+          </select>
+        </label>
+      </div>
     </div>
 
     <div class="hint-row">
       <span v-if="mode === 'fleet'">each tile = one package · all four signals at a glance</span>
       <span v-else-if="mode === 'ecosystem'">dependency stack — core at the base, applications on top. Hover a package to trace its links.</span>
-      <span v-else>major-version lifecycle · release history, support status, and maintenance windows</span>
-      <span v-if="mode !== 'roadmap'" class="matchcount">{{ matchCount }} / {{ summary.tracked }} shown</span>
+      <span v-else-if="mode === 'roadmap'">major-version lifecycle · release history, support status, and maintenance windows</span>
+      <span v-else>workshops and one-off projects · kept outside fleet health and adoption metrics</span>
+      <span v-if="mode === 'fleet' || mode === 'ecosystem'" class="matchcount">{{ matchCount }} / {{ summary.tracked }} shown</span>
+      <span v-else-if="mode === 'materials'" class="matchcount">{{ filteredMaterials.length }} / {{ materials.length }} shown</span>
     </div>
 
     <!-- ===== ECOSYSTEM ===== -->
@@ -722,6 +812,70 @@ async function copyBadge(r, b) {
       <div v-else class="empty">Roadmap data is not available.</div>
     </template>
 
+    <!-- ===== MATERIALS LIBRARY ===== -->
+    <template v-else-if="mode === 'materials'">
+      <section class="materials-view">
+        <header class="materials-head">
+          <div>
+            <div class="eyebrow">Outside the maintained fleet</div>
+            <h2 class="materials-title">Learning &amp; project materials</h2>
+            <p class="materials-intro">Newest activity first, so current examples are easiest to find. Older workshops and projects remain available as historical references.</p>
+          </div>
+          <div class="materials-summary mono" aria-label="Materials summary">
+            <span><strong>{{ materials.length }}</strong> total</span>
+            <span><strong>{{ materialOwners.length }}</strong> organizations</span>
+            <span><strong>{{ materialArchived }}</strong> archived</span>
+          </div>
+        </header>
+
+        <div v-if="materialsError" class="empty">Materials are not available — {{ materialsError }}</div>
+        <div v-else-if="!materialCatalog" class="empty">Loading materials…</div>
+        <div v-else-if="!materialYearGroups.length" class="empty">No materials match the filters.</div>
+        <div v-else class="material-timeline">
+          <section v-for="group in materialYearGroups" :key="group.year" class="material-year">
+            <header class="material-year-head">
+              <h3>{{ group.year }}</h3>
+              <span class="mono">{{ group.items.length }} {{ group.items.length === 1 ? "item" : "items" }}</span>
+            </header>
+            <div class="material-list">
+              <article
+                v-for="item in group.items" :key="`${item.owner}/${item.name}`"
+                class="material-row" :class="{ archived: item.status === 'archived' }"
+                :style="{ '--material-cat': `var(--cat-${item.category || 'other'}, var(--muted))` }"
+              >
+                <div class="material-date mono" :title="`Last repository activity ${item.last_activity_date || 'unknown'}`">
+                  <span>{{ materialDateParts(item.last_activity_date).month }}</span>
+                  <strong>{{ materialDateParts(item.last_activity_date).day }}</strong>
+                </div>
+                <div class="material-main">
+                  <header class="material-row-head">
+                    <a :href="item.url" target="_blank" rel="noopener">{{ item.name }} ↗</a>
+                    <span v-if="item.status === 'archived'" class="material-archived">archived</span>
+                  </header>
+                  <div class="material-owner">{{ item.owner }}</div>
+                  <p>{{ item.description || item.notes || "No repository description." }}</p>
+                  <div v-if="item.ecosystem_deps?.length" class="material-deps">
+                    <span class="material-deps-label">Uses</span>
+                    <template v-for="dep in item.ecosystem_deps" :key="dep">
+                      <button v-if="nameToRepo[dep]" class="material-dep" @click="openDetail(dep)">{{ dep }}</button>
+                      <span v-else class="material-dep">{{ dep }}</span>
+                    </template>
+                  </div>
+                </div>
+                <div class="material-facets">
+                  <span class="material-category"><i></i>{{ catLabel(item.category || "other") }}</span>
+                  <span>{{ materialKindLabel(item.kind) }}</span>
+                  <span class="mono">{{ item.language || "—" }}</span>
+                  <span class="mono">★ {{ item.stars ?? 0 }}</span>
+                  <a v-if="item.homepage" :href="item.homepage" target="_blank" rel="noopener">Project site ↗</a>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </template>
+
     <!-- ===== FLEET CARDS ===== -->
     <template v-else>
       <div v-if="!lanes.length" class="empty">No repositories match the filters.</div>
@@ -812,7 +966,7 @@ async function copyBadge(r, b) {
     </template>
     </template>
 
-    <footer class="pagefoot">COMPAS Mission Control · collected nightly from GitHub &amp; package registries</footer>
+    <footer class="pagefoot">COMPAS Mission Control · fleet collected nightly · materials refreshed weekly</footer>
 
     <div v-if="tip.show" class="tooltip mono" :style="{ left: tip.x + 'px', top: tip.y + 'px' }">{{ tip.text }}</div>
   </template>

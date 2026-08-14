@@ -39,6 +39,10 @@ hosted on GitHub Pages. Two halves:
 │     parses pyproject.toml / requirements.txt / CI workflows  │
 │     writes site/public/data.json  (+ data-history/*.json)    │
 │                                                              │
+│   lightweight materials collector (weekly / manual)           │
+│     reads materials.yml; fetches repository metadata only     │
+│     writes site/public/materials.json                         │
+│                                                              │
 │   frontend build (Vite)                                      │
 │     bundles static site that fetches data.json               │
 │                                                              │
@@ -61,7 +65,8 @@ hosted on GitHub Pages. Two halves:
   `compas-webviewer` are Vue). Plain TypeScript. No CSS framework required; a
   small hand-written stylesheet is fine. The stack is swappable — the only hard
   contract is "static site that renders `data.json`".
-- **CI:** one workflow, `.github/workflows/build-and-deploy.yml`.
+- **CI:** a nightly ecosystem/deploy workflow and a weekly lightweight
+  materials workflow.
 
 ## 3. Repository layout
 
@@ -69,6 +74,7 @@ hosted on GitHub Pages. Two halves:
 compas-dashboard/                (name TBD; compas_ecosystem / compas_dashboard)
 ├── README.md
 ├── repos.yml                    # curated list of tracked repositories
+├── materials.yml                # workshops/projects outside fleet metrics
 ├── features.yml                 # curated features/APIs to track for adoption
 ├── collector/
 │   ├── pyproject.toml
@@ -82,11 +88,12 @@ compas-dashboard/                (name TBD; compas_ecosystem / compas_dashboard)
 │   ├── index.html
 │   ├── src/                     # Vue app
 │   └── public/
-│       ├── data.json            # produced by collector (gitignored or committed)
-│       └── data-history/        # optional: dated snapshots for trend sparklines
+│       ├── data.json            # full ecosystem collection
+│       └── materials.json       # lightweight workshop/project metadata
 ├── data-history/                # committed snapshots (see §7)
 └── .github/workflows/
-    └── build-and-deploy.yml
+    ├── build-and-deploy.yml
+    └── collect-materials.yml
 ```
 
 ## 4. Curated inputs
@@ -136,7 +143,29 @@ shorthand for a PyPI distribution.
 
 Seed it from the real org listing (see Appendix A).
 
-### 4.2 `features.yml` — the adoption matrix definition
+### 4.2 `materials.yml` — workshops, courses, and projects
+
+Material repositories are intentionally separate from the maintained ecosystem
+fleet. They receive one lightweight repository-metadata request during a weekly
+or manual collection and do not participate in CI health, issues/PRs, package
+registries, feature adoption, dependency-stack totals, or daily history.
+
+```yaml
+materials:
+  - name: example-workshop
+    owner: example-org
+    kind: workshop              # workshop | course | tutorial | project | reference
+    category: fabrication       # same broad taxonomy as fleet repositories
+    ecosystem_deps: [compas, compas_fab]
+    notes: Optional curator context.
+```
+
+The generated `site/public/materials.json` contains repository identity,
+description, language, stars, last activity, archived status, topics, homepage,
+and curated dependency hints. Forks and unrelated organizational repositories
+remain excluded deliberately.
+
+### 4.3 `features.yml` — the adoption matrix definition
 
 Each feature is a column in the adoption matrix. A feature has a **detection
 method** that the collector runs against each repo to produce a cell status of
@@ -363,14 +392,17 @@ short human string ("compas >= 2.3, < 3", "CI: 3.9–3.13", "matched Artist(").
 
 At the end of each run, append a compact snapshot to `data-history/YYYY-MM-DD.json`
 (a subset: per-repo staleness, ci, open_issues/prs, compas_major_floor, and the
-count of adopted features). Commit it back from the Action. The frontend can then
-draw tiny sparklines (issue backlog over time, migration progress %). Keep
-snapshots small; prune older than N months if size becomes a concern.
+count of adopted features). Version 2 snapshots also preserve the feature
+definitions active that day and each repository's status for every feature,
+including `n/a` and `unknown`. Readers should treat snapshots without a
+`schema_version` as version 1. Commit snapshots back from the Action. Keep them
+small; prune older than N months if size becomes a concern.
 
 ## 8. Frontend — views
 
-One page, three stacked sections plus a header. Consult a data-viz design pass for
-color/consistency; keep it legible in light and dark.
+One static application with deep-linked Fleet, Ecosystem, Roadmap, Materials,
+and repository-detail views. Consult a data-viz design pass for color/consistency;
+keep it legible in light and dark.
 
 1. **Header / summary band** — generated-at timestamp, ecosystem totals
    (repos tracked, % on COMPAS 2.x, # failing CI, # dormant), and a filter/search
@@ -394,6 +426,14 @@ color/consistency; keep it legible in light and dark.
 Interaction: filters apply to all three sections at once. No routing needed;
 tabs or anchor sections are both fine. Everything renders from `data.json` —
 no live API calls in the browser.
+
+5. **Materials library** — a separate `#materials` catalog rendered from
+   `materials.json`, ordered newest-first and grouped by last-activity year.
+   It is filterable by the fleet's broad categories, material type,
+   organization, archive status, and text. It shows lightweight repository
+   metadata and links known COMPAS dependencies back to package detail pages.
+   Materials never enter the header's fleet totals, health/adoption views,
+   dependency graph, or history.
 
 ## 9. CI workflow
 

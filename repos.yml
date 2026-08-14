@@ -248,22 +248,6 @@ repos:
     tier: apps
 
   # =======================================================================
-  # AHA — project applications built on COMPAS RRC
-  # =======================================================================
-  - name: sandskript_compas_rrc
-    owner: AHA-ArchitectureAndHumanAugmentation
-    category: fabrication
-    tier: apps
-    ecosystem_deps:
-      - compas_rrc
-  - name: SANDSKRIPT_depth-cam-to-robot
-    owner: AHA-ArchitectureAndHumanAugmentation
-    category: fabrication
-    tier: apps
-    ecosystem_deps:
-      - compas_rrc
-
-  # =======================================================================
   # rafael pastrana
   # =======================================================================
   - name: compas_cem
@@ -306,6 +290,10 @@ repos:
     owner: gramaziokohler
     category: timber
     pypi: compas_timber_pb
+  - name: easyhops              # HOPS CNC format tooling with COMPAS Timber integration
+    owner: MAS-dfab
+    category: timber
+    ecosystem_deps: [compas_timber]
   - name: timber_design         # automation toolkit built on compas_timber
     owner: gramaziokohler
     category: timber

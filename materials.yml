@@ -1,0 +1,328 @@
+# Workshops, courses, one-off projects, and historical references connected to
+# COMPAS. These are deliberately excluded from fleet health, feature adoption,
+# dependency-stack totals, and daily history. The lightweight materials pass
+# collects repository metadata only.
+
+defaults:
+  owner: compas-dev
+
+materials:
+  # ---- compas-dev learning material ------------------------------------
+  - name: tutorials
+    kind: tutorial
+    category: core
+
+  # ---- Gramazio Kohler workshops ---------------------------------------
+  - name: compas_fab_preworkshop
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: compas_introduction
+    owner: gramaziokohler
+    kind: workshop
+    category: core
+  - name: compas_introduction_2024
+    owner: gramaziokohler
+    kind: workshop
+    category: core
+  - name: compas_introduction_2025
+    owner: gramaziokohler
+    kind: workshop
+    category: core
+  - name: maker_faire_bilbao_workshop_2019
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: robotic_assembly_workshop
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_caadria_2026
+    owner: gramaziokohler
+    kind: workshop
+    category: timber
+  - name: workshop_compas_fab_2
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_donbosco_2022
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_ds_2023
+    owner: gramaziokohler
+    kind: workshop
+    category: core
+  - name: workshop_foc_2026
+    owner: gramaziokohler
+    kind: workshop
+    category: timber
+  - name: workshop_futureofconstruction_2022
+    owner: gramaziokohler
+    kind: workshop
+    category: core
+  - name: workshop_iaac_2024
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_mcneel_2021
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_michigan
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_munich_2020
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_princeton_2021
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_sjsu
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_sjsu_clean
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_supsi_2022
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_sw25
+    owner: gramaziokohler
+    kind: workshop
+    category: timber
+  - name: workshop_swinburne_2021
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+  - name: workshop_tokyo_2020
+    owner: gramaziokohler
+    kind: workshop
+    category: fabrication
+
+  # ---- Gramazio Kohler Coding Architecture courses --------------------
+  - name: coding_architecture_hs23
+    owner: gramaziokohler
+    kind: course
+    category: core
+  - name: coding_architecture_fs24
+    owner: gramaziokohler
+    kind: course
+    category: timber
+  - name: coding_architecture_hs24
+    owner: gramaziokohler
+    kind: course
+    category: core
+  - name: coding_architecture_fs25
+    owner: gramaziokohler
+    kind: course
+    category: timber
+    ecosystem_deps: [compas, compas_timber]
+  - name: coding_architecture_hs25
+    owner: gramaziokohler
+    kind: course
+    category: core
+  - name: coding_architecture_fs26
+    owner: gramaziokohler
+    kind: course
+    category: timber
+    ecosystem_deps: [compas, compas_timber]
+  - name: coding_architecture_fs26_focus_work
+    owner: gramaziokohler
+    kind: project
+    category: timber
+    ecosystem_deps: [compas, compas_timber]
+
+  # ---- Block Research Group workshops ----------------------------------
+  - name: BRG-ZHCODE
+    owner: BlockResearchGroup
+    kind: workshop
+    category: structures
+  - name: CARBCOMN-Workshop_COMPAS
+    owner: BlockResearchGroup
+    kind: workshop
+    category: core
+  - name: EIC_Workshop
+    owner: BlockResearchGroup
+    kind: workshop
+    category: structures
+
+  # ---- AHA workshops and one-off projects ------------------------------
+  - name: robarch24
+    owner: AHA-ArchitectureAndHumanAugmentation
+    kind: workshop
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab, compas_eve]
+  - name: sandskript_compas_rrc
+    owner: AHA-ArchitectureAndHumanAugmentation
+    kind: project
+    category: fabrication
+    ecosystem_deps: [compas_rrc]
+  - name: SANDSKRIPT_depth-cam-to-robot
+    owner: AHA-ArchitectureAndHumanAugmentation
+    kind: project
+    category: fabrication
+    ecosystem_deps: [compas_rrc]
+
+  # ---- Augmented Fabrication Lab teaching material --------------------
+  - name: workshop_iaac_2026
+    owner: augmentedfabricationlab
+    kind: workshop
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab]
+  - name: workshop_qut_mobile_robots
+    owner: augmentedfabricationlab
+    kind: workshop
+    category: fabrication
+  - name: workshop_robarch_2024
+    owner: augmentedfabricationlab
+    kind: workshop
+    category: fabrication
+  - name: workshop_robarch_2024_packages
+    owner: augmentedfabricationlab
+    kind: workshop
+    category: fabrication
+  - name: workshop_aaec_revamp
+    owner: augmentedfabricationlab
+    kind: workshop
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab]
+  - name: workshop_augmented_collaborative_robotics
+    owner: augmentedfabricationlab
+    kind: workshop
+    category: fabrication
+  - name: am_hackathon
+    owner: augmentedfabricationlab
+    kind: workshop
+    category: fabrication
+  - name: compas_fab_workshop_2020
+    owner: augmentedfabricationlab
+    kind: workshop
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab]
+  - name: afab_course
+    owner: augmentedfabricationlab
+    kind: course
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab]
+  - name: computational_design_and_fabrication
+    owner: augmentedfabricationlab
+    kind: course
+    category: fabrication
+  - name: cdf_2023
+    owner: augmentedfabricationlab
+    kind: course
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab]
+
+  # ---- Augmented Fabrication Lab project material ---------------------
+  - name: climate_active_envelopes
+    owner: augmentedfabricationlab
+    kind: project
+    category: fabrication
+    ecosystem_deps: [compas]
+  - name: robotic_bricklaying
+    owner: augmentedfabricationlab
+    kind: project
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab]
+  - name: add_on_am
+    owner: augmentedfabricationlab
+    kind: project
+    category: fabrication
+    ecosystem_deps: [compas]
+  - name: ClimateTiles_Masterthesis
+    owner: augmentedfabricationlab
+    kind: project
+    category: fabrication
+    ecosystem_deps: [compas]
+  - name: HBH_Masterthesis
+    owner: augmentedfabricationlab
+    kind: project
+    category: timber
+  - name: robosgraffito
+    owner: augmentedfabricationlab
+    kind: project
+    category: fabrication
+  - name: robotic_knitcrete
+    owner: augmentedfabricationlab
+    kind: project
+    category: structures
+  - name: cooperative_mobile_brickwork
+    owner: augmentedfabricationlab
+    kind: project
+    category: fabrication
+  - name: window_in_wall
+    owner: augmentedfabricationlab
+    kind: project
+    category: fabrication
+  - name: bridge_the_gap
+    owner: augmentedfabricationlab
+    kind: project
+    category: fabrication
+  - name: timber_clay_hybrid
+    owner: augmentedfabricationlab
+    kind: project
+    category: timber
+  - name: climate_active_bricks
+    owner: augmentedfabricationlab
+    kind: project
+    category: fabrication
+
+  # ---- MAS Architecture and Digital Fabrication -----------------------
+  - name: MAS-2526
+    owner: MAS-dfab
+    kind: course
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab, compas_robots]
+  - name: MAS-2021_compas_fab_intro
+    owner: MAS-dfab
+    kind: workshop
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab]
+  - name: llhil-t2-fabrication
+    owner: MAS-dfab
+    kind: project
+    category: timber
+    ecosystem_deps: [compas, compas_timber]
+  - name: reciprocal_from_mesh
+    owner: MAS-dfab
+    kind: project
+    category: timber
+    ecosystem_deps: [compas]
+
+  # ---- createchaos historical material ---------------------------------
+  - name: arc_311_magic
+    owner: createchaos
+    kind: course
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab]
+  - name: arc_574
+    owner: createchaos
+    kind: course
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab]
+  - name: coop_assembly
+    owner: createchaos
+    kind: workshop
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab]
+  - name: robotic_lacing
+    owner: createchaos
+    kind: project
+    category: fabrication
+    ecosystem_deps: [compas, compas_fab]
+  - name: lacing_exhibition
+    owner: createchaos
+    kind: project
+    category: fabrication
+  - name: lacing_vision
+    owner: createchaos
+    kind: project
+    category: fabrication

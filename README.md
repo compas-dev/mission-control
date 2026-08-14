@@ -17,10 +17,14 @@ A **static site built by a scheduled GitHub Action** — no server, no runtime c
 collector (Python)                     frontend (Vite + Vue 3)
   reads  repos.yml + features.yml        fetches site/public/data.json
   calls  GitHub + package-registry APIs  renders adaptive views:
-  parses Python and Node manifests /       Health · Migration · Features · Ecosystem
+  parses Python and Node manifests /       Fleet · Ecosystem · Roadmap
          CI workflows
   writes site/public/data.json    ─────►  (a dumb renderer — no live API calls)
          + data-history/*.json
+
+materials collector                     frontend Materials view
+  reads materials.yml                     fetches site/public/materials.json
+  fetches repository metadata only ────►  sorts sources by recent activity
 ```
 
 The collector is the heart of the project; the frontend renders `data.json` and works by opening the built site with no backend. Data is at most ~24h stale; a "last updated" timestamp is shown in the UI.
@@ -30,11 +34,12 @@ The collector is the heart of the project; the frontend renders `data.json` and 
 | Path | What |
 |---|---|
 | [`repos.yml`](repos.yml) | Curated list of tracked repositories (owner, category, tier, runtime, distributions). |
+| [`materials.yml`](materials.yml) | Workshops, courses, projects, and historical references excluded from fleet metrics. |
 | [`features.yml`](features.yml) | Adoption-matrix columns and their detection rules. |
 | [`collector/`](collector/) | Python data collector (`python -m collector`). Stdlib `urllib` + `PyYAML` + `packaging`. |
 | [`site/`](site/) | Vite + Vue 3 frontend. `site/public/data.json` is the committed sample and `site/public/roadmap.json` holds the editable release-roadmap. |
-| [`data-history/`](data-history/) | Compact daily snapshots for trend sparklines. |
-| `.github/workflows/build-and-deploy.yml` | Nightly collect → build → deploy to Pages. |
+| [`data-history/`](data-history/) | Compact, versioned daily snapshots with per-feature adoption statuses. |
+| `.github/workflows/` | Nightly ecosystem collection/deploy plus weekly lightweight material metadata refresh. |
 
 ## Local development
 
@@ -54,6 +59,15 @@ repeat `--repo` as needed:
 python -m collector --root . --repo compas_pb_ts --no-history
 ```
 
+Workshop and project metadata uses a separate lightweight pass. It performs one
+repository-metadata request per entry and writes `site/public/materials.json`;
+it does not collect CI, issues, releases, registries, adoption features, or
+history:
+
+```bash
+python -m collector --root . --materials
+```
+
 **Frontend** (renders the committed `data.json`, no collection needed):
 
 ```bash
@@ -62,11 +76,12 @@ npm install
 npm run dev      # http://localhost:5173
 ```
 
-Views are deep-linkable: `#fleet`, `#ecosystem`, `#roadmap`, and `#<package>` opens a package detail page.
+Views are deep-linkable: `#fleet`, `#ecosystem`, `#roadmap`, `#materials`, and `#<package>` opens a package detail page. The Materials view prioritizes recent activity and has its own category, type, owner, status, and text filters; it does not affect fleet totals.
 
 ## Configuration
 
 - **Track a repo** — add an entry to [`repos.yml`](repos.yml) (deliberately curated, not auto-discovered). `owner` defaults to `compas-dev`; override per entry. `runtime` defaults to `python` and also accepts `node`. `tier` (`core` / `foundation` / `domain` / `apps` / `tooling`) defaults from `category` and drives the Ecosystem diagram.
+- **Track workshop/project material** — add it to [`materials.yml`](materials.yml) with `kind: workshop`, `course`, `tutorial`, `project`, or `reference`, plus the same broad `category` used by fleet repositories. Materials are refreshed weekly and stay out of fleet health, adoption, ecosystem totals, and daily history.
 - **Configure distributions** — existing Python projects can keep using `pypi: <name>`. Mixed-language projects use `distributions`, whose supported registries are `pypi`, `npm`, and `jsr`. Use `release_tag_prefix` when GitHub tags include a package-specific prefix.
 - **Add an adoption check** — add a column to [`features.yml`](features.yml). `applies_to: [python]` or `[node]` keeps runtime-specific checks out of unrelated projects. Detection kinds: `pin`, `python`, `file` (`any_of` / `none_of`), `readme` (snippet match in the repository README), `code` (GitHub code search), `registry-match`, `conda` (published on conda-forge), `manual`.
 - **Add a non-manifest dependency** — use `ecosystem_deps` in `repos.yml`. These explicit edges are combined with dependencies discovered from Python manifests or `package.json`.
@@ -89,4 +104,4 @@ For example, the TypeScript protobuf wrapper is configured as:
 
 ## Deployment
 
-The GitHub Action runs nightly (and on push / manual dispatch): it runs the collector, commits the history snapshot, builds the site, and deploys to Pages. Enable **Settings → Pages → Source: GitHub Actions**. It needs only the default `GITHUB_TOKEN`.
+The main GitHub Action runs nightly (and on push / manual dispatch): it runs the full ecosystem collector, commits the history snapshot, builds the site, and deploys to Pages. A separate weekly/manual workflow refreshes lightweight material metadata. Enable **Settings → Pages → Source: GitHub Actions**. Both workflows need only the default `GITHUB_TOKEN`.
