@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T16:47:37Z",
+  "generated_at": "2026-08-15T05:24:40Z",
   "features": [
     {
       "id": "compas2",
@@ -476,9 +476,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "n/a",
+          "status": "unknown",
           "source": "auto",
-          "detail": "no matching API usage"
+          "detail": "code search failed"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -496,9 +496,9 @@
           "detail": "matched 'compas_invocations2'"
         },
         "compas-actions": {
-          "status": "not-adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "code search failed"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -548,7 +548,7 @@
       "health": {
         "last_commit_date": "2026-08-03",
         "staleness": "fresh",
-        "ci": "passing",
+        "ci": "failing",
         "open_issues": 0,
         "open_prs": 0,
         "oldest_open_issue_age_days": null
@@ -750,9 +750,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "unknown",
+          "status": "n/a",
           "source": "auto",
-          "detail": "code search failed"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1425,14 +1425,14 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "n/a",
+          "status": "unknown",
           "source": "auto",
-          "detail": "no matching API usage"
+          "detail": "code search failed"
         },
         "no-deprecated-artist": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "clean"
+          "detail": "code search failed"
         },
         "mkdocs": {
           "status": "adopted",
@@ -1440,9 +1440,9 @@
           "detail": "has mkdocs.yml; no docs/conf.py, docs/source/conf.py"
         },
         "invocations2": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "code search failed"
         },
         "compas-actions": {
           "status": "unknown",
@@ -2835,7 +2835,7 @@
         "ci": "passing",
         "open_issues": 1,
         "open_prs": 2,
-        "oldest_open_issue_age_days": 396
+        "oldest_open_issue_age_days": 397
       },
       "release": {
         "github_tag": "0.7.6",
@@ -3238,7 +3238,7 @@
         "ci": "passing",
         "open_issues": 5,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1710
+        "oldest_open_issue_age_days": 1711
       },
       "release": {
         "github_tag": "1.5.0",
@@ -4094,9 +4094,9 @@
           "detail": "missing mkdocs.yml"
         },
         "invocations2": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "code search failed"
         },
         "compas-actions": {
           "status": "not-adopted",
@@ -4267,10 +4267,10 @@
       "health": {
         "last_commit_date": "2025-09-10",
         "staleness": "stale",
-        "ci": "passing",
+        "ci": "none",
         "open_issues": 16,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 512
+        "oldest_open_issue_age_days": 513
       },
       "release": {
         "github_tag": "0.3.0",
@@ -4600,9 +4600,9 @@
           "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
-          "status": "unknown",
+          "status": "adopted",
           "source": "auto",
-          "detail": "code search failed"
+          "detail": "clean"
         },
         "mkdocs": {
           "status": "not-adopted",
@@ -4610,9 +4610,9 @@
           "detail": "still has docs/conf.py"
         },
         "invocations2": {
-          "status": "unknown",
+          "status": "not-adopted",
           "source": "auto",
-          "detail": "code search failed"
+          "detail": "no match"
         },
         "compas-actions": {
           "status": "not-adopted",
@@ -4866,9 +4866,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "unknown",
+          "status": "n/a",
           "source": "auto",
-          "detail": "code search failed"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -5006,9 +5006,9 @@
           "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "clean"
+          "detail": "code search failed"
         },
         "mkdocs": {
           "status": "not-adopted",
@@ -5016,9 +5016,9 @@
           "detail": "still has docs/conf.py"
         },
         "invocations2": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "code search failed"
         },
         "compas-actions": {
           "status": "not-adopted",
@@ -5073,7 +5073,7 @@
         "ci": "passing",
         "open_issues": 2,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 2135
+        "oldest_open_issue_age_days": 2136
       },
       "release": {
         "github_tag": "0.8.6",
@@ -5209,7 +5209,7 @@
         "ci": "passing",
         "open_issues": 2,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 661
+        "oldest_open_issue_age_days": 662
       },
       "release": {
         "github_tag": "0.5.0",
@@ -5344,7 +5344,7 @@
         "ci": "failing",
         "open_issues": 1,
         "open_prs": 2,
-        "oldest_open_issue_age_days": 105
+        "oldest_open_issue_age_days": 106
       },
       "release": {
         "github_tag": "0.5.0",
@@ -5813,14 +5813,14 @@
           "detail": "requires-python: 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "n/a",
+          "status": "unknown",
           "source": "auto",
-          "detail": "no matching API usage"
+          "detail": "code search failed"
         },
         "no-deprecated-artist": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "clean"
+          "detail": "code search failed"
         },
         "mkdocs": {
           "status": "not-adopted",
@@ -6295,7 +6295,7 @@
         "ci": "passing",
         "open_issues": 4,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 2438
+        "oldest_open_issue_age_days": 2439
       },
       "release": {
         "github_tag": "0.7.0",
@@ -6701,7 +6701,7 @@
         "ci": "none",
         "open_issues": 46,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 3178
+        "oldest_open_issue_age_days": 3179
       },
       "release": {
         "github_tag": "0.3.3",
@@ -7768,7 +7768,7 @@
         "ci": "passing",
         "open_issues": 2,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 781
+        "oldest_open_issue_age_days": 782
       },
       "release": {
         "github_tag": "1.0.0",
@@ -8442,14 +8442,14 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "n/a",
+          "status": "unknown",
           "source": "auto",
-          "detail": "no matching API usage"
+          "detail": "code search failed"
         },
         "no-deprecated-artist": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "clean"
+          "detail": "code search failed"
         },
         "mkdocs": {
           "status": "adopted",
@@ -8457,14 +8457,14 @@
           "detail": "has mkdocs.yml; no docs/conf.py, docs/source/conf.py"
         },
         "invocations2": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "code search failed"
         },
         "compas-actions": {
-          "status": "not-adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "code search failed"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -9238,9 +9238,9 @@
           "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
-          "status": "unknown",
+          "status": "adopted",
           "source": "auto",
-          "detail": "code search failed"
+          "detail": "clean"
         },
         "mkdocs": {
           "status": "not-adopted",
@@ -9248,9 +9248,9 @@
           "detail": "missing mkdocs.yml"
         },
         "invocations2": {
-          "status": "unknown",
+          "status": "not-adopted",
           "source": "auto",
-          "detail": "code search failed"
+          "detail": "no match"
         },
         "compas-actions": {
           "status": "not-adopted",
@@ -9591,9 +9591,9 @@
           "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "clean"
+          "detail": "code search failed"
         },
         "mkdocs": {
           "status": "not-adopted",
@@ -9697,14 +9697,14 @@
           "detail": "no python info"
         },
         "new-scene-api": {
-          "status": "n/a",
+          "status": "unknown",
           "source": "auto",
-          "detail": "no matching API usage"
+          "detail": "code search failed"
         },
         "no-deprecated-artist": {
-          "status": "adopted",
+          "status": "unknown",
           "source": "auto",
-          "detail": "clean"
+          "detail": "code search failed"
         },
         "mkdocs": {
           "status": "not-adopted",
@@ -9858,16 +9858,27 @@
     }
   ],
   "warnings": [
+    "GET https://api.github.com/search/code?q=%22from+compas+import+scene%22+repo%3Acompas-dev%2Fcompas_slicer+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas.artists%22+repo%3Acompas-dev%2Fcompas_slicer+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22compas_invocations2%22+repo%3Acompas-dev%2Fcompas_slicer+language%3APython&per_page=1 -> HTTP 429",
     "GET https://api.github.com/search/code?q=%22compas-dev%2Fcompas-actions%2F%22+repo%3Acompas-dev%2Fcompas_slicer+language%3AYAML&per_page=1 -> HTTP 429",
-    "GET https://api.github.com/search/code?q=%22from+compas.scene%22+repo%3Acompas-dev%2Fcompas_eve+language%3APython&per_page=1 -> HTTP 429",
-    "GET https://api.github.com/search/code?q=%22from+compas+import+artists%22+repo%3Ablockresearchgroup%2Fcompas_3gs+language%3APython&per_page=1 -> HTTP 429",
-    "GET https://api.github.com/search/code?q=%22compas_invocations2%22+repo%3Ablockresearchgroup%2Fcompas_3gs+language%3APython&per_page=1 -> HTTP 429",
-    "GET https://api.github.com/search/code?q=%22compas.artists.%22+repo%3Ablockresearchgroup%2Fcompas_assembly+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas+import+artists%22+repo%3Acompas-dev%2Fcompas_invocations2+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas.artists%22+repo%3Acompas-dev%2Fcompas_invocations2+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22compas_invocations2%22+repo%3Acompas-dev%2Fcompas_invocations2+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22compas-dev%2Fcompas-actions%2F%22+repo%3Acompas-dev%2Fcompas_invocations2+language%3AYAML&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas.scene%22+repo%3Acompas-dev%2Fcompas_package_template+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas.artists%22+repo%3Acompas-dev%2Fcompas_package_template+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas+import+artists%22+repo%3Acompas-dev%2Fcompas_nanobind_package_template+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22compas.artists.%22+repo%3Ablockresearchgroup%2Fcompas_lca+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas.artists%22+repo%3Ablockresearchgroup%2Fcompas_lca+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22from+compas+import+artists%22+repo%3Ablockresearchgroup%2Fcompas_bender+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22compas_invocations2%22+repo%3Ablockresearchgroup%2Fcompas_bender+language%3APython&per_page=1 -> HTTP 429",
     "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Apr+is%3Aopen&per_page=1 -> HTTP 422",
     "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&per_page=1 -> HTTP 422",
     "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&sort=created&order=asc&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/code?q=%22import+compas.artists%22+repo%3Agramaziokohler%2Flamcp+language%3APython&per_page=1 -> HTTP 429",
-    "GET https://api.github.com/search/code?q=%22compas_invocations2%22+repo%3Agramaziokohler%2Flamcp+language%3APython&per_page=1 -> HTTP 429"
+    "GET https://api.github.com/search/code?q=%22import+compas.scene%22+repo%3Agramaziokohler%2Fantikythera+language%3APython&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22compas-dev%2Fcompas-actions%2F%22+repo%3Agramaziokohler%2Fantikythera+language%3AYAML&per_page=1 -> HTTP 429",
+    "GET https://api.github.com/search/code?q=%22compas_invocations2%22+repo%3Ablockresearchgroup%2Fcompas-FoFin+language%3APython&per_page=1 -> HTTP 429"
   ],
   "collection_scope": "all",
   "collected_repos": null
