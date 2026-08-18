@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T04:56:57Z",
+  "generated_at": "2026-08-18T07:53:05Z",
   "features": [
     {
       "id": "compas2",
@@ -132,7 +132,7 @@
       "stars": 380,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-08-17",
+        "last_commit_date": "2026-08-18",
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 99,
@@ -202,7 +202,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 75 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -217,12 +217,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 5 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -333,9 +333,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "unknown",
+          "status": "n/a",
           "source": "auto",
-          "detail": "code search failed"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -350,12 +350,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -408,11 +408,11 @@
       "stars": 2,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-08-17",
+        "last_commit_date": "2026-08-18",
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 1,
-        "open_prs": 2,
+        "open_prs": 1,
         "oldest_open_issue_age_days": 54
       },
       "release": {
@@ -493,12 +493,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "matched 'compas-dev/compas-actions/' in 5 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -629,14 +629,14 @@
           "detail": "has mkdocs.yml; no docs/conf.py, docs/source/conf.py"
         },
         "invocations2": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "still uses 'compas-dev/compas-actions.' in 1 file"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -755,9 +755,9 @@
           "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
-          "status": "unknown",
+          "status": "adopted",
           "source": "auto",
-          "detail": "code search failed"
+          "detail": "clean"
         },
         "mkdocs": {
           "status": "adopted",
@@ -767,12 +767,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "adopted",
@@ -887,7 +887,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 17 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -902,12 +902,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "adopted",
@@ -1159,7 +1159,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 9 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1174,12 +1174,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -1312,7 +1312,7 @@
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 4 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -1442,7 +1442,7 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
@@ -1694,7 +1694,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 2 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -1709,12 +1709,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "adopted",
@@ -1845,12 +1845,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -1982,12 +1982,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -2223,7 +2223,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 18 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2238,12 +2238,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -2358,7 +2358,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 12 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2373,12 +2373,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -2428,7 +2428,7 @@
         "ci": "passing",
         "open_issues": 1,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 24
+        "oldest_open_issue_age_days": 25
       },
       "release": {
         "github_tag": "0.10.0",
@@ -2508,12 +2508,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 1 file"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -2644,12 +2644,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -2764,7 +2764,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 1 file"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -2779,12 +2779,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -2915,12 +2915,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -3048,9 +3048,9 @@
           "detail": "has mkdocs.yml; no docs/conf.py, docs/source/conf.py"
         },
         "invocations2": {
-          "status": "unknown",
+          "status": "not-adopted",
           "source": "auto",
-          "detail": "code search failed"
+          "detail": "no match"
         },
         "compas-actions": {
           "status": "not-adopted",
@@ -3318,12 +3318,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 1 file"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -3439,7 +3439,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 2 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -3454,7 +3454,7 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
@@ -3589,12 +3589,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -3724,12 +3724,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -3859,12 +3859,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -3962,7 +3962,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 2 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -3982,7 +3982,7 @@
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -4081,7 +4081,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 2 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4096,12 +4096,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -4204,7 +4204,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 3 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4219,12 +4219,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 1 file"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -4327,7 +4327,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 6 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4342,12 +4342,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -4454,7 +4454,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 9 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -4469,12 +4469,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -4532,7 +4532,7 @@
         "ci": "none",
         "open_issues": 2,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1784
+        "oldest_open_issue_age_days": 1785
       },
       "release": {
         "github_tag": "0.6.0",
@@ -4617,7 +4617,7 @@
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -4748,12 +4748,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -4883,12 +4883,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -5018,12 +5018,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -5137,7 +5137,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 6 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -5152,12 +5152,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "adopted",
@@ -5288,12 +5288,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -5409,7 +5409,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 2 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -5424,12 +5424,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -5562,12 +5562,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -5697,12 +5697,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -5830,12 +5830,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -5967,12 +5967,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 1 file"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -6089,7 +6089,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 4 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -6104,12 +6104,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -6245,7 +6245,7 @@
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -6360,7 +6360,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 4 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -6375,12 +6375,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -6511,12 +6511,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -6631,7 +6631,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 8 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -6785,7 +6785,7 @@
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -6900,7 +6900,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 2 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -6915,12 +6915,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -7037,7 +7037,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 27 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -7052,12 +7052,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -7172,7 +7172,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 16 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -7187,12 +7187,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -7306,12 +7306,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas-dev/compas-actions/'"
+          "detail": "matched 'compas-dev/compas-actions/' in 4 files"
         },
         "mission-control-badge": {
           "status": "adopted",
@@ -7347,8 +7347,8 @@
         {
           "registry": "npm",
           "name": "@compas-dev/compas-threejs-ts",
-          "version": "1.0.2",
-          "date": "2026-08-17",
+          "version": "1.1.0",
+          "date": "2026-08-18",
           "url": "https://www.npmjs.com/package/@compas-dev/compas-threejs-ts"
         },
         {
@@ -7365,19 +7365,19 @@
       "stars": 1,
       "language": "TypeScript",
       "health": {
-        "last_commit_date": "2026-08-17",
+        "last_commit_date": "2026-08-18",
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 1,
-        "open_prs": 3,
+        "open_prs": 1,
         "oldest_open_issue_age_days": 3
       },
       "release": {
-        "github_tag": "1.0.2",
-        "github_release_tag": "v1.0.2",
-        "github_date": "2026-08-17",
-        "registry_version": "1.0.2",
-        "registry_date": "2026-08-17",
+        "github_tag": "1.1.0",
+        "github_release_tag": "v1.1.0",
+        "github_date": "2026-08-18",
+        "registry_version": "1.1.0",
+        "registry_date": "2026-08-18",
         "registry_name": "npm",
         "pypi_version": null,
         "pypi_date": null,
@@ -7386,8 +7386,8 @@
           {
             "registry": "npm",
             "name": "@compas-dev/compas-threejs-ts",
-            "version": "1.0.2",
-            "date": "2026-08-17",
+            "version": "1.1.0",
+            "date": "2026-08-18",
             "url": "https://www.npmjs.com/package/@compas-dev/compas-threejs-ts"
           },
           {
@@ -7462,7 +7462,7 @@
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
-          "detail": "npm 1.0.2 = GitHub 1.0.2"
+          "detail": "npm 1.1.0 = GitHub 1.1.0"
         },
         "conda-forge": {
           "status": "n/a",
@@ -7585,7 +7585,7 @@
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "no match"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -7698,7 +7698,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 17 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -7713,12 +7713,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -7831,9 +7831,9 @@
           "detail": "requires-python: 3.9, 3.10, 3.11, 3.12, 3.13"
         },
         "new-scene-api": {
-          "status": "unknown",
+          "status": "n/a",
           "source": "auto",
-          "detail": "code search failed"
+          "detail": "no matching API usage"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -7848,12 +7848,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -7907,7 +7907,7 @@
         "ci": "passing",
         "open_issues": 12,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 852
+        "oldest_open_issue_age_days": 853
       },
       "release": {
         "github_tag": "0.10.6",
@@ -7988,7 +7988,7 @@
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 4 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -8101,7 +8101,7 @@
         "compas-actions": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas-dev/compas-actions/'"
+          "detail": "matched 'compas-dev/compas-actions/' in 6 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -8251,12 +8251,12 @@
       "distributions": [],
       "role": null,
       "status": "active",
-      "description": null,
+      "description": "Compas environment switching and Grasshopper component installation GUI tool. ",
       "stars": 0,
-      "language": null,
+      "language": "Python",
       "health": {
-        "last_commit_date": null,
-        "staleness": "unknown",
+        "last_commit_date": "2024-10-04",
+        "staleness": "dormant",
         "ci": "none",
         "open_issues": 0,
         "open_prs": 0,
@@ -8336,7 +8336,7 @@
         "mission-control-badge": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "README not found"
+          "detail": "linked COMPAS badge not found in README"
         },
         "pypi-match": {
           "status": "n/a",
@@ -8459,12 +8459,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 7 files"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -8592,12 +8592,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas-dev/compas-actions/'"
+          "detail": "matched 'compas-dev/compas-actions/' in 4 files"
         },
         "mission-control-badge": {
           "status": "adopted",
@@ -8851,7 +8851,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 1 file"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -8866,12 +8866,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -8984,7 +8984,7 @@
         "new-scene-api": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'from compas.scene'"
+          "detail": "matched 'from compas.scene' in 2 files"
         },
         "no-deprecated-artist": {
           "status": "adopted",
@@ -8999,12 +8999,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -9123,7 +9123,7 @@
         "compas-actions": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas-dev/compas-actions/'"
+          "detail": "matched 'compas-dev/compas-actions/' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -9255,7 +9255,7 @@
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -9384,9 +9384,9 @@
           "detail": "no match"
         },
         "compas-actions": {
-          "status": "unknown",
+          "status": "not-adopted",
           "source": "auto",
-          "detail": "code search failed"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -9603,12 +9603,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 2 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -9714,12 +9714,12 @@
         "invocations2": {
           "status": "adopted",
           "source": "auto",
-          "detail": "matched 'compas_invocations2'"
+          "detail": "matched 'compas_invocations2' in 1 file"
         },
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -9836,7 +9836,7 @@
         "compas-actions": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "still uses 'compas-dev/compas-actions.'"
+          "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
           "status": "not-adopted",
@@ -9857,16 +9857,7 @@
       "ecosystem_deps": []
     }
   ],
-  "warnings": [
-    "GET https://api.github.com/search/code?q=%22from+compas.artists%22+repo%3Acompas-dev%2Fcompas_eve+language%3APython&per_page=1 -> HTTP 429",
-    "GET https://api.github.com/search/code?q=%22compas.artists.%22+repo%3Acompas-dev%2Fcompas_xr+language%3APython&per_page=1 -> HTTP 429",
-    "GET https://api.github.com/search/code?q=%22compas-dev%2Fcompas-actions%2F%22+repo%3Acompas-dev%2Fsphinx_compas2_theme+language%3AYAML&per_page=1 -> HTTP 429",
-    "GET https://api.github.com/search/code?q=%22from+compas.scene%22+repo%3Acompas-dev%2Fcompas_framework+language%3APython&per_page=1 -> HTTP 429",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Apr+is%3Aopen&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&sort=created&order=asc&per_page=1 -> HTTP 422",
-    "GET https://api.github.com/search/code?q=%22compas_invocations2%22+repo%3Apetrasvestartas%2Fcompas_manifold+language%3APython&per_page=1 -> HTTP 429"
-  ],
+  "warnings": [],
   "collection_scope": "all",
   "collected_repos": null
 }
