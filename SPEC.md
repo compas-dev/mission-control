@@ -318,11 +318,20 @@ For each `(repo, feature)` pair, compute a cell status:
   floor to `satisfied_by`.
 - `kind: python` → is the version in the resolved `python_versions`?
 - `kind: file` → does any `any_of` path exist in the repo?
-- `kind: code` → GitHub **code search** API
-  (`GET /search/code?q=<pattern>+repo:{owner}/{repo}`). `present` patterns →
-  `adopted` if any match; `absent` patterns → `adopted` if none match. Code
-  search is rate-limited (30 req/min authenticated) and only indexes default
-  branch — throttle, cache, and treat errors as `unknown`.
+- `kind: code` → literal substring scan of the repository source. `present`
+  patterns → `adopted` if any match; `absent` patterns → `adopted` if none
+  match. With `--local-scan` (the default in CI) the source tarball is fetched
+  once and scanned on disk; `language:` is approximated by that language's file
+  extensions, and vendored trees (`node_modules`, `.tox`, …) are skipped.
+
+  Without `--local-scan` this falls back to the GitHub code search API
+  (`GET /search/code`), which is **capped at 10 requests/minute** and made the
+  nightly run take over two hours, mostly asleep in rate-limit backoff.
+  Exhausted retries were recorded as `unknown`, so cells flickered between
+  runs. That API also *tokenises* queries rather than matching substrings, so
+  dotted patterns such as `compas.scene.` never meant what `features.yml`
+  reads as though they mean, and its index both misses files and returns
+  different answers on repeated identical queries. Prefer the local scan.
 - `kind: manual` → read from `feature_overrides`; else `unknown`.
 - `kind: registry-match` → compare the normalized GitHub release version with
   every configured PyPI, npm, or JSR distribution.

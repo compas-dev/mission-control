@@ -17,7 +17,10 @@ import argparse
 import datetime
 import json
 import os
+import shutil
 import sys
+import tempfile
+import time
 from pathlib import Path
 
 import yaml
@@ -26,6 +29,7 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import conda  # noqa: E402
+import localrepo  # noqa: E402
 import parse  # noqa: E402
 import registries  # noqa: E402
 from features import detect  # noqa: E402
@@ -168,7 +172,14 @@ def collect_material(gh: GitHub, cfg: dict, defaults: dict) -> dict:
     }
 
 
-def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tracked: dict) -> dict:
+def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tracked: dict,
+                 scanner=None) -> dict:
+    """Collect one repository.
+
+    ``scanner`` optionally supplies file/tree content from a local checkout; it
+    is API-compatible with ``gh`` for those reads and falls back to it for
+    everything else. When omitted, every read goes through the GitHub API.
+    """
     owner = cfg.get("owner", defaults.get("owner", "compas-dev"))
     name = cfg["name"]
     branch = cfg.get("branch", defaults.get("branch", "main"))
@@ -176,6 +187,9 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
 
     meta = gh.repo(owner, name) or {}
     branch = meta.get("default_branch") or branch
+    # Metadata, CI, releases and issue counts have no local equivalent and stay
+    # on the API; everything that reads repository content prefers the scanner.
+    content = scanner if scanner is not None else gh
     runtime = cfg.get("runtime", "python")
     archived = meta.get("archived", False)
     status = cfg.get("status") or ("archived" if archived else "active")
@@ -216,10 +230,10 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
     }
 
     # -- packaging --------------------------------------------------------
-    pyproject_text = gh.file_text(owner, name, "pyproject.toml", branch) if runtime == "python" else None
-    req_text = gh.file_text(owner, name, "requirements.txt", branch) if runtime == "python" else None
-    env_text = gh.file_text(owner, name, "environment.yml", branch) if runtime == "python" else None
-    package_text = gh.file_text(owner, name, "package.json", branch) if runtime == "node" else None
+    pyproject_text = content.file_text(owner, name, "pyproject.toml", branch) if runtime == "python" else None
+    req_text = content.file_text(owner, name, "requirements.txt", branch) if runtime == "python" else None
+    env_text = content.file_text(owner, name, "environment.yml", branch) if runtime == "python" else None
+    package_text = content.file_text(owner, name, "package.json", branch) if runtime == "node" else None
     pyproject = parse.parse_pyproject(pyproject_text)
     package_json = parse.parse_package_json(package_text)
     # Merge dependency sources by precedence (later wins): conda environment.yml
@@ -232,11 +246,11 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
         **package_json.get("dependencies", {}),
     }
 
-    workflow_names = gh.dir_entries(owner, name, ".github/workflows", branch)
+    workflow_names = content.dir_entries(owner, name, ".github/workflows", branch)
     workflow_texts = []
     for wf in workflow_names:
         if wf in WORKFLOW_CANDIDATES or "build" in wf or "test" in wf or "ci" in wf:
-            workflow_texts.append(gh.file_text(owner, name, f".github/workflows/{wf}", branch) or "")
+            workflow_texts.append(content.file_text(owner, name, f".github/workflows/{wf}", branch) or "")
     ci_pythons = parse.parse_ci_pythons(workflow_texts) if runtime == "python" else []
     resolved = parse.resolve_pythons(ci_pythons, pyproject["classifier_pythons"], pyproject["requires_python"])
 
@@ -246,7 +260,7 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
         "compas_major_floor": parse.dependency_floor_major(compas_pin) if compas_pin else None,
         "python_versions": resolved["versions"],
         "python_source": resolved["source"],
-        "hosts": parse.detect_hosts(gh, owner, name, branch, workflow_names) if runtime == "python" else None,
+        "hosts": parse.detect_hosts(content, owner, name, branch, workflow_names) if runtime == "python" else None,
         "node_engine": package_json.get("node_engine"),
         "package_manager": package_json.get("package_manager"),
         "requirements": requirements,  # used by feature engine; stripped before output
@@ -255,7 +269,7 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
     # -- features ---------------------------------------------------------
     feat_cells = {}
     for feature in features:
-        feat_cells[feature["id"]] = detect(feature, cfg, packaging, gh, owner, name, release=release, conda=conda)
+        feat_cells[feature["id"]] = detect(feature, cfg, packaging, content, owner, name, release=release, conda=conda)
 
     # -- ecosystem dependency edges (which tracked packages this depends on) --
     self_ids = {parse.canonical_name(name)}
@@ -299,6 +313,21 @@ def main() -> int:
         "--materials",
         action="store_true",
         help="collect lightweight materials.yml metadata into site/public/materials.json",
+    )
+    ap.add_argument(
+        "--local-scan",
+        action="store_true",
+        help="fetch each repo's source tarball and answer content/code checks locally",
+    )
+    ap.add_argument(
+        "--scan-dir",
+        help="reuse/keep extracted trees here instead of a temp dir (implies --local-scan)",
+    )
+    ap.add_argument(
+        "--scan-workers",
+        type=int,
+        default=8,
+        help="parallel tarball fetches for --local-scan (default 8)",
     )
     ap.add_argument(
         "--repo",
@@ -356,14 +385,46 @@ def main() -> int:
 
     gh = GitHub(args.token)
     scope = f"{len(selected_cfgs)} selected" if requested_names else f"all {len(selected_cfgs)}"
+
+    # -- optional local scan ------------------------------------------------
+    local_scan = args.local_scan or bool(args.scan_dir)
+    trees: dict = {}
+    temp_scan_dir = None
+    if local_scan:
+        if args.scan_dir:
+            scan_root = Path(args.scan_dir).resolve()
+        else:
+            temp_scan_dir = tempfile.mkdtemp(prefix="mc-scan-")
+            scan_root = Path(temp_scan_dir)
+        entries = [
+            (cfg.get("owner", defaults.get("owner", "compas-dev")), cfg["name"], None)
+            for cfg in selected_cfgs
+        ]
+        print(f"Fetching {len(entries)} source trees into {scan_root}…", file=sys.stderr)
+        started = time.time()
+        trees = localrepo.prefetch(
+            entries, args.token, scan_root, workers=args.scan_workers,
+            log=lambda message: print(message, file=sys.stderr),
+        )
+        print(f"  fetched {len(trees)}/{len(entries)} trees in {time.time() - started:.0f}s", file=sys.stderr)
+        missing = [f"{owner}/{name}" for owner, name, _ in entries if (owner, name) not in trees]
+        for ref in missing:
+            gh.warnings.append(f"{ref}: local scan unavailable, fell back to the GitHub API")
+
     print(f"Collecting {scope} repos…", file=sys.stderr)
     repos = []
     for cfg in selected_cfgs:
         try:
-            repos.append(collect_repo(gh, cfg, defaults, features, tracked))
+            owner = cfg.get("owner", defaults.get("owner", "compas-dev"))
+            tree = trees.get((owner, cfg["name"])) if local_scan else None
+            scanner = localrepo.LocalScanner(gh, tree) if tree else None
+            repos.append(collect_repo(gh, cfg, defaults, features, tracked, scanner=scanner))
         except Exception as exc:  # noqa: BLE001 — fail soft per repo
             gh.warnings.append(f"{cfg.get('name')}: {exc}")
             print(f"    ! {cfg.get('name')} failed: {exc}", file=sys.stderr)
+
+    if temp_scan_dir:
+        shutil.rmtree(temp_scan_dir, ignore_errors=True)
 
     out = root / "site" / "public" / "data.json"
     if requested_names and out.exists():
