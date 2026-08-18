@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T08:09:55Z",
+  "generated_at": "2026-08-18T08:34:26Z",
   "features": [
     {
       "id": "compas2",
@@ -1094,7 +1094,7 @@
         "ci": "passing",
         "open_issues": 5,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 913
+        "oldest_open_issue_age_days": 914
       },
       "release": {
         "github_tag": "1.0.1",
@@ -8251,12 +8251,12 @@
       "distributions": [],
       "role": null,
       "status": "active",
-      "description": "Compas environment switching and Grasshopper component installation GUI tool. ",
+      "description": null,
       "stars": 0,
-      "language": "Python",
+      "language": null,
       "health": {
-        "last_commit_date": "2024-10-04",
-        "staleness": "dormant",
+        "last_commit_date": null,
+        "staleness": "unknown",
         "ci": "none",
         "open_issues": 0,
         "open_prs": 0,
@@ -8336,7 +8336,7 @@
         "mission-control-badge": {
           "status": "not-adopted",
           "source": "auto",
-          "detail": "linked COMPAS badge not found in README"
+          "detail": "README not found"
         },
         "pypi-match": {
           "status": "n/a",
@@ -9857,7 +9857,12 @@
       "ecosystem_deps": []
     }
   ],
-  "warnings": [],
+  "warnings": [
+    "gramaziokohler/compas-switcher: local scan unavailable, fell back to the GitHub API",
+    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Apr+is%3Aopen&per_page=1 -> HTTP 422",
+    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&per_page=1 -> HTTP 422",
+    "GET https://api.github.com/search/issues?q=repo%3Agramaziokohler%2Fcompas-switcher+is%3Aissue+is%3Aopen&sort=created&order=asc&per_page=1 -> HTTP 422"
+  ],
   "collection_scope": "all",
   "collected_repos": null
 }
