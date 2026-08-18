@@ -190,6 +190,16 @@ def detect(feature: dict, repo_cfg: dict, packaging: dict, gh, owner: str, name:
         present = detect_cfg.get("present", [])
         absent = detect_cfg.get("absent", [])
         language = detect_cfg.get("language")
+        # A local scanner can report how many files match, which turns a
+        # red/green cell into a burndown number for the remaining call sites.
+        counter = getattr(gh, "count_code", None)
+
+        def files_matching(pattern: str) -> str:
+            if counter is None:
+                return ""
+            hits = counter(pattern, language)
+            return f" in {hits} file{'s' if hits != 1 else ''}"
+
         matched_present = None
         for pat in present:
             found = gh.search_code(owner, name, pat, language=language)
@@ -203,10 +213,10 @@ def detect(feature: dict, repo_cfg: dict, packaging: dict, gh, owner: str, name:
             if found is None:
                 return _cell(STATUS_UNKNOWN, detail="code search failed")
             if found:
-                return _cell(STATUS_NOT, detail=f"still uses {pat!r}")
+                return _cell(STATUS_NOT, detail=f"still uses {pat!r}{files_matching(pat)}")
         if present:
             if matched_present:
-                return _cell(STATUS_ADOPTED, detail=f"matched {matched_present!r}")
+                return _cell(STATUS_ADOPTED, detail=f"matched {matched_present!r}{files_matching(matched_present)}")
             no_match = detect_cfg.get("no_match", STATUS_NOT)
             if no_match == STATUS_NA:
                 return _cell(STATUS_NA, detail="no matching API usage")

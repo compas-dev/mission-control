@@ -48,10 +48,18 @@ The collector is the heart of the project; the frontend renders `data.json` and 
 ```bash
 python -m venv .venv && . .venv/bin/activate
 pip install PyYAML packaging
-python -m collector --root . --token "$(gh auth token)"
+python -m collector --root . --token "$(gh auth token)" --local-scan
 ```
 
 This writes `site/public/data.json` and a dated snapshot in `data-history/`.
+
+`--local-scan` fetches each repository's source tarball once and answers all
+content and `code` checks from disk. It is what CI runs, and it is strongly
+preferred: the GitHub code-search API it replaces is capped at 10 requests per
+minute, which made a full run take over two hours and recorded rate-limit
+failures as `unknown` cells. Add `--scan-dir DIR` to keep the extracted trees
+between runs (they total ~2.5 GB), and `--scan-workers N` to tune the parallel
+fetch (default 8). Omit the flag to fall back to the pure-API backend.
 To refresh selected repositories without producing a partial history snapshot,
 repeat `--repo` as needed:
 

@@ -483,3 +483,149 @@ class GitHubReadmeTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LocalScannerTests(unittest.TestCase):
+    """The local scanner must be a drop-in for the API client it replaces."""
+
+    def setUp(self):
+        import tempfile
+
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        (self.root / "src" / "demo_rhino").mkdir(parents=True)
+        (self.root / ".github" / "workflows").mkdir(parents=True)
+        (self.root / "docs").mkdir()
+        (self.root / "src" / "demo.py").write_text("from compas.scene import Scene\n")
+        (self.root / "src" / "legacy.py").write_text("from compas.artists import Artist\n")
+        (self.root / "README.md").write_text("# Demo\n")
+        (self.root / "mkdocs.yml").write_text("site_name: demo\n")
+        (self.root / ".github" / "workflows" / "build.yml").write_text(
+            "uses: compas-dev/compas-actions/build@v4\n"
+        )
+        # Noise that must not be scanned: vendored trees and non-Python files.
+        (self.root / "node_modules").mkdir()
+        (self.root / "node_modules" / "vendored.py").write_text("from compas.artists import X\n")
+        (self.root / "docs" / "changelog.md").write_text("removed compas.artists usage\n")
+
+    def scanner(self):
+        import localrepo
+
+        return localrepo.LocalScanner(GitHub(None), self.root)
+
+    def test_file_and_dir_reads_match_the_api_surface(self):
+        scanner = self.scanner()
+        self.assertEqual(scanner.file_text("o", "n", "mkdocs.yml"), "site_name: demo\n")
+        self.assertIsNone(scanner.file_text("o", "n", "missing.toml"))
+        self.assertTrue(scanner.file_exists("o", "n", "mkdocs.yml"))
+        self.assertFalse(scanner.file_exists("o", "n", "docs/conf.py"))
+        self.assertEqual(scanner.dir_entries("o", "n", ".github/workflows"), ["build.yml"])
+        self.assertEqual(scanner.dir_entries("o", "n", "nope"), [])
+        self.assertEqual(scanner.readme_text("o", "n"), "# Demo\n")
+
+    def test_absence_is_a_fact_not_a_failed_request(self):
+        # The API client returns None when a request fails, which detection maps
+        # to "unknown". A local tree can always answer, so it must never do that.
+        self.assertIs(self.scanner().file_exists("o", "n", "docs/source/conf.py"), False)
+
+    def test_language_filter_and_vendored_skips(self):
+        scanner = self.scanner()
+        # Restricted to Python: the changelog mentioning the old API is ignored,
+        # and so is the vendored copy under node_modules.
+        self.assertEqual(scanner.grep_files("compas.artists", language="Python"), ["src/legacy.py"])
+        self.assertEqual(scanner.count_code("from compas.scene", language="Python"), 1)
+        self.assertEqual(scanner.grep_files("compas-dev/compas-actions/", language="YAML"),
+                         [str(Path(".github/workflows/build.yml"))])
+
+    def test_dotted_patterns_match_literally(self):
+        # The whole reason for scanning locally: '.' is a real character here,
+        # not a tokeniser artefact.
+        (self.root / "src" / "dotted.py").write_text("obj = compas.scene.Scene()\n")
+        self.assertEqual(self.scanner().count_code("compas.scene.", language="Python"), 1)
+        self.assertEqual(self.scanner().count_code("compas.zzz.", language="Python"), 0)
+
+    def test_unknown_attributes_delegate_to_the_github_client(self):
+        scanner = self.scanner()
+        self.assertIsInstance(scanner.warnings, list)
+        self.assertTrue(callable(scanner.repo))
+
+    def test_path_traversal_is_refused(self):
+        self.assertFalse(self.scanner().file_exists("o", "n", "../../etc/passwd"))
+
+    def test_detection_runs_unchanged_against_the_scanner(self):
+        scanner = self.scanner()
+        cell = features.detect(
+            {"id": "mkdocs", "kind": "file", "applies_to": ["python"],
+             "detect": {"any_of": ["mkdocs.yml"], "none_of": ["docs/conf.py"]}},
+            {}, {}, scanner, "o", "n",
+        )
+        self.assertEqual(cell["status"], "adopted")
+
+        cell = features.detect(
+            {"id": "no-deprecated-artist", "kind": "code", "applies_to": ["python"],
+             "detect": {"language": "Python", "absent": ["from compas.artists"]}},
+            {}, {}, scanner, "o", "n",
+        )
+        self.assertEqual(cell["status"], "not-adopted")
+        self.assertIn("1 file", cell["detail"])  # counts, not just a boolean
+
+
+class BatchedIssueCountTests(unittest.TestCase):
+    """One GraphQL query must return exactly what the REST search path did."""
+
+    def client(self, payload, record=None):
+        gh = GitHub("token")
+
+        def fake_graphql(query, retries=3):
+            if record is not None:
+                record.append(query)
+            return payload
+
+        gh.graphql = fake_graphql
+        return gh
+
+    def test_counts_and_oldest_age_are_unpacked_per_alias(self):
+        import datetime
+
+        created = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=100))
+        payload = {
+            "a0": {
+                "issues": {"totalCount": 99},
+                "pullRequests": {"totalCount": 14},
+                "oldest": {"nodes": [{"createdAt": created.strftime("%Y-%m-%dT%H:%M:%SZ")}]},
+            },
+            "a1": {
+                "issues": {"totalCount": 0},
+                "pullRequests": {"totalCount": 0},
+                "oldest": {"nodes": []},
+            },
+        }
+        gh = self.client(payload)
+        result = gh.batch_issue_pr_counts([("compas-dev", "compas"), ("o", "quiet")])
+
+        self.assertEqual(result[("compas-dev", "compas")]["open_issues"], 99)
+        self.assertEqual(result[("compas-dev", "compas")]["open_prs"], 14)
+        self.assertEqual(result[("compas-dev", "compas")]["oldest_open_issue_age_days"], 100)
+        # A repo with no open issues reports no age rather than zero.
+        self.assertIsNone(result[("o", "quiet")]["oldest_open_issue_age_days"])
+
+    def test_repos_are_chunked(self):
+        queries = []
+        gh = self.client({}, record=queries)
+        gh.batch_issue_pr_counts([("o", f"r{i}") for i in range(60)], chunk=25)
+        self.assertEqual(len(queries), 3)  # 25 + 25 + 10
+
+    def test_unreadable_repo_is_omitted_so_the_caller_can_fall_back(self):
+        # GraphQL nulls a single alias rather than failing the batch; that repo
+        # must be absent from the result, not present with zeroes.
+        gh = self.client({"a0": None, "a1": {"issues": {"totalCount": 3},
+                                             "pullRequests": {"totalCount": 1},
+                                             "oldest": {"nodes": []}}})
+        result = gh.batch_issue_pr_counts([("o", "gone"), ("o", "fine")])
+        self.assertNotIn(("o", "gone"), result)
+        self.assertEqual(result[("o", "fine")]["open_issues"], 3)
+
+    def test_graphql_requires_a_token(self):
+        self.assertIsNone(GitHub(None).graphql("query { viewer { login } }"))
+        self.assertEqual(GitHub(None).batch_issue_pr_counts([("o", "n")]), {})

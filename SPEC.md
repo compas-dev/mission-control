@@ -252,7 +252,7 @@ whole run.**
 | Field | Source |
 |---|---|
 | `description`, `stars`, `archived`, `default_branch`, `pushed_at`, `language` | `GET /repos/{owner}/{repo}` |
-| `open_issues`, `open_prs` | issues search / PR list (issues count includes PRs — separate them) |
+| `open_issues`, `open_prs` | one batched GraphQL query per 25 repos (`issues`/`pullRequests` `totalCount`, which are already separated, plus the oldest open issue). Replaces three `/search/issues` calls per repo — that endpoint is capped at 30 req/min and cost ~7 minutes of a 74-repo run; the batch costs ~1 point of a 5000/hour budget. Falls back to the REST search path per repo when GraphQL is unavailable (e.g. no token). |
 | `oldest_open_issue_age_days` | issues search sorted asc |
 | `latest_release` (tag, date) | `GET /repos/{owner}/{repo}/releases/latest` (fallback: tags) |
 | `default_branch_ci` (`passing`\|`failing`\|`none`) | `GET /repos/{owner}/{repo}/commits/{branch}/check-runs` or Actions runs on default branch |
@@ -318,11 +318,20 @@ For each `(repo, feature)` pair, compute a cell status:
   floor to `satisfied_by`.
 - `kind: python` → is the version in the resolved `python_versions`?
 - `kind: file` → does any `any_of` path exist in the repo?
-- `kind: code` → GitHub **code search** API
-  (`GET /search/code?q=<pattern>+repo:{owner}/{repo}`). `present` patterns →
-  `adopted` if any match; `absent` patterns → `adopted` if none match. Code
-  search is rate-limited (30 req/min authenticated) and only indexes default
-  branch — throttle, cache, and treat errors as `unknown`.
+- `kind: code` → literal substring scan of the repository source. `present`
+  patterns → `adopted` if any match; `absent` patterns → `adopted` if none
+  match. With `--local-scan` (the default in CI) the source tarball is fetched
+  once and scanned on disk; `language:` is approximated by that language's file
+  extensions, and vendored trees (`node_modules`, `.tox`, …) are skipped.
+
+  Without `--local-scan` this falls back to the GitHub code search API
+  (`GET /search/code`), which is **capped at 10 requests/minute** and made the
+  nightly run take over two hours, mostly asleep in rate-limit backoff.
+  Exhausted retries were recorded as `unknown`, so cells flickered between
+  runs. That API also *tokenises* queries rather than matching substrings, so
+  dotted patterns such as `compas.scene.` never meant what `features.yml`
+  reads as though they mean, and its index both misses files and returns
+  different answers on repeated identical queries. Prefer the local scan.
 - `kind: manual` → read from `feature_overrides`; else `unknown`.
 - `kind: registry-match` → compare the normalized GitHub release version with
   every configured PyPI, npm, or JSR distribution.

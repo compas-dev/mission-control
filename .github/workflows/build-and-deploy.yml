@@ -38,7 +38,7 @@ jobs:
       - name: Collect data
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python -m collector --root .
+        run: python -m collector --root . --local-scan
 
       - name: Commit history snapshot
         run: |
