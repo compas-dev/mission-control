@@ -173,12 +173,15 @@ def collect_material(gh: GitHub, cfg: dict, defaults: dict) -> dict:
 
 
 def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tracked: dict,
-                 scanner=None) -> dict:
+                 scanner=None, counts: dict | None = None) -> dict:
     """Collect one repository.
 
     ``scanner`` optionally supplies file/tree content from a local checkout; it
     is API-compatible with ``gh`` for those reads and falls back to it for
     everything else. When omitted, every read goes through the GitHub API.
+
+    ``counts`` optionally supplies pre-fetched open issue/PR counts from the
+    batched GraphQL query; when omitted they are fetched per repo over REST.
     """
     owner = cfg.get("owner", defaults.get("owner", "compas-dev"))
     name = cfg["name"]
@@ -195,7 +198,8 @@ def collect_repo(gh: GitHub, cfg: dict, defaults: dict, features: list[dict], tr
     status = cfg.get("status") or ("archived" if archived else "active")
 
     # -- health -----------------------------------------------------------
-    counts = gh.issue_pr_counts(owner, name)
+    if counts is None:
+        counts = gh.issue_pr_counts(owner, name)
     last_commit = (meta.get("pushed_at") or "")[:10] or None
     health = {
         "last_commit_date": last_commit,
@@ -411,6 +415,19 @@ def main() -> int:
         for ref in missing:
             gh.warnings.append(f"{ref}: local scan unavailable, fell back to the GitHub API")
 
+    # -- batched issue/PR counts -------------------------------------------
+    # One GraphQL query per 25 repos replaces three /search/issues calls each,
+    # trading a 30 req/min cap for ~1 point of a 5000/hour budget.
+    targets = [
+        (cfg.get("owner", defaults.get("owner", "compas-dev")), cfg["name"])
+        for cfg in selected_cfgs
+    ]
+    started = time.time()
+    batched_counts = gh.batch_issue_pr_counts(targets)
+    if batched_counts:
+        print(f"Batched issue/PR counts for {len(batched_counts)}/{len(targets)} repos "
+              f"in {time.time() - started:.0f}s", file=sys.stderr)
+
     print(f"Collecting {scope} repos…", file=sys.stderr)
     repos = []
     for cfg in selected_cfgs:
@@ -418,7 +435,8 @@ def main() -> int:
             owner = cfg.get("owner", defaults.get("owner", "compas-dev"))
             tree = trees.get((owner, cfg["name"])) if local_scan else None
             scanner = localrepo.LocalScanner(gh, tree) if tree else None
-            repos.append(collect_repo(gh, cfg, defaults, features, tracked, scanner=scanner))
+            repos.append(collect_repo(gh, cfg, defaults, features, tracked, scanner=scanner,
+                                      counts=batched_counts.get((owner, cfg["name"]))))
         except Exception as exc:  # noqa: BLE001 — fail soft per repo
             gh.warnings.append(f"{cfg.get('name')}: {exc}")
             print(f"    ! {cfg.get('name')} failed: {exc}", file=sys.stderr)

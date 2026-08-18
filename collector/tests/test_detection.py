@@ -569,3 +569,63 @@ class LocalScannerTests(unittest.TestCase):
         )
         self.assertEqual(cell["status"], "not-adopted")
         self.assertIn("1 file", cell["detail"])  # counts, not just a boolean
+
+
+class BatchedIssueCountTests(unittest.TestCase):
+    """One GraphQL query must return exactly what the REST search path did."""
+
+    def client(self, payload, record=None):
+        gh = GitHub("token")
+
+        def fake_graphql(query, retries=3):
+            if record is not None:
+                record.append(query)
+            return payload
+
+        gh.graphql = fake_graphql
+        return gh
+
+    def test_counts_and_oldest_age_are_unpacked_per_alias(self):
+        import datetime
+
+        created = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=100))
+        payload = {
+            "a0": {
+                "issues": {"totalCount": 99},
+                "pullRequests": {"totalCount": 14},
+                "oldest": {"nodes": [{"createdAt": created.strftime("%Y-%m-%dT%H:%M:%SZ")}]},
+            },
+            "a1": {
+                "issues": {"totalCount": 0},
+                "pullRequests": {"totalCount": 0},
+                "oldest": {"nodes": []},
+            },
+        }
+        gh = self.client(payload)
+        result = gh.batch_issue_pr_counts([("compas-dev", "compas"), ("o", "quiet")])
+
+        self.assertEqual(result[("compas-dev", "compas")]["open_issues"], 99)
+        self.assertEqual(result[("compas-dev", "compas")]["open_prs"], 14)
+        self.assertEqual(result[("compas-dev", "compas")]["oldest_open_issue_age_days"], 100)
+        # A repo with no open issues reports no age rather than zero.
+        self.assertIsNone(result[("o", "quiet")]["oldest_open_issue_age_days"])
+
+    def test_repos_are_chunked(self):
+        queries = []
+        gh = self.client({}, record=queries)
+        gh.batch_issue_pr_counts([("o", f"r{i}") for i in range(60)], chunk=25)
+        self.assertEqual(len(queries), 3)  # 25 + 25 + 10
+
+    def test_unreadable_repo_is_omitted_so_the_caller_can_fall_back(self):
+        # GraphQL nulls a single alias rather than failing the batch; that repo
+        # must be absent from the result, not present with zeroes.
+        gh = self.client({"a0": None, "a1": {"issues": {"totalCount": 3},
+                                             "pullRequests": {"totalCount": 1},
+                                             "oldest": {"nodes": []}}})
+        result = gh.batch_issue_pr_counts([("o", "gone"), ("o", "fine")])
+        self.assertNotIn(("o", "gone"), result)
+        self.assertEqual(result[("o", "fine")]["open_issues"], 3)
+
+    def test_graphql_requires_a_token(self):
+        self.assertIsNone(GitHub(None).graphql("query { viewer { login } }"))
+        self.assertEqual(GitHub(None).batch_issue_pr_counts([("o", "n")]), {})

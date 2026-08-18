@@ -252,7 +252,7 @@ whole run.**
 | Field | Source |
 |---|---|
 | `description`, `stars`, `archived`, `default_branch`, `pushed_at`, `language` | `GET /repos/{owner}/{repo}` |
-| `open_issues`, `open_prs` | issues search / PR list (issues count includes PRs — separate them) |
+| `open_issues`, `open_prs` | one batched GraphQL query per 25 repos (`issues`/`pullRequests` `totalCount`, which are already separated, plus the oldest open issue). Replaces three `/search/issues` calls per repo — that endpoint is capped at 30 req/min and cost ~7 minutes of a 74-repo run; the batch costs ~1 point of a 5000/hour budget. Falls back to the REST search path per repo when GraphQL is unavailable (e.g. no token). |
 | `oldest_open_issue_age_days` | issues search sorted asc |
 | `latest_release` (tag, date) | `GET /repos/{owner}/{repo}/releases/latest` (fallback: tags) |
 | `default_branch_ci` (`passing`\|`failing`\|`none`) | `GET /repos/{owner}/{repo}/commits/{branch}/check-runs` or Actions runs on default branch |

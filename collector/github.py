@@ -60,6 +60,86 @@ class GitHub:
                 return None
         return None
 
+    def graphql(self, query: str, retries: int = 3) -> Optional[dict]:
+        """POST a GraphQL query. Returns the `data` object, or None on failure.
+
+        GraphQL rejects unauthenticated requests outright, so callers must be
+        prepared to fall back to the REST path when no token is configured.
+        """
+        if not self.token:
+            return None
+        body = json.dumps({"query": query}).encode("utf-8")
+        headers = {**self._headers(), "Content-Type": "application/json"}
+        for attempt in range(retries):
+            req = urllib.request.Request(f"{API}/graphql", data=body, headers=headers, method="POST")
+            try:
+                with urllib.request.urlopen(req, timeout=60) as resp:
+                    payload = json.loads(resp.read().decode("utf-8"))
+            except urllib.error.HTTPError as exc:
+                if exc.code in (403, 429) and attempt < retries - 1:
+                    time.sleep(min(60, 2 ** attempt * 5))
+                    continue
+                self.warnings.append(f"GraphQL -> HTTP {exc.code}")
+                return None
+            except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+                if attempt < retries - 1:
+                    time.sleep(2 ** attempt)
+                    continue
+                self.warnings.append(f"GraphQL -> {exc}")
+                return None
+            # Partial results are normal: a single unreadable repo nulls its own
+            # alias while every sibling in the batch still resolves.
+            for error in payload.get("errors") or []:
+                message = error.get("message", "unknown error")
+                if "Could not resolve" not in message:
+                    self.warnings.append(f"GraphQL: {message}")
+            return payload.get("data")
+        return None
+
+    def batch_issue_pr_counts(self, targets: list[tuple[str, str]], chunk: int = 25) -> dict:
+        """Open issue/PR counts and oldest-issue age for many repos at once.
+
+        Replaces three /search/issues calls per repo. That endpoint is capped at
+        30 requests/minute, which cost roughly seven minutes on a 74-repo run;
+        the same information costs about one point of the 5000/hour GraphQL
+        budget per chunk. Repos missing from the response are simply absent from
+        the result, and the caller falls back to REST for those.
+        """
+        import datetime
+
+        results: dict[tuple[str, str], dict] = {}
+        for start in range(0, len(targets), chunk):
+            batch = targets[start:start + chunk]
+            fields = []
+            for index, (owner, name) in enumerate(batch):
+                fields.append(
+                    f'  a{index}: repository(owner: "{owner}", name: "{name}") {{\n'
+                    f"    issues(states: OPEN) {{ totalCount }}\n"
+                    f"    pullRequests(states: OPEN) {{ totalCount }}\n"
+                    f"    oldest: issues(states: OPEN, first: 1, "
+                    f"orderBy: {{field: CREATED_AT, direction: ASC}}) {{ nodes {{ createdAt }} }}\n"
+                    f"  }}"
+                )
+            data = self.graphql("query {\n" + "\n".join(fields) + "\n}")
+            if not data:
+                continue
+            now = datetime.datetime.now(datetime.timezone.utc)
+            for index, key in enumerate(batch):
+                node = data.get(f"a{index}")
+                if not node:
+                    continue
+                nodes = ((node.get("oldest") or {}).get("nodes")) or []
+                oldest_days = None
+                if nodes and nodes[0].get("createdAt"):
+                    created = datetime.datetime.fromisoformat(nodes[0]["createdAt"].replace("Z", "+00:00"))
+                    oldest_days = (now - created).days
+                results[key] = {
+                    "open_issues": (node.get("issues") or {}).get("totalCount", 0),
+                    "open_prs": (node.get("pullRequests") or {}).get("totalCount", 0),
+                    "oldest_open_issue_age_days": oldest_days,
+                }
+        return results
+
     # -- convenience wrappers ------------------------------------------------
 
     def repo(self, owner: str, name: str) -> Optional[dict]:
