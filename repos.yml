@@ -224,9 +224,6 @@ repos:
   - name: compas-make2d
     owner: gramaziokohler
     category: tooling
-  - name: compas-switcher
-    owner: gramaziokohler
-    category: tooling
 
   # ---- applications / big tools (top of the dependency stack) ----------
   - name: antikythera         # process manager built on the COMPAS stack
