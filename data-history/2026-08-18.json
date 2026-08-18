@@ -364,7 +364,7 @@
       "staleness": "fresh",
       "ci": "passing",
       "open_issues": 71,
-      "open_prs": 13,
+      "open_prs": 14,
       "compas_major_floor": 2,
       "features_adopted": 9,
       "features": {
@@ -1428,28 +1428,6 @@
         "py311": "adopted",
         "py312": "adopted",
         "py313": "adopted",
-        "new-scene-api": "n/a",
-        "no-deprecated-artist": "adopted",
-        "mkdocs": "not-adopted",
-        "invocations2": "not-adopted",
-        "compas-actions": "not-adopted",
-        "mission-control-badge": "not-adopted",
-        "pypi-match": "n/a",
-        "conda-forge": "n/a"
-      }
-    },
-    "compas-switcher": {
-      "staleness": "unknown",
-      "ci": "none",
-      "open_issues": 0,
-      "open_prs": 0,
-      "compas_major_floor": null,
-      "features_adopted": 1,
-      "features": {
-        "compas2": "n/a",
-        "py311": "unknown",
-        "py312": "unknown",
-        "py313": "unknown",
         "new-scene-api": "n/a",
         "no-deprecated-artist": "adopted",
         "mkdocs": "not-adopted",

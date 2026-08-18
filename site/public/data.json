@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T08:34:26Z",
+  "generated_at": "2026-08-18T09:07:24Z",
   "features": [
     {
       "id": "compas2",
@@ -1760,12 +1760,12 @@
       "stars": 43,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-08-14",
+        "last_commit_date": "2026-08-18",
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 71,
-        "open_prs": 13,
-        "oldest_open_issue_age_days": 944
+        "open_prs": 14,
+        "oldest_open_issue_age_days": 945
       },
       "release": {
         "github_tag": "2.2.0",
@@ -3105,7 +3105,7 @@
         "ci": "failing",
         "open_issues": 15,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 2184
+        "oldest_open_issue_age_days": 2185
       },
       "release": {
         "github_tag": null,
@@ -4803,7 +4803,7 @@
         "ci": "none",
         "open_issues": 4,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 2587
+        "oldest_open_issue_age_days": 2588
       },
       "release": {
         "github_tag": "0.7.1",
@@ -7502,7 +7502,7 @@
         "ci": "none",
         "open_issues": 29,
         "open_prs": 4,
-        "oldest_open_issue_age_days": 2037
+        "oldest_open_issue_age_days": 2038
       },
       "release": {
         "github_tag": "0.11.0",
@@ -9537,7 +9537,7 @@
         "ci": "none",
         "open_issues": 6,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1909
+        "oldest_open_issue_age_days": 1910
       },
       "release": {
         "github_tag": null,
