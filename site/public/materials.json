@@ -1,6 +1,22 @@
 {
-  "generated_at": "2026-08-23T03:41:42Z",
+  "generated_at": "2026-08-30T08:40:11Z",
   "materials": [
+    {
+      "name": "workshop_compas_fab_2",
+      "owner": "gramaziokohler",
+      "url": "https://github.com/gramaziokohler/workshop_compas_fab_2",
+      "kind": "workshop",
+      "category": "fabrication",
+      "status": "active",
+      "description": "Materials for the COMPAS FAB 2.0 workshop",
+      "language": null,
+      "stars": 6,
+      "last_activity_date": "2026-08-27",
+      "homepage": null,
+      "topics": [],
+      "ecosystem_deps": [],
+      "notes": null
+    },
     {
       "name": "sandskript_compas_rrc",
       "owner": "AHA-ArchitectureAndHumanAugmentation",
@@ -93,22 +109,6 @@
         "compas_fab",
         "compas_robots"
       ],
-      "notes": null
-    },
-    {
-      "name": "workshop_compas_fab_2",
-      "owner": "gramaziokohler",
-      "url": "https://github.com/gramaziokohler/workshop_compas_fab_2",
-      "kind": "workshop",
-      "category": "fabrication",
-      "status": "active",
-      "description": "Materials for the COMPAS FAB 2.0 workshop",
-      "language": null,
-      "stars": 6,
-      "last_activity_date": "2026-06-21",
-      "homepage": null,
-      "topics": [],
-      "ecosystem_deps": [],
       "notes": null
     },
     {
