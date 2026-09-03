@@ -1,0 +1,1706 @@
+{
+  "schema_version": 2,
+  "date": "2026-09-03",
+  "features": [
+    {
+      "id": "compas2",
+      "label": "On COMPAS 2.x",
+      "kind": "pin",
+      "applies_to": [
+        "python"
+      ]
+    },
+    {
+      "id": "py311",
+      "label": "Python 3.11",
+      "kind": "python",
+      "applies_to": [
+        "python"
+      ]
+    },
+    {
+      "id": "py312",
+      "label": "Python 3.12",
+      "kind": "python",
+      "applies_to": [
+        "python"
+      ]
+    },
+    {
+      "id": "py313",
+      "label": "Python 3.13",
+      "kind": "python",
+      "applies_to": [
+        "python"
+      ]
+    },
+    {
+      "id": "new-scene-api",
+      "label": "New Scene API",
+      "kind": "code",
+      "applies_to": [
+        "python"
+      ]
+    },
+    {
+      "id": "no-deprecated-artist",
+      "label": "No deprecated Artist",
+      "kind": "code",
+      "applies_to": [
+        "python"
+      ]
+    },
+    {
+      "id": "mkdocs",
+      "label": "MkDocs (not Sphinx)",
+      "kind": "file",
+      "applies_to": [
+        "python"
+      ]
+    },
+    {
+      "id": "invocations2",
+      "label": "Uses compas_invocations2",
+      "kind": "code",
+      "applies_to": [
+        "python"
+      ]
+    },
+    {
+      "id": "compas-actions",
+      "label": "Uses compas-actions",
+      "kind": "code",
+      "applies_to": [
+        "python"
+      ]
+    },
+    {
+      "id": "mission-control-badge",
+      "label": "Mission Control badge",
+      "kind": "readme",
+      "applies_to": null
+    },
+    {
+      "id": "pypi-match",
+      "label": "Registry = GitHub release",
+      "kind": "registry-match",
+      "applies_to": null
+    },
+    {
+      "id": "conda-forge",
+      "label": "On conda-forge",
+      "kind": "conda",
+      "applies_to": [
+        "python"
+      ]
+    }
+  ],
+  "repos": {
+    "compas": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 99,
+      "open_prs": 15,
+      "compas_major_floor": null,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "n/a",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_framework": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "antikythera": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 1,
+      "open_prs": 3,
+      "compas_major_floor": 2,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_cnc": {
+      "staleness": "aging",
+      "ci": "failing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_eve": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 11,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "adopted",
+        "mission-control-badge": "adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_fab": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 75,
+      "open_prs": 9,
+      "compas_major_floor": 2,
+      "features_adopted": 11,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_nest": {
+      "staleness": "aging",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 6,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "unknown",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_robots": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 5,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 10,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_rrc": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 13,
+      "open_prs": 1,
+      "compas_major_floor": null,
+      "features_adopted": 3,
+      "features": {
+        "compas2": "n/a",
+        "py311": "not-adopted",
+        "py312": "not-adopted",
+        "py313": "not-adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_slicer": {
+      "staleness": "stale",
+      "ci": "passing",
+      "open_issues": 3,
+      "open_prs": 3,
+      "compas_major_floor": 2,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "not-adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "digital_casting_system": {
+      "staleness": "stale",
+      "ci": "passing",
+      "open_issues": 3,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 6,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_cadwork": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 4,
+      "open_prs": 2,
+      "compas_major_floor": 2,
+      "features_adopted": 10,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_timber": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 72,
+      "open_prs": 18,
+      "compas_major_floor": 2,
+      "features_adopted": 10,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_timber_pb": {
+      "staleness": "stale",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 6,
+      "features": {
+        "compas2": "n/a",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "easyhops": {
+      "staleness": "aging",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 5,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "timber_design": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 5,
+      "open_prs": 6,
+      "compas_major_floor": null,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "n/a",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_brep": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 10,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_cgal": {
+      "staleness": "aging",
+      "ci": "passing",
+      "open_issues": 1,
+      "open_prs": 1,
+      "compas_major_floor": null,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_gmsh": {
+      "staleness": "stale",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 1,
+      "compas_major_floor": null,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_ifc": {
+      "staleness": "aging",
+      "ci": "passing",
+      "open_issues": 4,
+      "open_prs": 1,
+      "compas_major_floor": 2,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_libigl": {
+      "staleness": "aging",
+      "ci": "passing",
+      "open_issues": 1,
+      "open_prs": 2,
+      "compas_major_floor": 2,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_manifold": {
+      "staleness": "aging",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 6,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "unknown",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_nurbs": {
+      "staleness": "stale",
+      "ci": "failing",
+      "open_issues": 15,
+      "open_prs": 1,
+      "compas_major_floor": 2,
+      "features_adopted": 3,
+      "features": {
+        "compas2": "adopted",
+        "py311": "not-adopted",
+        "py312": "not-adopted",
+        "py313": "not-adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "unknown",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_occ": {
+      "staleness": "stale",
+      "ci": "passing",
+      "open_issues": 5,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "not-adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_occt": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 9,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_shapeop": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_skeleton": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_triangle": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_usd": {
+      "staleness": "stale",
+      "ci": "none",
+      "open_issues": 3,
+      "open_prs": 1,
+      "compas_major_floor": 2,
+      "features_adopted": 3,
+      "features": {
+        "compas2": "adopted",
+        "py311": "not-adopted",
+        "py312": "not-adopted",
+        "py313": "not-adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas-FoFin": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 2,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas-IGS": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 1,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas-Masonry": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 16,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas-RV": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 14,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas_3gs": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 2,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 2,
+      "features": {
+        "compas2": "unknown",
+        "py311": "not-adopted",
+        "py312": "not-adopted",
+        "py313": "not-adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_ags": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 5,
+      "open_prs": 1,
+      "compas_major_floor": null,
+      "features_adopted": 6,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_assembly": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 4,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_bender": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_cem": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 2,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 10,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_cra": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 2,
+      "open_prs": 1,
+      "compas_major_floor": null,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_dem": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 1,
+      "open_prs": 1,
+      "compas_major_floor": 2,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_dr": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_fd": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 2,
+      "open_prs": 5,
+      "compas_major_floor": null,
+      "features_adopted": 6,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_lca": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 1,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_lmgc90": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_model": {
+      "staleness": "aging",
+      "ci": "passing",
+      "open_issues": 6,
+      "open_prs": 2,
+      "compas_major_floor": null,
+      "features_adopted": 9,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_rbe": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 2,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 2,
+      "features": {
+        "compas2": "unknown",
+        "py311": "not-adopted",
+        "py312": "not-adopted",
+        "py313": "not-adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_tna": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 4,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_tno": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 3,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 6,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "jax_fdm": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 9,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_fea": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 46,
+      "open_prs": 1,
+      "compas_major_floor": 1,
+      "features_adopted": 2,
+      "features": {
+        "compas2": "not-adopted",
+        "py311": "not-adopted",
+        "py312": "not-adopted",
+        "py313": "not-adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_fea2": {
+      "staleness": "stale",
+      "ci": "none",
+      "open_issues": 13,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_notebook": {
+      "staleness": "stale",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_plotter": {
+      "staleness": "aging",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 9,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_threejs": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 4,
+      "compas_major_floor": null,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "adopted",
+        "mission-control-badge": "adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas_threejs_ts": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 1,
+      "open_prs": 3,
+      "compas_major_floor": null,
+      "features_adopted": 1,
+      "features": {
+        "compas2": "n/a",
+        "py311": "n/a",
+        "py312": "n/a",
+        "py313": "n/a",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "n/a",
+        "mkdocs": "n/a",
+        "invocations2": "n/a",
+        "compas-actions": "n/a",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas_view2": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 29,
+      "open_prs": 4,
+      "compas_major_floor": null,
+      "features_adopted": 3,
+      "features": {
+        "compas2": "n/a",
+        "py311": "not-adopted",
+        "py312": "not-adopted",
+        "py313": "not-adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_viewer": {
+      "staleness": "stale",
+      "ci": "failing",
+      "open_issues": 44,
+      "open_prs": 10,
+      "compas_major_floor": 2,
+      "features_adopted": 9,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_xr": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 2,
+      "open_prs": 1,
+      "compas_major_floor": 2,
+      "features_adopted": 8,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "aixd_ara": {
+      "staleness": "stale",
+      "ci": "passing",
+      "open_issues": 12,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 5,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "not-adopted",
+        "py313": "not-adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas-actions": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 2,
+      "features": {
+        "compas2": "n/a",
+        "py311": "unknown",
+        "py312": "unknown",
+        "py313": "unknown",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas-make2d": {
+      "staleness": "stale",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 5,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas_invocations2": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 1,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "n/a",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_pb": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 10,
+      "open_prs": 0,
+      "compas_major_floor": 2,
+      "features_adopted": 11,
+      "features": {
+        "compas2": "adopted",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "adopted",
+        "invocations2": "adopted",
+        "compas-actions": "adopted",
+        "mission-control-badge": "adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "adopted"
+      }
+    },
+    "compas_pb_ts": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 1,
+      "features": {
+        "compas2": "n/a",
+        "py311": "n/a",
+        "py312": "n/a",
+        "py313": "n/a",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "n/a",
+        "mkdocs": "n/a",
+        "invocations2": "n/a",
+        "compas-actions": "n/a",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas_rui": {
+      "staleness": "stale",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "n/a",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "compas_session": {
+      "staleness": "stale",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 7,
+      "features": {
+        "compas2": "unknown",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "adopted",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "ghpython_componentizer": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 5,
+      "features": {
+        "compas2": "n/a",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "lamcp": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 5,
+      "features": {
+        "compas2": "n/a",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "sphinx_compas2_theme": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 2,
+      "features": {
+        "compas2": "unknown",
+        "py311": "not-adopted",
+        "py312": "not-adopted",
+        "py313": "not-adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "adopted",
+        "conda-forge": "not-adopted"
+      }
+    },
+    "vscode-compas-threejs": {
+      "staleness": "fresh",
+      "ci": "passing",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 0,
+      "features": {
+        "compas2": "n/a",
+        "py311": "n/a",
+        "py312": "n/a",
+        "py313": "n/a",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "n/a",
+        "mkdocs": "n/a",
+        "invocations2": "n/a",
+        "compas-actions": "n/a",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas_nanobind_package_template": {
+      "staleness": "dormant",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 2,
+      "features": {
+        "compas2": "n/a",
+        "py311": "unknown",
+        "py312": "unknown",
+        "py313": "unknown",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas_package_template": {
+      "staleness": "aging",
+      "ci": "none",
+      "open_issues": 6,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 2,
+      "features": {
+        "compas2": "n/a",
+        "py311": "unknown",
+        "py312": "unknown",
+        "py313": "unknown",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    },
+    "compas_soundscape": {
+      "staleness": "fresh",
+      "ci": "none",
+      "open_issues": 0,
+      "open_prs": 0,
+      "compas_major_floor": null,
+      "features_adopted": 4,
+      "features": {
+        "compas2": "n/a",
+        "py311": "adopted",
+        "py312": "adopted",
+        "py313": "adopted",
+        "new-scene-api": "n/a",
+        "no-deprecated-artist": "adopted",
+        "mkdocs": "not-adopted",
+        "invocations2": "not-adopted",
+        "compas-actions": "not-adopted",
+        "mission-control-badge": "not-adopted",
+        "pypi-match": "n/a",
+        "conda-forge": "n/a"
+      }
+    }
+  }
+}
