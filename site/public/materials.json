@@ -1,6 +1,25 @@
 {
-  "generated_at": "2026-09-06T07:24:48Z",
+  "generated_at": "2026-09-13T07:46:04Z",
   "materials": [
+    {
+      "name": "llhil-t2-fabrication",
+      "owner": "MAS-dfab",
+      "url": "https://github.com/MAS-dfab/llhil-t2-fabrication",
+      "kind": "project",
+      "category": "timber",
+      "status": "active",
+      "description": null,
+      "language": "Python",
+      "stars": 0,
+      "last_activity_date": "2026-09-09",
+      "homepage": null,
+      "topics": [],
+      "ecosystem_deps": [
+        "compas",
+        "compas_timber"
+      ],
+      "notes": null
+    },
     {
       "name": "workshop_compas_fab_2",
       "owner": "gramaziokohler",
@@ -64,25 +83,6 @@
       "language": "Python",
       "stars": 1,
       "last_activity_date": "2026-08-06",
-      "homepage": null,
-      "topics": [],
-      "ecosystem_deps": [
-        "compas",
-        "compas_timber"
-      ],
-      "notes": null
-    },
-    {
-      "name": "llhil-t2-fabrication",
-      "owner": "MAS-dfab",
-      "url": "https://github.com/MAS-dfab/llhil-t2-fabrication",
-      "kind": "project",
-      "category": "timber",
-      "status": "active",
-      "description": null,
-      "language": "Python",
-      "stars": 0,
-      "last_activity_date": "2026-07-14",
       "homepage": null,
       "topics": [],
       "ecosystem_deps": [
