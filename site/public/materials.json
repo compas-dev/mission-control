@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T07:46:04Z",
+  "generated_at": "2026-09-20T08:03:05Z",
   "materials": [
     {
       "name": "llhil-t2-fabrication",
@@ -152,7 +152,7 @@
       "status": "active",
       "description": "Materials for the Coding Architecture II course, Spring Semester 2026",
       "language": "Python",
-      "stars": 1,
+      "stars": 2,
       "last_activity_date": "2026-04-30",
       "homepage": "https://gramaziokohler.github.io/coding_architecture_fs26",
       "topics": [
