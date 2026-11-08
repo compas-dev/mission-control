@@ -1,6 +1,22 @@
 {
-  "generated_at": "2026-11-01T09:53:30Z",
+  "generated_at": "2026-11-08T09:41:52Z",
   "materials": [
+    {
+      "name": "workshop_compas_fab_2",
+      "owner": "gramaziokohler",
+      "url": "https://github.com/gramaziokohler/workshop_compas_fab_2",
+      "kind": "workshop",
+      "category": "fabrication",
+      "status": "active",
+      "description": "Materials for the COMPAS FAB 2.0 workshop",
+      "language": null,
+      "stars": 6,
+      "last_activity_date": "2026-11-08",
+      "homepage": null,
+      "topics": [],
+      "ecosystem_deps": [],
+      "notes": null
+    },
     {
       "name": "llhil-t2-fabrication",
       "owner": "MAS-dfab",
@@ -18,22 +34,6 @@
         "compas",
         "compas_timber"
       ],
-      "notes": null
-    },
-    {
-      "name": "workshop_compas_fab_2",
-      "owner": "gramaziokohler",
-      "url": "https://github.com/gramaziokohler/workshop_compas_fab_2",
-      "kind": "workshop",
-      "category": "fabrication",
-      "status": "active",
-      "description": "Materials for the COMPAS FAB 2.0 workshop",
-      "language": null,
-      "stars": 6,
-      "last_activity_date": "2026-08-27",
-      "homepage": null,
-      "topics": [],
-      "ecosystem_deps": [],
       "notes": null
     },
     {
@@ -349,7 +349,7 @@
       "status": "active",
       "description": "Materials for the Coding Architecture II course, Spring Semester 2025",
       "language": "Python",
-      "stars": 2,
+      "stars": 3,
       "last_activity_date": "2025-04-23",
       "homepage": null,
       "topics": [],
