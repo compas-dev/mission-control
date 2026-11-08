@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T08:36:19Z",
+  "generated_at": "2026-11-08T08:49:41Z",
   "features": [
     {
       "id": "compas2",
@@ -137,7 +137,7 @@
         "ci": "failing",
         "open_issues": 99,
         "open_prs": 20,
-        "oldest_open_issue_age_days": 3034
+        "oldest_open_issue_age_days": 3035
       },
       "release": {
         "github_tag": "2.15.1",
@@ -265,11 +265,11 @@
       "stars": 2,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-11-07",
+        "last_commit_date": "2026-11-08",
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 0,
-        "open_prs": 4,
+        "open_prs": 5,
         "oldest_open_issue_age_days": null
       },
       "release": {
@@ -410,7 +410,7 @@
         "ci": "passing",
         "open_issues": 3,
         "open_prs": 2,
-        "oldest_open_issue_age_days": 135
+        "oldest_open_issue_age_days": 136
       },
       "release": {
         "github_tag": "0.5.1",
@@ -803,8 +803,8 @@
         {
           "registry": "pypi",
           "name": "compas_fab",
-          "version": "2.0.1",
-          "date": "2026-06-18",
+          "version": "2.1.0",
+          "date": "2026-11-08",
           "url": "https://pypi.org/project/compas_fab/"
         }
       ],
@@ -814,29 +814,29 @@
       "stars": 141,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-11-03",
+        "last_commit_date": "2026-11-08",
         "staleness": "fresh",
         "ci": "failing",
-        "open_issues": 75,
-        "open_prs": 16,
-        "oldest_open_issue_age_days": 3264
+        "open_issues": 74,
+        "open_prs": 8,
+        "oldest_open_issue_age_days": 3265
       },
       "release": {
-        "github_tag": "2.0.1",
-        "github_release_tag": "v2.0.1",
-        "github_date": "2026-06-18",
-        "registry_version": "2.0.1",
-        "registry_date": "2026-06-18",
+        "github_tag": "2.1.0",
+        "github_release_tag": "v2.1.0",
+        "github_date": "2026-11-08",
+        "registry_version": "2.1.0",
+        "registry_date": "2026-11-08",
         "registry_name": "pypi",
-        "pypi_version": "2.0.1",
-        "pypi_date": "2026-06-18",
+        "pypi_version": "2.1.0",
+        "pypi_date": "2026-11-08",
         "drift": false,
         "distributions": [
           {
             "registry": "pypi",
             "name": "compas_fab",
-            "version": "2.0.1",
-            "date": "2026-06-18",
+            "version": "2.1.0",
+            "date": "2026-11-08",
             "url": "https://pypi.org/project/compas_fab/"
           }
         ]
@@ -914,7 +914,7 @@
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
-          "detail": "pypi 2.0.1 = GitHub 2.0.1"
+          "detail": "pypi 2.1.0 = GitHub 2.1.0"
         },
         "conda-forge": {
           "status": "adopted",
@@ -1075,8 +1075,8 @@
         {
           "registry": "pypi",
           "name": "compas_robots",
-          "version": "1.0.1",
-          "date": "2026-05-15",
+          "version": "1.1.0",
+          "date": "2026-11-07",
           "url": "https://pypi.org/project/compas_robots/"
         }
       ],
@@ -1086,29 +1086,29 @@
       "stars": 4,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-08-13",
-        "staleness": "aging",
+        "last_commit_date": "2026-11-07",
+        "staleness": "fresh",
         "ci": "passing",
         "open_issues": 5,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 995
+        "oldest_open_issue_age_days": 996
       },
       "release": {
-        "github_tag": "1.0.1",
-        "github_release_tag": "v1.0.1",
-        "github_date": "2026-05-15",
-        "registry_version": "1.0.1",
-        "registry_date": "2026-05-15",
+        "github_tag": "1.1.0",
+        "github_release_tag": "v1.1.0",
+        "github_date": "2026-11-07",
+        "registry_version": "1.1.0",
+        "registry_date": "2026-11-07",
         "registry_name": "pypi",
-        "pypi_version": "1.0.1",
-        "pypi_date": "2026-05-15",
+        "pypi_version": "1.1.0",
+        "pypi_date": "2026-11-07",
         "drift": false,
         "distributions": [
           {
             "registry": "pypi",
             "name": "compas_robots",
-            "version": "1.0.1",
-            "date": "2026-05-15",
+            "version": "1.1.0",
+            "date": "2026-11-07",
             "url": "https://pypi.org/project/compas_robots/"
           }
         ]
@@ -1179,19 +1179,19 @@
           "detail": "still uses 'compas-dev/compas-actions.' in 3 files"
         },
         "mission-control-badge": {
-          "status": "not-adopted",
+          "status": "adopted",
           "source": "auto",
-          "detail": "linked COMPAS badge not found in README"
+          "detail": "badge links to Mission Control"
         },
         "pypi-match": {
           "status": "adopted",
           "source": "auto",
-          "detail": "pypi 1.0.1 = GitHub 1.0.1"
+          "detail": "pypi 1.1.0 = GitHub 1.1.0"
         },
         "conda-forge": {
           "status": "adopted",
           "source": "auto",
-          "detail": "conda-forge 1.0.1"
+          "detail": "conda-forge 1.1.0"
         }
       },
       "ecosystem_deps": [
@@ -1226,7 +1226,7 @@
         "ci": "none",
         "open_issues": 13,
         "open_prs": 8,
-        "oldest_open_issue_age_days": 2132
+        "oldest_open_issue_age_days": 2133
       },
       "release": {
         "github_tag": "2.0.0",
@@ -1359,7 +1359,7 @@
         "ci": "passing",
         "open_issues": 3,
         "open_prs": 3,
-        "oldest_open_issue_age_days": 548
+        "oldest_open_issue_age_days": 549
       },
       "release": {
         "github_tag": "0.8.0",
@@ -1495,7 +1495,7 @@
         "ci": "none",
         "open_issues": 3,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 433
+        "oldest_open_issue_age_days": 434
       },
       "release": {
         "github_tag": "0.1.5",
@@ -1759,12 +1759,12 @@
       "stars": 47,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-11-04",
+        "last_commit_date": "2026-11-08",
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 74,
         "open_prs": 16,
-        "oldest_open_issue_age_days": 1025
+        "oldest_open_issue_age_days": 1027
       },
       "release": {
         "github_tag": "2.2.0",
@@ -2158,7 +2158,7 @@
         "ci": "passing",
         "open_issues": 5,
         "open_prs": 3,
-        "oldest_open_issue_age_days": 161
+        "oldest_open_issue_age_days": 162
       },
       "release": {
         "github_tag": "0.3.1",
@@ -2288,12 +2288,12 @@
       "stars": 0,
       "language": "Python",
       "health": {
-        "last_commit_date": "2026-10-13",
+        "last_commit_date": "2026-11-08",
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 1,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 2
+        "oldest_open_issue_age_days": 3
       },
       "release": {
         "github_tag": "0.4.1",
@@ -2428,7 +2428,7 @@
         "ci": "passing",
         "open_issues": 2,
         "open_prs": 2,
-        "oldest_open_issue_age_days": 106
+        "oldest_open_issue_age_days": 107
       },
       "release": {
         "github_tag": "0.10.0",
@@ -2699,7 +2699,7 @@
         "ci": "passing",
         "open_issues": 4,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 957
+        "oldest_open_issue_age_days": 958
       },
       "release": {
         "github_tag": "2.1.0",
@@ -2835,7 +2835,7 @@
         "ci": "passing",
         "open_issues": 1,
         "open_prs": 2,
-        "oldest_open_issue_age_days": 481
+        "oldest_open_issue_age_days": 482
       },
       "release": {
         "github_tag": "0.7.6",
@@ -3105,7 +3105,7 @@
         "ci": "failing",
         "open_issues": 15,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 2265
+        "oldest_open_issue_age_days": 2267
       },
       "release": {
         "github_tag": null,
@@ -3238,7 +3238,7 @@
         "ci": "passing",
         "open_issues": 5,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1795
+        "oldest_open_issue_age_days": 1796
       },
       "release": {
         "github_tag": "1.5.0",
@@ -3906,7 +3906,7 @@
         "ci": "none",
         "open_issues": 3,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 1712
+        "oldest_open_issue_age_days": 1713
       },
       "release": {
         "github_tag": null,
@@ -4024,7 +4024,7 @@
         "ci": "none",
         "open_issues": 2,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1270
+        "oldest_open_issue_age_days": 1271
       },
       "release": {
         "github_tag": "0.15.3",
@@ -4147,7 +4147,7 @@
         "ci": "none",
         "open_issues": 1,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1435
+        "oldest_open_issue_age_days": 1436
       },
       "release": {
         "github_tag": "0.2.1",
@@ -4270,7 +4270,7 @@
         "ci": "passing",
         "open_issues": 16,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 597
+        "oldest_open_issue_age_days": 598
       },
       "release": {
         "github_tag": "0.4.2",
@@ -4400,7 +4400,7 @@
         "ci": "passing",
         "open_issues": 14,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 645
+        "oldest_open_issue_age_days": 646
       },
       "release": {
         "github_tag": "0.11.0",
@@ -4536,7 +4536,7 @@
         "ci": "none",
         "open_issues": 2,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1866
+        "oldest_open_issue_age_days": 1867
       },
       "release": {
         "github_tag": "0.6.0",
@@ -4672,7 +4672,7 @@
         "ci": "none",
         "open_issues": 5,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 1906
+        "oldest_open_issue_age_days": 1907
       },
       "release": {
         "github_tag": "1.3.3",
@@ -4807,7 +4807,7 @@
         "ci": "none",
         "open_issues": 4,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 2668
+        "oldest_open_issue_age_days": 2669
       },
       "release": {
         "github_tag": "0.7.1",
@@ -5077,7 +5077,7 @@
         "ci": "passing",
         "open_issues": 2,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 2220
+        "oldest_open_issue_age_days": 2221
       },
       "release": {
         "github_tag": "0.8.6",
@@ -5213,7 +5213,7 @@
         "ci": "passing",
         "open_issues": 2,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 746
+        "oldest_open_issue_age_days": 747
       },
       "release": {
         "github_tag": "0.8.0",
@@ -5350,7 +5350,7 @@
         "ci": "passing",
         "open_issues": 1,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 190
+        "oldest_open_issue_age_days": 191
       },
       "release": {
         "github_tag": "0.6.0",
@@ -5623,7 +5623,7 @@
         "ci": "none",
         "open_issues": 2,
         "open_prs": 5,
-        "oldest_open_issue_age_days": 990
+        "oldest_open_issue_age_days": 991
       },
       "release": {
         "github_tag": "0.5.4",
@@ -6030,7 +6030,7 @@
         "ci": "passing",
         "open_issues": 6,
         "open_prs": 2,
-        "oldest_open_issue_age_days": 983
+        "oldest_open_issue_age_days": 984
       },
       "release": {
         "github_tag": "0.9.3",
@@ -6164,7 +6164,7 @@
         "ci": "none",
         "open_issues": 2,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 2829
+        "oldest_open_issue_age_days": 2830
       },
       "release": {
         "github_tag": "0.1.2rc0",
@@ -6298,7 +6298,7 @@
         "ci": "passing",
         "open_issues": 4,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 2523
+        "oldest_open_issue_age_days": 2524
       },
       "release": {
         "github_tag": "0.9.0",
@@ -6435,7 +6435,7 @@
         "ci": "passing",
         "open_issues": 3,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1264
+        "oldest_open_issue_age_days": 1265
       },
       "release": {
         "github_tag": "0.4.0",
@@ -6705,7 +6705,7 @@
         "ci": "none",
         "open_issues": 46,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 3263
+        "oldest_open_issue_age_days": 3264
       },
       "release": {
         "github_tag": "0.3.3",
@@ -6839,7 +6839,7 @@
         "ci": "none",
         "open_issues": 13,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 2343
+        "oldest_open_issue_age_days": 2344
       },
       "release": {
         "github_tag": "0.2.1",
@@ -7374,7 +7374,7 @@
         "ci": "passing",
         "open_issues": 1,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 84
+        "oldest_open_issue_age_days": 85
       },
       "release": {
         "github_tag": "1.5.0",
@@ -7506,7 +7506,7 @@
         "ci": "none",
         "open_issues": 29,
         "open_prs": 4,
-        "oldest_open_issue_age_days": 2118
+        "oldest_open_issue_age_days": 2119
       },
       "release": {
         "github_tag": "0.11.0",
@@ -7636,8 +7636,8 @@
         "staleness": "fresh",
         "ci": "passing",
         "open_issues": 44,
-        "open_prs": 10,
-        "oldest_open_issue_age_days": 1033
+        "open_prs": 11,
+        "oldest_open_issue_age_days": 1034
       },
       "release": {
         "github_tag": "2.0.2",
@@ -7772,7 +7772,7 @@
         "ci": "passing",
         "open_issues": 3,
         "open_prs": 3,
-        "oldest_open_issue_age_days": 866
+        "oldest_open_issue_age_days": 867
       },
       "release": {
         "github_tag": "1.0.0",
@@ -7911,7 +7911,7 @@
         "ci": "passing",
         "open_issues": 12,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 934
+        "oldest_open_issue_age_days": 935
       },
       "release": {
         "github_tag": "0.10.6",
@@ -8272,7 +8272,7 @@
         "ci": "passing",
         "open_issues": 1,
         "open_prs": 1,
-        "oldest_open_issue_age_days": 716
+        "oldest_open_issue_age_days": 717
       },
       "release": {
         "github_tag": "1.3.0",
@@ -8405,7 +8405,7 @@
         "ci": "passing",
         "open_issues": 9,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 519
+        "oldest_open_issue_age_days": 520
       },
       "release": {
         "github_tag": "1.2.0",
@@ -9541,7 +9541,7 @@
         "ci": "none",
         "open_issues": 6,
         "open_prs": 0,
-        "oldest_open_issue_age_days": 1990
+        "oldest_open_issue_age_days": 1991
       },
       "release": {
         "github_tag": null,
