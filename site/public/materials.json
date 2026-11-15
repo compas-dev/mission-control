@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T09:41:52Z",
+  "generated_at": "2026-11-15T10:08:51Z",
   "materials": [
     {
       "name": "workshop_compas_fab_2",
@@ -10,7 +10,7 @@
       "status": "active",
       "description": "Materials for the COMPAS FAB 2.0 workshop",
       "language": null,
-      "stars": 6,
+      "stars": 7,
       "last_activity_date": "2026-11-08",
       "homepage": null,
       "topics": [],
